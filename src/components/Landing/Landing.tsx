@@ -21,7 +21,7 @@ export function Landing(){
                 <div className="m-16 ml-20">
                 <Link href={"/Home"}>
                     <button className=" text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500">
-                            Let's Explore 
+                            Let's Explore &rarr; 
                     </button>
                 </Link>
                 </div>

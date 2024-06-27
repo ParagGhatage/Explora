@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.0",
+    "@tabler/icons-react": "^3.7.0",
+    "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.12",
     "next": "14.2.4",
