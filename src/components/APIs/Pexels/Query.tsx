@@ -9,7 +9,7 @@ export async function PexelsQuery(Country:String){
     const response =await axios.get(`https://api.pexels.com/v1/search?query=${Country}`
         , {
             headers: {
-            'Authorization':`UmWtqDY8aE6AuVhoy9EMMpgOIkRvP2P2VczlanEW0IpIFGbjxq7QqJ1r`
+            'Authorization':process.env.PEXELS_API_KEY
             }
         }
     )
