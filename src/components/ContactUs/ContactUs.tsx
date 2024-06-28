@@ -167,12 +167,12 @@ const onEmail = async () => {
 
       <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer className=" text-black">
-            <Label htmlFor="name" className="text-black placeholder:text-black">Your Name</Label>
+          <LabelInputContainer className=" text-black ">
+            <Label htmlFor="name" className="text-black placeholder:text-black ">Your Name</Label>
             <Input id="name" placeholder="Your Name" type="text"
             value={user.name} 
             onChange={(e) => setUser({...user, name: e.target.value})}
-            className=" text-black placeholder:text-black"/>
+            className=" text-black placeholder:text-black bg-indigo-100"/>
           </LabelInputContainer>
           
         </div>
@@ -181,14 +181,16 @@ const onEmail = async () => {
           <Input id="email" placeholder="Email id" type="email"
           value={user.email} 
           onChange={(e) => setUser({...user, email: e.target.value})}
-          className="placeholder:text-black"/>
+          className="placeholder:text-black bg-indigo-100"/>
         </LabelInputContainer>
 
         <LabelInputContainer className="h-56">
             <Label htmlFor="message">Message</Label>
-            <Input id="message" placeholder="Your message..." type="text" className=" placeholder:text-black h-40 md:max-w-xl px-4 py-2 whitespace-normal break-words resize-y"
+            <Input id="message" placeholder="Your message..." type="text"
             value={user.message}
-            onChange={(e) => setUser({...user, message: e.target.value})}/>
+            onChange={(e) => setUser({...user, message: e.target.value})}
+           className=" placeholder:text-black h-40 md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words resize-y"
+          />
           </LabelInputContainer>
 
         <div className="text-center">
