@@ -23,7 +23,7 @@ const Country = () => {
   const [capital, setCapital] = useState("");
   const [currency, setCurrency] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
-  const [languages, setLanguages] = useState({});
+  const [languages, setLanguages] = useState([]);
   const [population, setPopulation] = useState();
   const [drive, setDriveSide] = useState("");
   const [timezones, setTimezones] = useState([]);
@@ -52,14 +52,20 @@ const Country = () => {
           setName(Country[0].name.common);
           const first = Country[0].currencies
           const second = first[Object.keys(first)[0]]
-          
           const final_currency = second[Object.keys(second)[0]]
           const currency_symbol = second[Object.keys(second)[1]]
+
+          const Lang = Country[0].languages
+          const Length = Object.keys(Lang).length
+          const arr = []
+          for(let i=0;i <= Length;i++){
+            arr.push(Lang[Object.keys(Lang)[i]])
+          }
           
           setCurrency(final_currency)
           setCurrencySymbol(currency_symbol)
           setCapital(Country[0].capital[0])
-          setLanguages(Country[0].languages)
+          setLanguages(arr)
           setPopulation(Country[0].population)
           setDriveSide(Country[0].car.side)
           setTimezones(Country[0].timezones)
@@ -121,14 +127,23 @@ const Country = () => {
             
           </div>
           <div className="text-3xl  bg-white p-4 rounded-md font-mono m-8 font-bold text-center text-black">
-            Languages :  {languages[Object.keys(languages)[0]]}
+            Languages :  {languages.map((language) =>(
+              <div>
+                {language}
+              </div>
+            ))}
           </div>
           
         </div>
 
         <div className="flex p-4 justify-evenly">
-        <div className=" flex text-3xl  bg-white p-4 rounded-md font-mono font-bold text-center text-black mt-8">
-            Timezones : {timezones[0]}
+        <div className="  text-3xl  bg-white p-4 rounded-md font-mono font-bold text-center text-black mt-8">
+            Timezones : {timezones.map((zone) =>(
+              <div>
+                {zone}
+              </div>
+            ))}
+
           </div>
           <div className="text-3xl pl-12  bg-white p-4 rounded-md font-mono m-8 font-bold text-center text-black">
             Drive : {drive} hand Drive
@@ -167,13 +182,7 @@ const Country = () => {
             ))}
             <div className=" text-center">
 
-            <button
-             
-              className="text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
-              onClick={handleGoBack}
-            >
-               Go Back
-            </button>
+            
             
             </div>
           </div>
@@ -182,7 +191,17 @@ const Country = () => {
             No photos found for the query "{query}"
           </p>
         )}
+        <div className="text-center">
+        <button
+              className="text-center border w-100% text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+              onClick={handleGoBack}
+            >
+               Go Back
+            </button>
+        </div>
+        
       </div>
+            
     </main>
   );
 };
