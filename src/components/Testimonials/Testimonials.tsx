@@ -24,26 +24,26 @@ const Categories = [
     
     name: "",
     title: "Japan",
-     sourc:"https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/2758567/pexels-photo-2758567.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
      {
     quote: "",
     name: "",
     title: "India",
-     sourc:"https://images.pexels.com/photos/3574440/pexels-photo-3574440.jpeg?auto=compress&cs=tinysrgb&w=600"
+     sourc:"https://images.pexels.com/photos/3037435/pexels-photo-3037435.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
     quote:
       "",
     name: "Ice Land",
     title: "",
-     sourc:"https://images.pexels.com/photos/831061/pexels-photo-831061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/3363331/pexels-photo-3363331.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
     quote:
       "",
     name: "",
     title: "Nepal",
-     sourc:"https://images.pexels.com/photos/3027138/pexels-photo-3027138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/20825921/pexels-photo-20825921/free-photo-of-aerial-view-of-the-village-on-top-of-the-mountain.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
 ];
