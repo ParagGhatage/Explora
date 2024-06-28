@@ -9,10 +9,11 @@ export async function PexelsQuery(Country:String){
     const response =await axios.get(`https://api.pexels.com/v1/search?query=${Country}`
         , {
             headers: {
-            'Authorization':process.env.PEXELS_API_KEY
+            Authorization: "n6IWtlmiwmMNB0KE78Yy3GQRypDd0ciFPNWGmImEPhHPVUyB8CAGTp1y"
             }
         }
     )
+    console.log(response)
     return(
         response.data
     )

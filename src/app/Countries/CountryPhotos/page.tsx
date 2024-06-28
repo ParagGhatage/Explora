@@ -168,7 +168,7 @@ const Country = () => {
             {photos.map((photo) => (
               <div key={photo.id} className="p-2">
                 <Image
-                  src={photo.src.medium}
+                  src={photo.src.original}
                   alt={photo.photographer}
                   height="1000"
             width="1000"
