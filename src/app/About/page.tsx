@@ -5,7 +5,7 @@ import React from 'react';
 const AboutUsPage = () => {
   return (
     <>
-   <div>
+   <div className='bg-indigo-100'>
     <Navbar></Navbar>
    </div>
     <div className="bg-indigo-100 min-h-screen">

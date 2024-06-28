@@ -8,14 +8,16 @@ import { ThreeDCardDemo } from '@/components/Categories/Categories'
 
 function page() {
   return (
-    <div className='bg-indigo-100'>
+    <div className='bg-indigo-100 w-100%'>
     
      <Navbar></Navbar>
-     <div className='p-28' >
-      <img src="https://images.pexels.com/photos/3030268/pexels-photo-3030268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""  className=' rounded-2xl' />
+     <div className='p-20 w-100%' >
+      
+      <img src="https://images.pexels.com/photos/3030268/pexels-photo-3030268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""  
+      className=' rounded-2xl w-100%'/>
      </div>
-     <div className=' text-center  text-5xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
-    <div className='flex '>
+     <div className=' text-center w-100% text-5xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
+    <div className='flex w-100%'>
         
        <ThreeDCardDemo title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
        <ThreeDCardDemo title="Historical" sourc='https://images.pexels.com/photos/161183/thailand-monks-temple-tourism-161183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
@@ -23,9 +25,9 @@ function page() {
        
       </div> 
     
-<div className='p-5'>
+<div className='p-5 w-100%'>
      <div>
-     <div className=' text-center  text-3xl text-bold font-sans opacity-70 font-semibold p-4 m-7'><h1>Popular Destinations</h1></div>
+     <div className=' text-center w-100% text-3xl text-bold font-sans opacity-70 font-semibold p-4 m-7'><h1>Popular Destinations</h1></div>
      </div>
       <InfiniteMovingCardsDemo>
 

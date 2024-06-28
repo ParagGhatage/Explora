@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar"
 import Link from 'next/link'
 function Navbar() {
   return (
-    <div className='bg-indigo-100'>
+    <div className='bg-transparent w-100% '>
          <nav>
         <ul className='flex  py-5   text-lg font-bold'>
             <a href="/Home">

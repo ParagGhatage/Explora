@@ -14,7 +14,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-800 text-white py-8 w-100%">
       <div className="container mx-auto px-6">
         <div className="md:flex justify-between items-center">
           {/* Left section */}

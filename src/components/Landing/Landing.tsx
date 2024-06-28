@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function Landing(){
     return(
-            <div className="flex w-max justify-between h-full">
+            <div className="flex justify-between h-full w-100%">
 
                 <div className="m-5 mt-20">
                 <div className="text-black font-sans text-left text-7xl">
