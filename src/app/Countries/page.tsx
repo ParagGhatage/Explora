@@ -4,6 +4,8 @@ import Country from './CountryPhotos/page'
 import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar/Navbar';
+
+
 function page() {
     const[searchQuery,setsearchquery]=useState('');
     const router=useRouter()
@@ -25,16 +27,16 @@ function page() {
         <div className='bg-indigo-100'>
        <Navbar></Navbar>
         <div className="max-w-lg mx-auto mt-8 p-4 ">
-        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">Explore Travel Destinations</h1>
+        <h1 className="text-3xl font-bold text-center pb-3 text-gray-900">Explore Travel Destinations</h1>
         
-        <form onSubmit={handleSearchSubmit} className="mb-8">
+        <form onSubmit={handleSearchSubmit} className="">
           <div className="flex items-center bg-white rounded-lg shadow-md p-4">
             <input
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search for travel destinations..."
-              className="flex-grow px-4 py-2 border-none rounded-l-lg focus:outline-none focus:ring-2 focus:ring-neutral-700"
+              className="flex-grow px-4 py-2 mr-2 border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-700"
             />
             <button
               type="submit"
@@ -44,8 +46,9 @@ function page() {
             </button>
           </div>
         </form>
-      
-
+    </div>
+    <div className='mt-0'>
+     
     </div>
     </div>
   )

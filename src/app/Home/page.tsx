@@ -8,7 +8,7 @@ import { ThreeDCardDemo } from '@/components/Categories/Categories'
 
 function page() {
   return (
-    <div className='bg-indigo-100 w-100%'>
+    <div className='bg-indigo-100 w-100% mt-0 pt-0'>
     
      <Navbar></Navbar>
      <div className='p-20 w-100%' >
