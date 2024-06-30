@@ -16,6 +16,7 @@ const Route: React.FC<TouristDestinationsProps> = () => {
   const [start,setStart] = useState('')
   const [end,setEnd] = useState('')
   const [plan,setTravelPlan] = useState([])
+  const [date,setDate] = useState("")
   
   const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => {
     
@@ -25,13 +26,20 @@ const Route: React.FC<TouristDestinationsProps> = () => {
     
     setEnd(e.target.value);
   };
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    
+    const dateString = e.target.value.toString();
+    console.log(dateString)
+    
+    setDate(dateString);
+  };
   
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = await Plan(start,end);
+    const data = await Plan(start,end,date);
     const datails = data.candidates[0].content.parts[0].text
-    const arr=datails.split("\n");
+    const arr=datails.split('\n');
     console.log(arr)
     setTravelPlan(arr)
     
@@ -58,6 +66,13 @@ const Route: React.FC<TouristDestinationsProps> = () => {
               placeholder="Your Destination"
               className="bg-teal-50 p-6 w-screen border-transparent border m-7"
             />
+            <input
+              type="date"
+              value={date}
+              onChange={handleDateChange}
+              placeholder="Date of Departure"
+              className="bg-teal-50 p-6 w-screen border-transparent border m-7"
+            />
             <button
               type="submit"
               className="text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500"
@@ -67,7 +82,7 @@ const Route: React.FC<TouristDestinationsProps> = () => {
           </div>
           </form> 
     </div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
           {plan ?  (
             <div>
@@ -75,7 +90,7 @@ const Route: React.FC<TouristDestinationsProps> = () => {
            Your plan &darr;
         </div>
 
-            <div className="text-gray-700 flex flex-wrap">
+            <div className="text-gray-700 flex flex-wrap w-80">
                 {plan.map((element) => (
                 <div key={element} className="p-3 text-middle text-2xl ">
                   {element}
