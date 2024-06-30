@@ -40,7 +40,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
             translateZ={20}
             translateX={-40}
             as="button"
-            className=" text-center  text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-stone-950 hover:bg-violet-300 hover:border hover:text-black"
+            className=" text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
           >
             Try now &rarr;
           </CardItem>
@@ -51,7 +51,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
             translateZ={20}
             translateX={40}
             as="button"
-            className=" text-center  text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-stone-950 hover:bg-violet-300 hover:border hover:text-black"
+            className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
           >
             Sign In &rarr;
           </CardItem>

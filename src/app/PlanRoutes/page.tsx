@@ -12,11 +12,18 @@ interface TouristDestinationsProps {
 }
 
 
+
+
 const Route: React.FC<TouristDestinationsProps> = () => {
   const [start,setStart] = useState('')
   const [end,setEnd] = useState('')
   const [plan,setTravelPlan] = useState([])
   const [date,setDate] = useState("")
+  const elementsToRemove = ["[","```json","```", "]",];
+
+  const removeElements = (arr, elements) => {
+    return arr.filter(item => !elements.includes(item));
+  };
   
   const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => {
     
@@ -40,73 +47,69 @@ const Route: React.FC<TouristDestinationsProps> = () => {
     const data = await Plan(start,end,date);
     const datails = data.candidates[0].content.parts[0].text
     const arr=datails.split('\n');
+    const newArray = removeElements(arr, elementsToRemove);
     console.log(arr)
-    setTravelPlan(arr)
+    setTravelPlan(newArray)
     
   };
 
   return (
-    <div className="min-h-screen bg-indigo-100">
-      <Navbar></Navbar>
-      <div className="max-w-80% mx-auto mt-8 p-4">
-        <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Plan Your Trip</h1>
-        <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-4">
-          <div className="flex items-center space-x-2">
-            <input
-              type="text"
-              value={start}
-              onChange={handleStartChange}
-              placeholder="Your Location"
-              className="bg-teal-50 p-6 w-screen border-transparent border m-7"
-            />
-            <input
-              type="text"
-              value={end}
-              onChange={handleEndChange}
-              placeholder="Your Destination"
-              className="bg-teal-50 p-6 w-screen border-transparent border m-7"
-            />
-            <input
-              type="date"
-              value={date}
-              onChange={handleDateChange}
-              placeholder="Date of Departure"
-              className="bg-teal-50 p-6 w-screen border-transparent border m-7"
-            />
-            <button
-              type="submit"
-              className="text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500"
-            >
-              Search
-            </button>
-          </div>
-          </form> 
-    </div>
-    <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
-          {plan ?  (
-            <div>
-            <div className='text-center text-3xl justify-center bg-lime-200 rounded-lg p-3'>
-           Your plan &darr;
+    <div className="min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+  <Navbar />
+  <div className="max-w-3xl mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
+    <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</h1>
+    <form onSubmit={handleSearchSubmit} className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+        <input
+          type="text"
+          value={start}
+          onChange={handleStartChange}
+          placeholder="Your Location"
+          className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+        />
+        <input
+          type="text"
+          value={end}
+          onChange={handleEndChange}
+          placeholder="Your Destination"
+          className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={handleDateChange}
+          placeholder="Date of Departure"
+          className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {plan ? (
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className='text-center text-3xl font-semibold mb-6'>
+          Your plan &darr;
         </div>
-
-            <div className="text-gray-700 flex flex-wrap w-80">
-                {plan.map((element) => (
-                <div key={element} className="p-3 text-middle text-2xl ">
-                  {element}
-                </div>
-              ))}
-                
-                
+        <div className="text-gray-700 flex flex-wrap justify-center space-x-4 space-y-4">
+          {plan.map((element) => (
+            <div key={element} className="bg-lime-100 rounded-lg p-4 text-2xl font-medium shadow-md">
+              {element}
             </div>
-            </div>
-
-          ) : (
-            <div className="text-gray-700">Creating your trip plan</div>
-          )}
-
+          ))}
         </div>
-    </div>
+      </div>
+    ) : (
+      <div className="text-gray-700 text-center text-xl font-semibold">Creating your trip plan...</div>
+    )}
+  </div>
+</div>
+
 )}
 
 export default Route;

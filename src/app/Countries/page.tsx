@@ -26,28 +26,24 @@ function Page() {
     }
 
     return (
-        <div className='bg-indigo-100'>
-            <Navbar />
-            
-            <div className='flex justify-center justify-items-center p-10 h-screen'>
+        <div className='min-h-screen bg-indigo-100'>
+  <Navbar />
+  <div className='flex flex-col items-center justify-center p-10'>
+    <div className='w-full max-w-md p-10 mb-10 mt-10 bg-white rounded-lg shadow-lg'>
+      <ComboboxDemo onSelectCountry={handleSelectCountry} />
+    </div>
+    <div className='mt-10 pt-2'>
+      <button
+        type="submit"
+        className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+        onClick={handleSearchSubmit}
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
 
-            <div className='p-10 mb-20 mt-10'>
-            <ComboboxDemo onSelectCountry={handleSelectCountry} />
-            </div>
-            
-            <div className='mt-20 pt-2'>
-            <button
-                type="submit"
-                className="text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
-                onClick={handleSearchSubmit}
-            >
-                Search
-            </button>
-            </div>
-
-            </div>
-            
-        </div>
     )
 }
 

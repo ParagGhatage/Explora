@@ -18,14 +18,14 @@ interface Photo {
   photographer: string;
 }
 
-const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
+const TopDestinations: React.FC<TouristDestinationsProps> = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
   const [Recommendations, setRecommendations] = useState();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
-  const query: string = searchParams.get('query') || '';
+  const query: string = searchParams.get('query') || 'all';
   console.log(query)
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -137,4 +137,4 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
   );
 };
 
-export default TouristDestinations;
+export default TopDestinations;

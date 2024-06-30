@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import { InfiniteMovingCardsDemo } from '@/components/Testimonials/Testimonials'
 import Footer from '@/components/Footer/Footer'
 import { ThreeDCardDemo } from '@/components/Categories/Categories'
+import Link from 'next/link'
 
 function page() {
   return (
@@ -27,7 +28,15 @@ function page() {
     
 <div className='p-5 w-100%'>
      <div>
-     <div className=' text-center w-100% text-3xl text-bold font-sans opacity-70 font-semibold p-2 m-7'><h1>Popular Destinations</h1></div>
+     <div className=' text-center w-100% text-3xl text-bold font-sans opacity-70 font-semibold p-2 m-7'>
+      <h1 className='mb-5'>Popular Destinations</h1>
+      <Link href={"/TopDesti"}>
+      <button className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300">
+  Explore Popular Destinations &rarr;
+</button>
+</Link>
+
+      </div>
      </div>
       <InfiniteMovingCardsDemo>
 
