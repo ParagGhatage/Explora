@@ -85,6 +85,9 @@ const Country = () => {
   const handleGoBack = () => {
     router.back(); // This function navigates back to the previous page
   };
+  const handleTopDestinationsInCountry = () => {
+    router.push((`/Countries/CountryPhotos/TopDestinations?query=${encodeURIComponent(query)}`))
+  }
 
   return (
     <main className="bg-indigo-100 min-h-screen">
@@ -154,6 +157,13 @@ const Country = () => {
           </div>
 
       </div>
+      <div className="text-center mt-3">
+        <button 
+        onClick={handleTopDestinationsInCountry}
+        className="text-center border w-100% text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500">
+          Explore Destinations in {name}  &rarr;
+        </button>
+      </div>
 
      <div>
   <h1 className="text-center mt-10 text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">
@@ -168,8 +178,8 @@ const Country = () => {
             {photos.map((photo) => (
               <div key={photo.id} className="p-2">
                 <Image
-                  src={photo.src.original}
-                  alt={photo.photographer}
+                  src={photo.src.large2x}
+                  alt={""}
                   height="1000"
             width="1000"
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
