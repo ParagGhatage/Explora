@@ -29,7 +29,7 @@ export function ContactUs() {
 const onEmail = async () => {
       try {
 
-          const response = await axios.post("/api/Contact-me", user);
+          const response = await axios.post("/api/send", user);
           console.log( response.data);
           
       } catch (error:any) {

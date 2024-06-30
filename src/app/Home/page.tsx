@@ -5,13 +5,17 @@ import Navbar from '@/components/Navbar/Navbar'
 import { InfiniteMovingCardsDemo } from '@/components/Testimonials/Testimonials'
 import Footer from '@/components/Footer/Footer'
 import { ThreeDCardDemo } from '@/components/Categories/Categories'
-import Link from 'next/link'
+import Link from 'next/link' 
+import axios from 'axios'
 
 function page() {
+ 
+    
   return (
     <div className='bg-indigo-100 w-100% mt-0 pt-0'>
     
      <Navbar></Navbar>
+     
      <div className='p-20 w-100%' >
       
       <img src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=""  
