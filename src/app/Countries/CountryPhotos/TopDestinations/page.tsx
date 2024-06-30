@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar/Navbar';
+import { Run } from '@/components/APIs/Gemini/Recommendations';
 
 interface TouristDestinationsProps {
   query: string;
@@ -20,28 +21,46 @@ interface Photo {
 const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
+  const [Recommendations, setRecommendations] = useState();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
   const query: string = searchParams.get('query') || '';
   console.log(query)
-
-  
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (query) {
+        try {
+          const Recommendation1: any = await Run(query);
+          const arr=Recommendation1.split("\n");
+          console.log(arr)
+          setRecommendations(arr);
+        } catch (error) {
+          console.error("Error fetching recommendations:", error);
+        }
+      }
+    };
+    
+    fetchData();
+    
+  }, [photos]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await PexelsQuery(searchQuery);
     setPhotos(data.photos);
+    setRecommendations([])
   };
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
+  
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-indigo-100">
       <Navbar></Navbar>
-      <div className="max-w-lg mx-auto mt-8 p-4">
+      <div className="max-w-80% mx-auto mt-8 p-4">
         <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
         <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-4">
           <div className="flex items-center space-x-2">
@@ -50,25 +69,44 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search for travel destinations..."
-              className="flex-grow px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-teal-50 p-6 w-screen border-transparent border m-7"
             />
             <button
               type="submit"
-              className="px-4 py-2 text-white font-bold bg-blue-600 rounded-lg hover:bg-blue-500 focus:ring-2 focus:ring-blue-300"
+              className="text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500"
             >
               Search
             </button>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white shadow-md rounded-lg p-6">
-          {destinations ? (
-            <p className="text-gray-700">{destinations}</p>
-          ) : (
-            <p className="text-gray-700">Loading...</p>
-          )}
+        
+          {Recommendations ?  (
+            <div>
+            <div className='text-center text-3xl justify-center bg-lime-200 rounded-lg p-3'>
+            Scroll down to see images &darr;
         </div>
-      </div>
+
+            <div className="text-gray-700 flex flex-wrap">
+                 
+                
+                
+                {Recommendations.map((place) => (
+                <div key={place} className="p-3 text-left ">
+                  {place}
+                </div>
+              ))}
+                
+                
+            </div>
+            </div>
+
+          ) : (
+            <div className="text-gray-700">Loading recommendations...</div>
+          )}
+
+        </div>
+      
 
         </form>
       </div>

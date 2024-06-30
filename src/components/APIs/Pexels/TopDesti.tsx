@@ -15,6 +15,6 @@ export async function TopDesti(Country:String){
     )
     console.log(response)
     return(
-        response.data
+        response.candidates[0].content.parts[0].text
     )
 }
