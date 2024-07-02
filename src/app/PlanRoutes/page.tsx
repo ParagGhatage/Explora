@@ -109,24 +109,27 @@ const Route: React.FC = () => {
                 onClick={onPlanSendClick}
                 className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
               >
-                Lets Go &rarr;
+               Get Plan On your Email  
+               <div>
+               Lets Go &rarr;
+                </div>
               </button>
               <div>
                 {wantToSend ? (
-                  <div>
+                  <div className='m-4 justify-center text-center'>
                     <input
                       type="text"
                       value={name}
                       onChange={handleNameChange}
                       placeholder="Your Name"
-                      className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+                      className=" bg-teal-50 m-3 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                     <input
                       type="email"
                       value={email}
                       onChange={handleEmailChange}
                       placeholder="Your Email address"
-                      className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+                      className=" bg-teal-50 m-3 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                     <button
                       type="button"
