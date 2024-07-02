@@ -34,9 +34,10 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
     const fetchData = async () => {
       if (query) {
         try {
-          const Recommendation1: any = await Run(query);
-          const arr=Recommendation1.split("\n");
-          console.log(arr)
+          const Recommendation: any = await Run(query);
+          console.log(Recommendation)
+          const arr=Recommendation.places;
+
           setRecommendations(arr);
         } catch (error) {
           console.error("Error fetching recommendations:", error);
@@ -92,11 +93,12 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
     </div>
     
 
-    <div className="py-12">
+    <div className="py-5">
       {Recommendations ? (
         <div>
-          <div className="text-center text-3xl bg-lime-200 rounded-lg p-3 mb-6">
-            Scroll down to see images &darr;
+          
+          <div className='text-center text-3xl p-3'>
+            Suggestions
           </div>
 
           <div className="text-gray-700 flex flex-wrap justify-center">
