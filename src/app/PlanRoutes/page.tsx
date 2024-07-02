@@ -20,7 +20,6 @@ const Route: React.FC<TouristDestinationsProps> = () => {
   //for input
   const [start,setStart] = useState('')
   const [end,setEnd] = useState('')
-  const [plan,setTravelPlan] = useState([])
   const [date,setDate] = useState("")
   const [days,setDays] = useState()
 
@@ -35,6 +34,9 @@ const Route: React.FC<TouristDestinationsProps> = () => {
   const [flight,setFlight] = useState({})
   const [train,setTrain] = useState({})
   const [road,setRoad] = useState({})
+
+  //Entire plan
+  const [plan,setTravelPlan] = useState({})
   
   const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => {
     
@@ -77,8 +79,13 @@ const Route: React.FC<TouristDestinationsProps> = () => {
     setTrain(data.Details.Transportation[1].Details)
     setRoad(data.Details.Transportation[2].Details)
 
+    //Entire plan
+    setTravelPlan({accommodation,activities,budget,packingList,transportation})
+
     
   };
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
@@ -124,172 +131,149 @@ const Route: React.FC<TouristDestinationsProps> = () => {
     </form>
   </div>
 
-
   <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
     {activities ? (
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="bg-white rounded-lg shadow-lg p-6 space-y-8">
         <div className='text-center text-3xl font-semibold mb-6'>
           Your plan &darr;
         </div>
         
-        {/* //Transportation */}
-        <div >
-        <div className='text-black text-3xl font-bold text-center p-4 m-4'>
-          Transportation options
-        </div>
-        <div className='flex justify-between p-2 m-3'>
-                {/* //Flight */}
-              <div className=' p-1 m-2 bg-fuchsia-100 rounded-md text-center shadow shadow-slate-400'>
-                <div className='text-center text-xl font-serif font-semibold p-4'>
-                Flight
-                </div>
-                <div className=''>
-                    <ol>
-                      <li className='p-2'>Info : {flight.AdditionalInfo}</li>
-                      <li className='p-2'>Departure Location : {flight.DepartureLocation}</li>
-                      <li className='p-2'>Departure Time : {flight.DepartureTime}</li>
-                      <li className='p-2'>Duration : {flight.Duration}</li>
-                      <li className='p-2'>Booking : {flight.Booking}</li>
-                      <li className='p-2'>Arrival Location : {flight.ArrivalLocation}</li>
-                      <li className='p-2'>Arrival Time : {flight.ArrivalTime}</li>
-                      <li className='p-2'>Cost : {flight.Cost} {budget.Currency}</li>
-                    </ol>
-                </div>
-              </div>
-
-            {/* //Train */}
-              <div className=' p-1 m-2  bg-fuchsia-100 rounded-md text-center shadow shadow-slate-400'>
-              <div className='text-center text-xl font-serif font-semibold p-4'>
-                Train
-                </div>
-                <div>
-                    <ol>
-                      <li className='p-2'>Info : {train.AdditionalInfo}</li>
-                      <li className='p-2'>Departure Location : {train.DepartureLocation}</li>
-                      <li className='p-2'>Departure Time : {train.DepartureTime}</li>
-                      
-                      <li className='p-2'>Duration : {train.Duration}</li>
-                      <li className='p-2'>Booking : {train.Booking}</li>
-                      <li className='p-2'>Arrival Location : {train.ArrivalLocation}</li>
-                      <li className='p-2'>Arrival Time : {train.ArrivalTime}</li>
-                      <li className='p-2'>Cost : {train.Cost} {budget.Currency}</li>
-                    </ol>
-                </div>
-              </div>
-
-            {/* //Road */}
-              <div className=' p-1 m-2  bg-fuchsia-100 rounded-md text-center shadow shadow-slate-400'>
-              <div className='text-center text-xl font-serif font-semibold p-4'>
-                Road
-                </div>
-                <div>
-                    <ol>
-                      <li className='p-2'>Info : {road.AdditionalInfo}</li>
-                      <li className='p-2'>Departure Location : {road.DepartureLocation}</li>
-                      <li className='p-2'>Departure Time : {road.DepartureTime}</li>
-                      
-                      <li className='p-2'>Duration : {road.Duration}</li>
-                      <li className='p-2'>Booking : {road.Booking}</li>
-                      <li className='p-2'>Arrival Location : {road.ArrivalLocation}</li>
-                      <li className='p-2'>Arrival Time : {road.ArrivalTime}</li>
-                      <li className='p-2'>Cost : {road.Cost} {budget.Currency}</li>
-                    </ol>
-                </div>
-
-              </div>
-        </div>
-      </div>
-
-        {/* //Activities */}
-        <div className='text-center justify-evenly'>
+        {/* Transportation */}
+        <div>
           <div className='text-black text-3xl font-bold text-center p-4 m-4'>
-            Activities :
+            Transportation options
           </div>
-          <div className='flex justify-evenly text-center p-2 m-3'>
-          {activities.map((activity) => (
-            <div className=' p-1 m-2 bg-fuchsia-100 rounded-md text-center shadow shadow-slate-400'>
-                <ol>
-                   <li className='p-2'>Date : {activity.Date}</li>
-                   <li className='p-2'>Name : {activity.Name}</li>
-                   <li className='p-2'>Location : {activity.Location}</li>
-                   <li className='p-2'>Time : {activity.Time}</li>
-                   <li className='p-2'>Info : {activity.AdditionalInfo}</li>
-                   <li className='p-2'>Booking : {activity.Booking}</li>
-                   <li className='p-2'>Cost : {activity.Cost}</li>
-                </ol>
-            </div>
-          ))}
-          </div>
-        </div>
-
-        {/* //Accomodation */}
-        <div className='text-center m-2 p-2 bg-lime-200 rounded-md'>
-          <div className='text-3xl p-4 m-4 font-sans font-bold'>
-            Accomodations
-          </div>
-          <div>
-            <ol>
-              <li className='p-2 m-1'>Check In Date : {accommodation.CheckInDate}</li>
-              <li className='p-2 m-1'>Check Out Date : {accommodation.CheckOutDate}</li>
-              <li className='p-2 m-1'>Info : {accommodation.AdditionalInfo}</li>
-              <li className='p-2 m-1'>Name of place : {accommodation.Name}</li>
-              <li className='p-2 m-1'>Address : {accommodation.Address}</li>
-              <li className='p-2 m-1'>Type : {accommodation.Type}</li>
-              <li className='p-2 m-1'>Contact info : {accommodation.ContactInfo}</li>
-              <li className='p-2 m-1'>Cost Per Night : {accommodation.CostPerNight}</li>
-              <li className='p-2 m-1'>Total Stay Cost : {accommodation.TotalCost}</li>
-            </ol>
-          </div>
-        </div>
-
-        {/* //Expenses */}
-        <div className='text-center m-2 p-2 bg-lime-200 rounded-md'>
-            <div className='text-3xl p-4 m-4 font-sans font-bold'>
-                Expenses
-            </div>
-            <div>
-              <ol>
-                <li className='p-2 m-1'>Currency : {budget.Currency}</li>
-                <li className='p-2 m-1'>Total trip Cost : {budget.TotalCost}</li>
-                <li className='p-2 m-1'>Flight Cost : {budget.FlightCost}</li>
-                <li className='p-2 m-1'>Accomodation Cost : {budget.AccommodationCost}</li>
-                <li className='p-2 m-1'>Food Cost : {budget.FoodCost}</li>
-                <li className='p-2 m-1'>Activities Cost : {budget.ActivitiesCost}</li>
-
-
-
-
-
+          <div className='flex flex-wrap justify-center space-y-4 md:space-y-0 md:space-x-4'>
+            {/* Flight */}
+            <div className='p-6 bg-fuchsia-100 rounded-md text-center shadow-lg'>
+              <div className='text-center text-xl font-serif font-semibold mb-4'>
+                Flight
+              </div>
+              <ol className='space-y-2'>
+                <li>Info: {flight.AdditionalInfo}</li>
+                <li>Departure Location: {flight.DepartureLocation}</li>
+                <li>Departure Time: {flight.DepartureTime}</li>
+                <li>Duration: {flight.Duration}</li>
+                <li>Booking: {flight.Booking}</li>
+                <li>Arrival Location: {flight.ArrivalLocation}</li>
+                <li>Arrival Time: {flight.ArrivalTime}</li>
+                <li>Cost: {flight.Cost} {budget.Currency}</li>
               </ol>
             </div>
+            
+            {/* Train */}
+            <div className='p-6 bg-fuchsia-100 rounded-md text-center shadow-lg'>
+              <div className='text-center text-xl font-serif font-semibold mb-4'>
+                Train
+              </div>
+              <ol className='space-y-2'>
+                <li>Info: {train.AdditionalInfo}</li>
+                <li>Departure Location: {train.DepartureLocation}</li>
+                <li>Departure Time: {train.DepartureTime}</li>
+                <li>Duration: {train.Duration}</li>
+                <li>Booking: {train.Booking}</li>
+                <li>Arrival Location: {train.ArrivalLocation}</li>
+                <li>Arrival Time: {train.ArrivalTime}</li>
+                <li>Cost: {train.Cost} {budget.Currency}</li>
+              </ol>
+            </div>
+            
+            {/* Road */}
+            <div className='p-6 bg-fuchsia-100 rounded-md text-center shadow-lg'>
+              <div className='text-center text-xl font-serif font-semibold mb-4'>
+                Road
+              </div>
+              <ol className='space-y-2'>
+                <li>Info: {road.AdditionalInfo}</li>
+                <li>Departure Location: {road.DepartureLocation}</li>
+                <li>Departure Time: {road.DepartureTime}</li>
+                <li>Duration: {road.Duration}</li>
+                <li>Booking: {road.Booking}</li>
+                <li>Arrival Location: {road.ArrivalLocation}</li>
+                <li>Arrival Time: {road.ArrivalTime}</li>
+                <li>Cost: {road.Cost} {budget.Currency}</li>
+              </ol>
+            </div>
+          </div>
         </div>
 
-        {/* //Packing List */}
-        <div className='text-center m-2 p-2 bg-lime-200 rounded-md'>
-        <div className='text-3xl p-4 m-4 font-sans font-bold'>
+        {/* Activities */}
+        <div className='text-center'>
+          <div className='text-black text-3xl font-bold p-4 m-4'>
+            Activities
+          </div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+            {activities.map((activity) => (
+              <div className='p-4 bg-fuchsia-100 rounded-md text-center shadow-lg'>
+                <ol className='space-y-2'>
+                  <li>Date: {activity.Date}</li>
+                  <li>Name: {activity.Name}</li>
+                  <li>Location: {activity.Location}</li>
+                  <li>Time: {activity.Time}</li>
+                  <li>Info: {activity.AdditionalInfo}</li>
+                  <li>Booking: {activity.Booking}</li>
+                  <li>Cost: {activity.Cost}</li>
+                </ol>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Accommodation */}
+        <div className='text-center bg-lime-200 rounded-md shadow-lg p-6'>
+          <div className='text-3xl p-4 font-sans font-bold'>
+            Accommodations
+          </div>
+          <ol className='space-y-2'>
+            <li>Check In Date: {accommodation.CheckInDate}</li>
+            <li>Check Out Date: {accommodation.CheckOutDate}</li>
+            <li>Info: {accommodation.AdditionalInfo}</li>
+            <li>Name of place: {accommodation.Name}</li>
+            <li>Address: {accommodation.Address}</li>
+            <li>Type: {accommodation.Type}</li>
+            <li>Contact info: {accommodation.ContactInfo}</li>
+            <li>Cost Per Night: {accommodation.CostPerNight}</li>
+            <li>Total Stay Cost: {accommodation.TotalCost}</li>
+          </ol>
+        </div>
+
+        {/* Expenses */}
+        <div className='text-center bg-lime-200 rounded-md shadow-lg p-6'>
+          <div className='text-3xl p-4 font-sans font-bold'>
+            Expenses
+          </div>
+          <ol className='space-y-2'>
+            <li>Currency: {budget.Currency}</li>
+            <li>Total trip Cost: {budget.TotalCost}</li>
+            <li>Flight Cost: {budget.FlightCost}</li>
+            <li>Accommodation Cost: {budget.AccommodationCost}</li>
+            <li>Food Cost: {budget.FoodCost}</li>
+            <li>Activities Cost: {budget.ActivitiesCost}</li>
+          </ol>
+        </div>
+
+        {/* Packing List */}
+        <div className='text-center bg-lime-200 rounded-md shadow-lg p-6'>
+          <div className='text-3xl p-4 font-sans font-bold'>
             Packing List
           </div>
-          <div>
-          {packingList.map((item) => (
-            <div className='p-2 m-1'>
+          <div className='space-y-2'>
+            {packingList.map((item) => (
+              <div className='p-2 m-1'>
                 {item}
-            </div>
-          ))}
+              </div>
+            ))}
           </div>
         </div>
-
       </div>
-      
     ) : (
-
-      <div className="text-black-700 text-center text-xl  font-semibold">
+      <div className="text-black-700 text-center text-xl font-semibold">
         Creating your trip plan...
       </div>
     )}
-
   </div>
 </div>
+
 
 )}
 

@@ -6,7 +6,7 @@ export async function Plan(Start:string,End:string,Date:string,Days:Number) {
     config()
     const genAI = new GoogleGenerativeAI("AIzaSyDD19ZpT6eTCwzl0VfmPd2rkN_96-d9xL8")
   // Choose a model that's appropriate for your use case.
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro",
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash",
     generationConfig: { responseMimeType: "application/json"}}
   );
 
