@@ -29,7 +29,7 @@ const onEmail = async () => {
     }
 
   return (
-  <div className="bg-purple-100">
+  <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
     <Navbar/>
     
     <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8  bg-white mt-14 placeholder:text-black w-full">

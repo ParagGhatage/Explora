@@ -3,8 +3,8 @@ import { Landing } from "@/components/Landing/Landing";
 
 export default function Home() {
   return (
-    <main className="bg-indigo-100">
-      <div className="bg-indigo-100 ">
+    <main className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+      <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
           <Landing/>
       </div>
     </main>

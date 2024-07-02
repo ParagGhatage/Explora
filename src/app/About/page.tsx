@@ -5,10 +5,10 @@ import React from 'react';
 const AboutUsPage = () => {
   return (
     <>
-   <div className='bg-indigo-100'>
+   <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'>
     <Navbar></Navbar>
    </div>
-    <div className="bg-indigo-100 min-h-screen">
+    <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
       <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
             VoyagVista</h1>

@@ -7,12 +7,15 @@ import Footer from '@/components/Footer/Footer'
 import { ThreeDCardDemo } from '@/components/Categories/Categories'
 import Link from 'next/link' 
 import axios from 'axios'
+import Router from 'next/router'
+import { useRouter } from 'next/router'
 
-function page() {
+const  Page = () => {
+
  
     
   return (
-    <div className='bg-indigo-100 w-100% mt-0 pt-0'>
+    <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-100% mt-0 pt-0'>
     
      <Navbar></Navbar>
      
@@ -34,11 +37,12 @@ function page() {
      <div>
      <div className=' text-center w-100% text-3xl text-bold font-sans opacity-70 font-semibold p-2 m-7'>
       <h1 className='mb-5'>Popular Destinations</h1>
-      <Link href={"/TopDesti"}>
-      <button className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300">
+      <button 
+      
+      className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300">
   Explore Popular Destinations &rarr;
 </button>
-</Link>
+
 
       </div>
      </div>
@@ -62,4 +66,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
