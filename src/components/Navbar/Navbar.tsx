@@ -5,18 +5,7 @@ import { getToken } from 'next-auth/jwt'
 import { request } from 'http'
 import { NextRequest } from 'next/server'
 
-async function Navbar(request:NextRequest) {
-  const [signedIn,setSignedIn]=useState(false)
-
-    const token = await getToken({req:request})
-
-    if(token){
-      setSignedIn(true)
-    }
-      else{
-        setSignedIn(false)
-      }
-    }
+function Navbar() {
 
   return (
     <div className='bg-transparent w-100%'>
@@ -42,7 +31,6 @@ async function Navbar(request:NextRequest) {
       </nav>
       
     </div>
-  )
-}
+  )}
 
 export default Navbar
