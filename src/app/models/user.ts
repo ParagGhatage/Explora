@@ -1,14 +1,14 @@
 import mongoose,{Document,Schema} from 'mongoose'
 
 export interface User extends Document {//Interface to fix type
-    userName:string;
+    name:string;
     password:string;
     email:string;
 }
 
 const UserSchema:Schema<User> = new Schema({//type of this UserSchema is interface User
 
-    userName:{
+    name:{
         type:String,
         required:[true,"userName is required"],
         unique:false,

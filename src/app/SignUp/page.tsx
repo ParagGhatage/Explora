@@ -17,17 +17,20 @@ export default function SignUp() {
 })
  
 
-const onEmail = async () => {
-      try {
+const onEmail = async (event: React.FormEvent) => {
+  event.preventDefault();
 
-          const response = await axios.post('/api/SignUp',user);
-console.log(response.data)
-          
-      } catch (error:any) {
-          console.log("Enable to send email", error.message);
-          
-      }
-    }
+  try {
+    const response = await axios.post('/api/SignUp', {
+      name: user.name,
+      email: user.email,
+      password: user.password,
+    });
+    console.log(response.data);
+  } catch (error: any) {
+    console.log("Unable to send email", error.message);
+  }
+};
 
   return (
   <div className=" bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
