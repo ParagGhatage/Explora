@@ -19,7 +19,7 @@ const  Page = () => {
     
      <Navbar></Navbar>
      
-     <div className='p-20 w-100%' >
+     <div className='p-10 w-100%' >
       
       <img src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=""  
       className=' rounded-2xl w-100%'/>

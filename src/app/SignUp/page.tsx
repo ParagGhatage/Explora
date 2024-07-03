@@ -13,15 +13,15 @@ export default function SignUp() {
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-    name:""
+    name:"",
 })
  
 
 const onEmail = async () => {
       try {
 
-          const response = await axios.post("/api/SignIn", user);
-          console.log( response.data);
+          const response = await axios.post('/api/SignUp',user);
+console.log(response.data)
           
       } catch (error:any) {
           console.log("Enable to send email", error.message);

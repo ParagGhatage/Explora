@@ -6,8 +6,12 @@ import { cn } from "@/utils/cn";
 import axios from "axios"
 import Link from "next/link";
 import Navbar from "@/components/Navbar/Navbar";
+import { signIn } from "next-auth/react";
+import { useRouter } from 'next/navigation';
+
 
 export default function SignIn() {
+  const router = useRouter();
   
 
   const [user, setUser] = React.useState({
@@ -28,10 +32,39 @@ const onEmail = async () => {
       }
     }
 
+  const handleGoogleSignin = async () => {
+    const res = await axios.post("/api/auth/[...nextauth]")
+    console.log(res)
+  }
+
+  const onSubmit = async (user) => {
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: user.email,
+      password: user.password,
+    });
+
+    if (result?.error) {
+      if (result.error === 'CredentialsSignin') {
+        console.log("Incorrect email or password",result.error)
+      } else {
+        console.log("something went wrong",result.error)
+      }
+    }
+
+    if (result?.url) {
+      router.push('/Home');//redirecting to Home
+    }
+  };
+
   return (
   <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
     <Navbar/>
-    
+    <div>
+      <button onClick={handleGoogleSignin}>
+        Sign In with Google
+      </button>
+    </div>
     <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8  bg-white mt-14 placeholder:text-black w-full">
       <div className="font-bold text-3xl text-black pt-3  text-center">
         SignIn
