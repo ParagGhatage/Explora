@@ -2,12 +2,13 @@
 
 import { cn } from "@/utils/cn";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
+  pauseOnHover = false,
   className,
 }: {
   items: {
@@ -89,8 +90,9 @@ export const InfiniteMovingCards = ({
       >
              
         {items.map((item, idx) => (
+           <Link href={`/Countries/CountryPhotos?query=${encodeURIComponent(item.title)}`}>
           <li
-            className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-100 px-8 py-6 md:w-[450px]"
+            className="w-[350px] max-w-full  relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-100 px-8 py-6 md:w-[450px]"
             style={{
               background:
                 "linear-gradient(180deg, var(--slate-100), var(--slate-100)",
@@ -114,14 +116,15 @@ export const InfiniteMovingCards = ({
                     {item.title}
                   </span>
                   
-                  <span className=" text-2xl leading-[1.6] text-black font-normal w-full text-center">
-                   <img src={item.sourc} alt=""  height="1000"  width="1000" className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"   /> 
+                  <span className=" text-2xl leading-[1.6] text-black font-normal hover: w-full text-center">
+                   <img src={item.sourc} alt=""  height="1000"  width="1000" className="h-50 w-full object-cover rounded-xl group-hover/card:shadow-xl"   /> 
                   </span>
 
                 </span>
               </div>
             </blockquote>
           </li>
+          </Link>
         ))}
       </ul>
     </div>

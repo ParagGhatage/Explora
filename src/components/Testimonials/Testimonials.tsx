@@ -35,8 +35,8 @@ const Categories = [
   {
     quote:
       "",
-    name: "Ice Land",
-    title: "",
+    name: "",
+    title: "Iceland",
      sourc:"https://images.pexels.com/photos/3363331/pexels-photo-3363331.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {

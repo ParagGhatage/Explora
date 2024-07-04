@@ -43,6 +43,7 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
           console.error("Error fetching recommendations:", error);
         }
       }
+      
     };
     
     fetchData();
