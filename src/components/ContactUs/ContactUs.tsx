@@ -39,7 +39,60 @@ const onEmail = async () => {
     }
 
   return (
-  <div className="flex justify-center">
+  <div className="flex-auto justify-center lg:flex">
+    <div className="max-w-md mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  bg-white mt-14 placeholder:text-black w-full">
+      <h2 className="font-bold text-xl text-black pt-3 ">
+        Nice to meet you
+      </h2>
+      <p className="text-slate-600 text-sm max-w-sm mt-2">
+        Send me an email right from here
+      </p>
+
+      <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
+        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+          <LabelInputContainer className=" text-black ">
+            <Label htmlFor="name" className="text-black placeholder:text-black ">Your Name</Label>
+            <Input id="name" placeholder="Your Name" type="text"
+            value={user.name} 
+            onChange={(e) => setUser({...user, name: e.target.value})}
+            className=" text-black placeholder:text-black bg-indigo-100"/>
+          </LabelInputContainer>
+          
+        </div>
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="email">Email Address</Label>
+          <Input id="email" placeholder="Email id" type="email"
+          value={user.email} 
+          onChange={(e) => setUser({...user, email: e.target.value})}
+          className="placeholder:text-black bg-indigo-100"/>
+        </LabelInputContainer>
+
+        <LabelInputContainer className="h-56">
+            <Label htmlFor="message">Message</Label>
+            <Input id="message" placeholder="Your message..." type="text"
+            value={user.message}
+            onChange={(e) => setUser({...user, message: e.target.value})}
+           className=" placeholder:text-black h-40 md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words resize-y"
+          />
+          </LabelInputContainer>
+
+        <div className="text-center">
+        <button
+          className="text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+          type="submit"
+          
+        >
+          Send Email &rarr;
+          <BottomGradient />
+        </button>
+        </div>
+        
+
+        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+        
+        
+      </form>
+    </div>
     <div className="m-20">
         <div className="text-3xl font-semibold text-slate-600">
         Info
@@ -157,59 +210,7 @@ const onEmail = async () => {
         </div >
         
     </div>
-    <div className="max-w-md mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  bg-white mt-14 placeholder:text-black w-full">
-      <h2 className="font-bold text-xl text-black pt-3 ">
-        Nice to meet you
-      </h2>
-      <p className="text-slate-600 text-sm max-w-sm mt-2">
-        Send me an email right from here
-      </p>
-
-      <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer className=" text-black ">
-            <Label htmlFor="name" className="text-black placeholder:text-black ">Your Name</Label>
-            <Input id="name" placeholder="Your Name" type="text"
-            value={user.name} 
-            onChange={(e) => setUser({...user, name: e.target.value})}
-            className=" text-black placeholder:text-black bg-indigo-100"/>
-          </LabelInputContainer>
-          
-        </div>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="Email id" type="email"
-          value={user.email} 
-          onChange={(e) => setUser({...user, email: e.target.value})}
-          className="placeholder:text-black bg-indigo-100"/>
-        </LabelInputContainer>
-
-        <LabelInputContainer className="h-56">
-            <Label htmlFor="message">Message</Label>
-            <Input id="message" placeholder="Your message..." type="text"
-            value={user.message}
-            onChange={(e) => setUser({...user, message: e.target.value})}
-           className=" placeholder:text-black h-40 md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words resize-y"
-          />
-          </LabelInputContainer>
-
-        <div className="text-center">
-        <button
-          className="text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
-          type="submit"
-          
-        >
-          Send Email &rarr;
-          <BottomGradient />
-        </button>
-        </div>
-        
-
-        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-        
-        
-      </form>
-    </div>
+    
   </div>
     
   );
