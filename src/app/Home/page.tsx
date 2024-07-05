@@ -39,7 +39,7 @@ const  Page = () => {
 <div className='p-5 w-100%'>
      <div>
      <div className=' text-center w-100% text-3xl text-bold font-sans opacity-70 font-semibold p-2 m-7'>
-      <h1 className='text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500 hover:text-black'>Popular Destinations</h1>
+      <h1 className='text-center text-black font-extrabold   hover:text-black'>Popular Destinations</h1>
       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
       <button 
       
