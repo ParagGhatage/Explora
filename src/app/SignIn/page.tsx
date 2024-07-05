@@ -45,7 +45,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+    <div className="bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
      
       <div>
         <button onClick={handleGoogleSignin}>

@@ -60,7 +60,7 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
   
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+    <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
   
   <div className="max-w-7xl mx-auto mt-8 p-4">
     <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>

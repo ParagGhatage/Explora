@@ -26,7 +26,7 @@ function Page() {
     }
 
     return (
-        <div className='min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'>
+        <div className='min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200'>
  
   <div className='flex flex-col items-center justify-center p-10'>
     <div className='w-full max-w-md p-10 mb-10 mt-10 bg-white rounded-lg shadow-lg'>

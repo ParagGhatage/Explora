@@ -5,7 +5,7 @@ import React from 'react';
 const AboutUsPage = () => {
   return (
     <>
-   <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'>
+   <div className='bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200'>
    
    </div>
     <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">

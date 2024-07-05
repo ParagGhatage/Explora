@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 function Navbar() {
   return (
-    <div className='bg-transparent w-full fixed top-0 z-50'>
+    <div className='bg-transparent w-full fixed top-0 z-50 '>
       <nav>
         <ul className='flex w-full py-5 text-lg font-bold justify-between'>
           <div className='py-3'>

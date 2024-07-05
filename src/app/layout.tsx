@@ -21,7 +21,7 @@ export default function RootLayout({
       <AuthProvider>
         <body className={inter.className}>
           <ClientNavbar />
-          <div >{children}</div> {/* Adjust padding based on Navbar height */}
+          <div >{children}</div>
         </body>
       </AuthProvider>
     </html>

@@ -20,7 +20,7 @@ export function Landing(){
                 </div>
                 <div className="m-16 ml-20">
                 <Link href={"/Home"}>
-                    <button className=" text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500">
+                    <button className=" text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500 hover:text-black">
                             Let's Explore &rarr; 
                     </button>
                 </Link>
