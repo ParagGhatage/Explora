@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-full h-full">
       <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-full h-full ">
-        <Navbar/>
+       
           <ContactUs/>
       </div>
     </main>

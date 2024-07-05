@@ -91,7 +91,7 @@ const Country = () => {
 
   return (
     <main className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
-  <Navbar />
+ 
   <div className="text-blue-900 text-5xl font-bold font-serif text-center py-6">
     {name}
   </div>

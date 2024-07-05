@@ -17,7 +17,7 @@ const  Page = () => {
   return (
     <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-100% mt-0 pt-0'>
     
-     <Navbar></Navbar>
+     
      
      <div className='p-10 w-100%' >
       

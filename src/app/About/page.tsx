@@ -6,7 +6,7 @@ const AboutUsPage = () => {
   return (
     <>
    <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'>
-    <Navbar></Navbar>
+   
    </div>
     <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
       <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
