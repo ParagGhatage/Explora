@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 
-import UserModel from "@/app/models/user";
+import UserModel from "@/models/user.model";
 
 import bcrypt from "bcryptjs"
 

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 import axios from "axios"
 import Link from "next/link";
-import Navbar from "@/Navbar/Navbar";
+
 
 export default function SignUp() {
   
