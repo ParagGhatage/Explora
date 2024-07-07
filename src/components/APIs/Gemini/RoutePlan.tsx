@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 export async function Plan(Start: string, End: string, Date: string, Days: number) {
   
   
-  const apiKey = process.env.GEMINI;
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI;
   if (!apiKey) {
     throw new Error("GEMINI is not defined");
   }
@@ -226,7 +226,7 @@ export async function Plan(Start: string, End: string, Date: string, Days: numbe
 
   const result = await model.generateContent(prompt);
   const response = result.response;
-  const text = await response.text(); // Await the text() method since it returns a promise
+  const text =  response.text(); // Await the text() method since it returns a promise
   const data = JSON.parse(text);
   
   return data;

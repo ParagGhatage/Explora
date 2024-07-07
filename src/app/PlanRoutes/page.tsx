@@ -49,11 +49,12 @@ interface Transportation {
 }
 
 interface PlanDetails {
+  Details:{
   Accommodation: Accommodation[];
   Activities: Activity[];
   Budget: Budget;
   PackingList: string[];
-  Transportation: Transportation[];
+  Transportation: Transportation[];}
 }
 
 const Route: React.FC = () => {
@@ -86,19 +87,20 @@ const Route: React.FC = () => {
     e.preventDefault();
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
+    console.log(data)
     
-    setAccommodation(data.Accommodation[0]);
-    setActivities(data.Activities);
-    setBudget(data.Budget);
-    setPackingList(data.PackingList);
-    setTransportation(data.Transportation);
+    setAccommodation(data.Details.Accommodation[0]);
+    setActivities(data.Details.Activities);
+    setBudget(data.Details.Budget);
+    setPackingList(data.Details.PackingList);
+    setTransportation(data.Details.Transportation);
 
     setTravelPlan({ 
-      accommodation: data.Accommodation[0], 
-      activities: data.Activities, 
-      budget: data.Budget, 
-      packingList: data.PackingList, 
-      transportation: data.Transportation 
+      accommodation: data.Details.Accommodation[0], 
+      activities: data.Details.Activities, 
+      budget: data.Details.Budget, 
+      packingList: data.Details.PackingList, 
+      transportation: data.Details.Transportation 
     });
   };
 
