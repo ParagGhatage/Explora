@@ -37,7 +37,7 @@ const Navbar = () => {
             <li className='sm:py-4 p-2 lg:py-5 px-5'> 
             {session ? (
         <>
-          <p>Signed in as {session.user.email}</p>
+         
           <button onClick={() => signOut()}>Sign out</button>
         </>
       ) : (
