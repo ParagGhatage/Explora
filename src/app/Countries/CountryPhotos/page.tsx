@@ -178,7 +178,7 @@ const Country = () => {
         </div>
       ) : (
         <p className="text-center text-gray-700 mt-10">
-          No photos found for the query "{query}"
+          No photos found for the &quot;{query}&quot;
         </p>
       )}
       <div className="text-center mt-8">
