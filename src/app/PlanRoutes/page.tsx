@@ -186,10 +186,10 @@ const Route: React.FC = () => {
                   <p>Info: {activity.AdditionalInfo}</p>
                   <p>Booking: {activity.Booking}</p>
                   <p>Cost: {activity.Cost} {budget.Currency}</p>
-                  <p>Start Time: {activity.StartTime}</p>
-                  <p>End Time: {activity.EndTime}</p>
+                  <p>Start Time: {activity.Time}</p>
+                  
                   <p>Location: {activity.Location}</p>
-                  <p>Type: {activity.Type}</p>
+                  
                 </div>
               ))}
 
