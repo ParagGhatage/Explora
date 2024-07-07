@@ -1,10 +1,11 @@
 'use client';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; // Assuming this is the correct import path
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
 
 import { Run } from '@/components/APIs/Gemini/Recommendations';
+import { requestToBodyStream } from 'next/dist/server/body-streams';
 
 interface Photo {
   id: number;
@@ -129,4 +130,11 @@ const TouristDestinations = () => {
   );
 };
 
-export default TouristDestinations;
+export default function Page1(){
+  return(
+    <Suspense>
+    <TouristDestinations/>
+    </Suspense>
+  )
+}
+

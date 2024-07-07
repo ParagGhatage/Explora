@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState,Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/Navbar/Navbar';
 import { ComboboxDemo } from '@/components/UIElements/ComboBox/ComboBox';
@@ -45,4 +45,10 @@ function Page() {
     );
 }
 
-export default Page;
+export default function Page3(){
+    return(
+        <Suspense>
+        <Page/>
+        </Suspense>
+    )
+};

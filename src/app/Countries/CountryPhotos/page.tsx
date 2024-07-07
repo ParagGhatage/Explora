@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "@/components/APIs/Pexels/Query";
@@ -192,4 +192,10 @@ const Country = () => {
   );
 };
 
-export default Country;
+export default function Page2(){
+  return(
+    <Suspense>
+    <Country/>
+    </Suspense>
+  )
+};
