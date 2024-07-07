@@ -48,7 +48,7 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
     
     fetchData();
     
-  }, [photos]);
+  },[photos]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

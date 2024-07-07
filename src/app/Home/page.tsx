@@ -9,6 +9,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import Router from 'next/router'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const  Page = () => {
 
@@ -20,6 +21,7 @@ const  Page = () => {
      
      
      <div className='w-100%' >
+      
       
       <img src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=""  
       className=' w-100%'/>

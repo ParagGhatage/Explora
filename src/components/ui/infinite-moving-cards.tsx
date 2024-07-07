@@ -27,7 +27,7 @@ export const InfiniteMovingCards = ({
 
   useEffect(() => {
     addAnimation();
-  }, []);
+  },[]);
   const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -90,14 +90,17 @@ export const InfiniteMovingCards = ({
       >
              
         {items.map((item, idx) => (
-           <Link href={`/Countries/CountryPhotos?query=${encodeURIComponent(item.title)}`}>
+           <Link
+           key={item.name}
+           href={`/Countries/CountryPhotos?query=${encodeURIComponent(item.title)}`}>
           <li
+            
             className="w-[350px] max-w-full  relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-100 px-8 py-6 md:w-[450px]"
             style={{
               background:
                 "linear-gradient(180deg, var(--slate-100), var(--slate-100)",
             }}
-            key={item.name}
+            
           >
             <blockquote>
               <div
