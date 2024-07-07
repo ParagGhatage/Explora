@@ -33,13 +33,14 @@ function Page() {
       <ComboboxDemo onSelectCountry={handleSelectCountry} />
     </div>
     <div className='mt-2 pt-2'>
-      <button
-        type="submit"
-        className="text-center mt-0 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
-        onClick={handleSearchSubmit}
-      >
-        Search
-      </button>
+      <form onSubmit={handleSearchSubmit} className="flex flex-col items-center justify-center">
+        <button
+          type="submit"
+          className="text-center mt-0 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+        >
+          Search
+        </button>
+      </form>
     </div>
   </div>
 </div>
