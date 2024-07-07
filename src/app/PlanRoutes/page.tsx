@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
 import axios from 'axios';
@@ -8,7 +8,7 @@ const Route: React.FC = () => {
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
   const [date, setDate] = useState('');
-  const [days, setDays] = useState('');
+  const [days, setDays] = useState<string | number>('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [wantToSend, setWantToSend] = useState(false);
@@ -32,7 +32,8 @@ const Route: React.FC = () => {
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = await Plan(start, end, date, days);
+    const daysNumber = parseInt(days as string, 10); // Convert days to a number
+    const data = await Plan(start, end, date, daysNumber);
     
     setAccommodation(data.Details.Accommodation[0]);
     setActivities(data.Details.Activities);
@@ -40,12 +41,20 @@ const Route: React.FC = () => {
     setPackingList(data.Details.PackingList);
     setTransportation(data.Details.Transportation);
 
-    setTravelPlan({ accommodation: data.Details.Accommodation[0], activities: data.Details.Activities, budget: data.Details.Budget, packingList: data.Details.PackingList, transportation: data.Details.Transportation });
+    setTravelPlan({ 
+      accommodation: data.Details.Accommodation[0], 
+      activities: data.Details.Activities, 
+      budget: data.Details.Budget, 
+      packingList: data.Details.PackingList, 
+      transportation: data.Details.Transportation 
+    });
   };
 
   const onSendEmail = async () => {
     try {
-      const response = await axios.post('/api/planSend', { accommodation, activities, budget, packingList, transportation, email, name });
+      const response = await axios.post('/api/planSend', { 
+        accommodation, activities, budget, packingList, transportation, email, name 
+      });
       console.log(response.data);
     } catch (error: any) {
       console.log('Unable to send email', error.message);
