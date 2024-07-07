@@ -4,7 +4,7 @@ import { config } from 'dotenv';
 config();
 
 export async function Run(Country: string) {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI;
   if (!apiKey) {
     throw new Error("GEMINI_API_KEY is not defined");
   }

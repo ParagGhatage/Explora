@@ -6,7 +6,7 @@ export async function TopDesti(Country: string) {
     try {
         const response = await axios.get(`https://api.pexels.com/v1/search?query=${encodeURIComponent('top destinations in the world')}`, {
             headers: {
-                Authorization: `Bearer ${process.env.PEXELS_API_KEY}`
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_PEXELS_API_KEY}`
             }
         });
 

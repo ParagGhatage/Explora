@@ -1,11 +1,12 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { config } from 'dotenv';
+
 
 export async function Plan(Start: string, End: string, Date: string, Days: number) {
-  config();
-  const apiKey = process.env.GEMINI_API_KEY;
+  
+  
+  const apiKey = process.env.GEMINI;
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY is not defined");
+    throw new Error("GEMINI is not defined");
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
