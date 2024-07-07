@@ -3,7 +3,7 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar/Navbar';
+import Navbar from '@/Navbar/Navbar';
 import { Run } from '@/components/APIs/Gemini/Recommendations';
 
 interface TouristDestinationsProps {

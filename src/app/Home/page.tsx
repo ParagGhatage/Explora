@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Navbar from '@/components/Navbar/Navbar'
+import Navbar from '@/Navbar/Navbar'
 
 import { InfiniteMovingCardsDemo } from '@/components/Testimonials/Testimonials'
 import Footer from '@/components/Footer/Footer'

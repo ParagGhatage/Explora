@@ -5,7 +5,7 @@ import { useSearchParams,useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "@/components/APIs/Pexels/Query";
 import Link from "next/link";
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/Navbar/Navbar";
 import { CountryQuery } from "@/components/APIs/AllCountries/Countries";
 
 interface Photo {

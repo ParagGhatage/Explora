@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Navbar from '@/components/Navbar/Navbar'
+import Navbar from '@/Navbar/Navbar'
 import { ComboboxDemo } from '@/components/UIElements/ComboBox/ComboBox'
 
 function Page() {

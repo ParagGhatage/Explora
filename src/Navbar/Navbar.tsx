@@ -1,9 +1,13 @@
+
+"use client"
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Avatar, AvatarFallback } from '@/components/Avatar/Avatar'; // Adjust the import according to your structure
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   return (
     <div className='bg-transparent w-full fixed top-0 z-50'>
@@ -30,7 +34,19 @@ const Navbar = () => {
             <li className='sm:py-4 p-2 lg:py-5 px-5'><Link href={'/PlanRoutes'}>Plan Trip</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'><Link href={'/About'}>About</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'> <Link href={'/ContactUs'}>Contact us</Link></li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'> <Link href={'/SignIn'}>Sign In</Link></li>
+            <li className='sm:py-4 p-2 lg:py-5 px-5'> 
+            {session ? (
+        <>
+          <p>Signed in as {session.user.email}</p>
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      ) : (
+        <>
+          <p>Not signed in</p>
+          <button onClick={() => signIn()}>Sign in</button>
+        </>
+      )}
+            </li>
           </div>
         </ul>
       </nav>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation'; // Correct hook for getting the pathname
-import Navbar from '@/components/Navbar/Navbar';
+import Navbar from '@/Navbar/Navbar';
 
 const ClientNavbar = () => {
   const pathname = usePathname();
