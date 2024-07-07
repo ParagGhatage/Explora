@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt,{ hashSync} from "bcryptjs";
 import dbConnect from "./lib/dbConnect";
-import UserModel, { User } from "./models/user.model";
+import UserModel from "./models/user.model";
 
 // Use the defined interface in your NextAuth configuration
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -14,7 +14,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials: any): Promise<any> {
         dbConnect(); // Ensure db connection is established
-        let user: User | null = null;
+        let user= null;
 
         try {
           

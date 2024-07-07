@@ -1,6 +1,5 @@
-'use client'
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation'; // Assuming this is the correct import path
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
 import Navbar from '@/Navbar/Navbar';
@@ -23,7 +22,9 @@ const TouristDestinations = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query: string = searchParams.get('query') || '';
-  console.log(query)
+
+  console.log(query);
+
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
@@ -33,18 +34,16 @@ const TouristDestinations = () => {
       if (query) {
         try {
           const Recommendation: any = await Run(query);
-          console.log(Recommendation)
+          console.log(Recommendation);
           const arr = Recommendation.places;
-
           setRecommendations(arr);
         } catch (error) {
           console.error("Error fetching recommendations:", error);
         }
       }
     };
-    
+
     fetchData();
-    
   }, [query]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,7 +55,6 @@ const TouristDestinations = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
-  
       <div className="max-w-7xl mx-auto mt-8 p-4">
         <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
         <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-6">
