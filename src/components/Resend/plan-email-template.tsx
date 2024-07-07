@@ -70,7 +70,7 @@ const PlanEmailTemplate = ({name,email, accommodation, transportation, budget, a
         </div>
 
         {/* Packing List */}
-        <div style={{ marginTop: '20px' }}>
+        <div style={{ marginTop: '20px' }} >
           <h3 style={{ color: '#17a2b8' }}>Packing List</h3>
           <ul>
             {packingList.map((item, index) => (

@@ -14,7 +14,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 }) => (
     <div className='flex-wrap p-4 m-3'>
     <h1 >Name :{name}</h1>
-    <p>This message is from VoyageVista:</p>
+    <p>This message is from Contact Me VoyageVista :</p>
     <p>
     Message : {message}
     </p>
