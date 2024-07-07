@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import { useSearchParams,useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "@/components/APIs/Pexels/Query";
-import Link from "next/link";
 import Navbar from "@/Navbar/Navbar";
 import { CountryQuery } from "@/components/APIs/AllCountries/Countries";
 
@@ -23,15 +22,13 @@ const Country = () => {
   const [capital, setCapital] = useState("");
   const [currency, setCurrency] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
-  const [languages, setLanguages] = useState([]);
-  const [population, setPopulation] = useState();
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [population, setPopulation] = useState<number | undefined>();
   const [drive, setDriveSide] = useState("");
-  const [timezones, setTimezones] = useState([]);
-  
-
+  const [timezones, setTimezones] = useState<string[]>([]);
 
   const searchParams = useSearchParams();
-  const query:any = searchParams.get('query') || '';
+  const query: string = searchParams.get('query') || '';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,43 +41,43 @@ const Country = () => {
         }
       }
     };
+
     const fetchCountry = async () => {
       if (query) {
         try {
           const Country: any = await CountryQuery(query);
-          console.log(Country)
+          console.log(Country);
           setName(Country[0].name.common);
-          const first = Country[0].currencies
-          const second = first[Object.keys(first)[0]]
-          const final_currency = second[Object.keys(second)[0]]
-          const currency_symbol = second[Object.keys(second)[1]]
+          const first = Country[0].currencies;
+          const second = first[Object.keys(first)[0]];
+          const final_currency = second[Object.keys(second)[0]];
+          const currency_symbol = second[Object.keys(second)[1]];
 
-          const Lang = Country[0].languages
-          const Length = Object.keys(Lang).length
-          const arr = []
-          for(let i=0;i <= Length;i++){
-            arr.push(Lang[Object.keys(Lang)[i]])
+          const Lang = Country[0].languages;
+          const Length = Object.keys(Lang).length;
+          const arr: string[] = [];
+          for (let i = 0; i < Length; i++) {
+            arr.push(Lang[Object.keys(Lang)[i]]);
           }
-          
-          setCurrency(final_currency)
-          setCurrencySymbol(currency_symbol)
-          setCapital(Country[0].capital[0])
-          setLanguages(arr)
-          setPopulation(Country[0].population)
-          setDriveSide(Country[0].car.side)
-          setTimezones(Country[0].timezones)
-          setFlag(Country[0].flags.png)
 
-         
+          setCurrency(final_currency);
+          setCurrencySymbol(currency_symbol);
+          setCapital(Country[0].capital[0]);
+          setLanguages(arr);
+          setPopulation(Country[0].population);
+          setDriveSide(Country[0].car.side);
+          setTimezones(Country[0].timezones);
+          setFlag(Country[0].flags.png);
         } catch (error) {
-          console.error("Error fetching Country datails:", error);
+          console.error("Error fetching Country details:", error);
         }
       }
     };
 
     fetchData();
-    fetchCountry()
+    fetchCountry();
   }, [query]);
+
   const router = useRouter();
   const handleGoBack = () => {
     router.back(); // This function navigates back to the previous page
@@ -167,10 +164,10 @@ const Country = () => {
           {photos.map((photo) => (
             <div key={photo.id} className="p-2">
               <Image
-                src={photo.src.large2x}
+                src={photo.src.medium}
                 alt=""
-                height="1000"
-                width="1000"
+                height={1000}
+                width={1000}
                 className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
               />
             </div>
