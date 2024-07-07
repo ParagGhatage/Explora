@@ -58,7 +58,7 @@ export default function SignIn() {
         </div>
         <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
           <div className="pt-2">
-            Don't have an account?
+            Don &apos; t have an account?
           </div>
           <Link href={"/SignUp"}>
             <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md">
