@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; // Assuming this is the correct import path
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
