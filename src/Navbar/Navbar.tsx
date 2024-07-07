@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback } from '@/components/Avatar/Avatar'; // Adjust t
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <div className='bg-transparent w-full fixed top-0 z-50'>

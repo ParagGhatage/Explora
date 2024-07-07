@@ -1,4 +1,4 @@
-import { signIn } from "@/"
+import { signIn } from "@/auth"
  
 export function SignIn() {
   return (

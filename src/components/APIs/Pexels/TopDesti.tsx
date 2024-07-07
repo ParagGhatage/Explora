@@ -5,11 +5,11 @@ dotenv.config();
 
 
 export async function TopDesti(Country:String){
-    console.log('env',process.env.PEXELS_API_KEY)
+    
     const response =await axios.get(`https://api.pexels.com/v1/search?query=top destinations in the world`
         , {
             headers: {
-            Authorization: "n6IWtlmiwmMNB0KE78Yy3GQRypDd0ciFPNWGmImEPhHPVUyB8CAGTp1y"
+            Authorization: process.env.PEXELS_API_KEY
             }
         }
     )
