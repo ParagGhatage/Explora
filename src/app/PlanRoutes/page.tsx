@@ -4,6 +4,58 @@ import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
 import axios from 'axios';
 
+interface Accommodation {
+  CheckInDate: string;
+  CheckOutDate: string;
+  AdditionalInfo: string;
+  Name: string;
+  Address: string;
+  Type: string;
+  ContactInfo: string;
+  CostPerNight: number;
+  TotalCost: number;
+}
+
+interface Activity {
+  Name: string;
+  AdditionalInfo: string;
+  Booking: string;
+  Cost: number;
+  Time: string;
+  Location: string;
+}
+
+interface Budget {
+  Currency: string;
+  TotalCost: number;
+  FlightCost: number;
+  AccommodationCost: number;
+  FoodCost: number;
+  ActivitiesCost: number;
+}
+
+interface Transportation {
+  Mode: string;
+  Details: {
+    AdditionalInfo: string;
+    DepartureLocation: string;
+    DepartureTime: string;
+    Duration: string;
+    Booking: string;
+    ArrivalLocation: string;
+    ArrivalTime: string;
+    Cost: number;
+  }
+}
+
+interface PlanDetails {
+  Accommodation: Accommodation[];
+  Activities: Activity[];
+  Budget: Budget;
+  PackingList: string[];
+  Transportation: Transportation[];
+}
+
 const Route: React.FC = () => {
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
@@ -13,11 +65,11 @@ const Route: React.FC = () => {
   const [name, setName] = useState('');
   const [wantToSend, setWantToSend] = useState(false);
 
-  const [accommodation, setAccommodation] = useState({});
-  const [activities, setActivities] = useState([{}]);
-  const [budget, setBudget] = useState({});
-  const [packingList, setPackingList] = useState([]);
-  const [transportation, setTransportation] = useState([]);
+  const [accommodation, setAccommodation] = useState<Accommodation | null>(null);
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [budget, setBudget] = useState<Budget | null>(null);
+  const [packingList, setPackingList] = useState<string[]>([]);
+  const [transportation, setTransportation] = useState<Transportation[]>([]);
 
   const [plan, setTravelPlan] = useState<any>(null);
 
@@ -33,20 +85,20 @@ const Route: React.FC = () => {
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
-    const data = await Plan(start, end, date, daysNumber);
+    const data: PlanDetails = await Plan(start, end, date, daysNumber);
     
-    setAccommodation(data.Details.Accommodation[0]);
-    setActivities(data.Details.Activities);
-    setBudget(data.Details.Budget);
-    setPackingList(data.Details.PackingList);
-    setTransportation(data.Details.Transportation);
+    setAccommodation(data.Accommodation[0]);
+    setActivities(data.Activities);
+    setBudget(data.Budget);
+    setPackingList(data.PackingList);
+    setTransportation(data.Transportation);
 
     setTravelPlan({ 
-      accommodation: data.Details.Accommodation[0], 
-      activities: data.Details.Activities, 
-      budget: data.Details.Budget, 
-      packingList: data.Details.PackingList, 
-      transportation: data.Details.Transportation 
+      accommodation: data.Accommodation[0], 
+      activities: data.Activities, 
+      budget: data.Budget, 
+      packingList: data.PackingList, 
+      transportation: data.Transportation 
     });
   };
 
@@ -155,15 +207,19 @@ const Route: React.FC = () => {
             {/* Rendering the plan details */}
             <div className="mt-8">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Accommodation</h2>
-              <p>Check In Date: {accommodation.CheckInDate}</p>
-              <p>Check Out Date: {accommodation.CheckOutDate}</p>
-              <p>Info: {accommodation.AdditionalInfo}</p>
-              <p>Name of place: {accommodation.Name}</p>
-              <p>Address: {accommodation.Address}</p>
-              <p>Type: {accommodation.Type}</p>
-              <p>Contact info: {accommodation.ContactInfo}</p>
-              <p>Cost Per Night: {accommodation.CostPerNight}</p>
-              <p>Total Stay Cost: {accommodation.TotalCost}</p>
+              {accommodation ? (
+                <>
+                  <p>Check In Date: {accommodation.CheckInDate}</p>
+                  <p>Check Out Date: {accommodation.CheckOutDate}</p>
+                  <p>Info: {accommodation.AdditionalInfo}</p>
+                  <p>Name of place: {accommodation.Name}</p>
+                  <p>Address: {accommodation.Address}</p>
+                  <p>Type: {accommodation.Type}</p>
+                  <p>Contact info: {accommodation.ContactInfo}</p>
+                  <p>Cost Per Night: {accommodation.CostPerNight}</p>
+                  <p>Total Stay Cost: {accommodation.TotalCost}</p>
+                </>
+              ) : null}
 
               <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Transportation</h2>
               {transportation.map((trans, index) => (
@@ -176,17 +232,21 @@ const Route: React.FC = () => {
                   <p>Booking: {trans.Details.Booking}</p>
                   <p>Arrival Location: {trans.Details.ArrivalLocation}</p>
                   <p>Arrival Time: {trans.Details.ArrivalTime}</p>
-                  <p>Cost: {trans.Details.Cost} {budget.Currency}</p>
+                  <p>Cost: {trans.Details.Cost} {budget?.Currency}</p>
                 </div>
               ))}
 
               <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Budget</h2>
-              <p>Currency: {budget.Currency}</p>
-              <p>Total trip Cost: {budget.TotalCost}</p>
-              <p>Flight Cost: {budget.FlightCost}</p>
-              <p>Accommodation Cost: {budget.AccommodationCost}</p>
-              <p>Food Cost: {budget.FoodCost}</p>
-              <p>Activities Cost: {budget.ActivitiesCost}</p>
+              {budget ? (
+                <>
+                  <p>Currency: {budget.Currency}</p>
+                  <p>Total trip Cost: {budget.TotalCost}</p>
+                  <p>Flight Cost: {budget.FlightCost}</p>
+                  <p>Accommodation Cost: {budget.AccommodationCost}</p>
+                  <p>Food Cost: {budget.FoodCost}</p>
+                  <p>Activities Cost: {budget.ActivitiesCost}</p>
+                </>
+              ) : null}
 
               <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Activities</h2>
               {activities.map((activity, index) => (
@@ -194,11 +254,9 @@ const Route: React.FC = () => {
                   <h3 className="text-xl font-semibold">{activity.Name}</h3>
                   <p>Info: {activity.AdditionalInfo}</p>
                   <p>Booking: {activity.Booking}</p>
-                  <p>Cost: {activity.Cost} {budget.Currency}</p>
+                  <p>Cost: {activity.Cost} {budget?.Currency}</p>
                   <p>Start Time: {activity.Time}</p>
-                  
                   <p>Location: {activity.Location}</p>
-                  
                 </div>
               ))}
 

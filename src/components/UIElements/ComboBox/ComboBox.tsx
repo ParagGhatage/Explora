@@ -17,23 +17,37 @@ import {
 } from "@/components/ui/popover"
 import { CountryNames } from "@/components/APIs/AllCountries/CountryNames"
 
-export function ComboboxDemo({ onSelectCountry }) {
+interface ComboboxDemoProps {
+  onSelectCountry: (countryName: string) => void;
+}
+
+interface Country {
+  name: {
+    common: string; // Assuming 'common' is a string property
+    // Add other properties if necessary
+  };
+  // Add other properties if necessary
+}
+
+
+export function ComboboxDemo({ onSelectCountry }: ComboboxDemoProps) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const [names, setNames] = React.useState([])
+  const [names, setNames] = React.useState<string[]>([])
 
   React.useEffect(() => {
     const fetchNames = async () => {
       try {
         const CountriesAll = await CountryNames()
-        const arr = CountriesAll.map(country => country.name.common)
+        const arr: string[] = CountriesAll.map((country: Country) => country.name.common);
+
         setNames(arr)
       } catch (error) {
         console.error("Error fetching Country details:", error)
       }
     }
     fetchNames()
-  }, [onSelectCountry])
+  }, [])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

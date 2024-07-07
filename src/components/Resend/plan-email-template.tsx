@@ -1,6 +1,54 @@
 import React from 'react';
 
-const PlanEmailTemplate = ({name,email, accommodation, transportation, budget, activities, packingList }) => {
+interface Props {
+  name: string;
+  email: string;
+  accommodation: {
+    Name: string;
+    Type: string;
+    CheckInDate: string;
+    CheckOutDate: string;
+    CostPerNight: number;
+    TotalCost: number;
+    Address: string;
+    ContactInfo: string;
+    AdditionalInfo: string;
+  };
+  transportation: {
+    Mode: string;
+    Details: {
+      Mode: string;
+      Booking: string;
+      Cost: number;
+      Duration: string;
+      DepartureTime: string;
+      ArrivalTime: string;
+      DepartureLocation: string;
+      ArrivalLocation: string;
+      AdditionalInfo: string;
+    };
+  }[];
+  budget: {
+    Currency: string;
+    TotalCost: number;
+    FlightCost: number;
+    AccommodationCost: number;
+    FoodCost: number;
+    ActivitiesCost: number;
+  };
+  activities: {
+    Name: string;
+    Date: string;
+    Time: string;
+    Location: string;
+    Cost: number;
+    Booking: string;
+    AdditionalInfo: string;
+  }[];
+  packingList: string[];
+}
+
+const PlanEmailTemplate: React.FC<Props> = ({ name, email, accommodation, transportation, budget, activities, packingList }) => {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <div style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>

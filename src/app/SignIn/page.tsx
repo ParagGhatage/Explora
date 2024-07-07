@@ -20,7 +20,7 @@ export default function SignIn() {
     await signIn('google', { callbackUrl: '/' });
   }
 
-  const onformSubmit = async (event) => {
+  const onformSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
     const result = await signIn('credentials', {
