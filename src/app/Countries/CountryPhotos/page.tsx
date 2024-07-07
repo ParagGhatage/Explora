@@ -24,7 +24,7 @@ const Country = () => {
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [languages, setLanguages] = useState<string[]>([]);
   const [population, setPopulation] = useState<number | undefined>();
-  const [drive, setDriveSide] = useState("");
+  const [driveSide, setDriveSide] = useState("");
   const [timezones, setTimezones] = useState<string[]>([]);
 
   const searchParams = useSearchParams();
@@ -76,120 +76,119 @@ const Country = () => {
 
     fetchData();
     fetchCountry();
-  }, [query]);
+  },[query]);
 
   const router = useRouter();
   const handleGoBack = () => {
     router.back(); // This function navigates back to the previous page
   };
+
   const handleTopDestinationsInCountry = () => {
-    router.push((`/Countries/CountryPhotos/TopDestinations?query=${encodeURIComponent(query)}`))
-  }
+    router.push(`/Countries/CountryPhotos/TopDestinations?query=${encodeURIComponent(query)}`);
+  };
 
   return (
     <main className="bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
- 
-  <div className="text-blue-900 text-5xl font-bold font-serif text-center py-6">
-    {name}
-  </div>
-
-  <div className="container mx-auto px-4 py-8">
-    <div className="flex flex-wrap justify-evenly mb-8">
-      <div className="bg-white p-6 rounded-lg shadow-lg flex items-center">
-        <div className="text-3xl font-mono font-bold text-black mr-4">
-          Flag:
-        </div>
-        <Image
-          src={flag}
-          alt='flag image'
-          width={200}
-          height={100}
-          className="rounded-lg border border-black shadow-sm shadow-slate-400"
-        />
+      <div className="text-blue-900 text-5xl font-bold font-serif text-center py-6">
+        {name}
       </div>
-      <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
-        Capital: {capital}
-      </div>
-    </div>
 
-    <div className="flex flex-wrap justify-evenly mb-8">
-      <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center flex items-center">
-        <div>
-          <div>Currency: {currency}</div>
-          <div className="ml-4">{currencySymbol}</div>
-        </div>
-      </div>
-      <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
-        Languages:
-        {languages.map((language, index) => (
-          <div key={index}>{language}</div>
-        ))}
-      </div>
-    </div>
-
-    <div className="flex flex-wrap justify-evenly mb-8">
-      <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
-        Timezones:
-        {timezones.map((zone, index) => (
-          <div key={index}>{zone}</div>
-        ))}
-      </div>
-      <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
-        Drive: {drive} hand Drive
-      </div>
-    </div>
-
-    <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center mb-8">
-      Population: {population}
-    </div>
-
-    <div className="text-center mb-8">
-      <button
-        onClick={handleTopDestinationsInCountry}
-        className="text-center border w-full text-white font-extrabold bg-violet-600 px-6 py-3 rounded-full border-stone-950 hover:bg-fuchsia-500 transition duration-300"
-      >
-        Explore Destinations in {name} &rarr;
-      </button>
-    </div>
-
-    <div className="text-center mt-10">
-      <h1 className="text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">
-        Images
-      </h1>
-    </div>
-
-    <div className="container mx-auto py-8">
-      {photos.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {photos.map((photo) => (
-            <div key={photo.id} className="p-2">
-              <Image
-                src={photo.src.medium}
-                alt=""
-                height={1000}
-                width={1000}
-                className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-              />
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-wrap justify-evenly mb-8">
+          <div className="bg-white p-6 rounded-lg shadow-lg flex items-center">
+            <div className="text-3xl font-mono font-bold text-black mr-4">
+              Flag:
             </div>
-          ))}
+            <Image
+              src={flag}
+              alt="Flag image"
+              width={200}
+              height={100}
+              className="rounded-lg border border-black shadow-sm shadow-slate-400"
+            />
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
+            Capital: {capital}
+          </div>
         </div>
-      ) : (
-        <p className="text-center text-gray-700 mt-10">
-          No photos found for the &quot;{query}&quot;
-        </p>
-      )}
-      <div className="text-center mt-8">
-        <button
-          className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
-          onClick={handleGoBack}
-        >
-          Go Back
-        </button>
-      </div>
-    </div>
-  </div>
-</main>
 
+        <div className="flex flex-wrap justify-evenly mb-8">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center flex items-center">
+            <div>
+              <div>Currency: {currency}</div>
+              <div className="ml-4">{currencySymbol}</div>
+            </div>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
+            Languages:
+            {languages.map((language, index) => (
+              <div key={index}>{language}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap justify-evenly mb-8">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
+            Timezones:
+            {timezones.map((zone, index) => (
+              <div key={index}>{zone}</div>
+            ))}
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
+            Drive: {driveSide} hand Drive
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center mb-8">
+          Population: {population}
+        </div>
+
+        <div className="text-center mb-8">
+          <button
+            onClick={handleTopDestinationsInCountry}
+            className="text-center border w-full text-white font-extrabold bg-violet-600 px-6 py-3 rounded-full border-stone-950 hover:bg-fuchsia-500 transition duration-300"
+          >
+            Explore Destinations in {name} &rarr;
+          </button>
+        </div>
+
+        <div className="text-center mt-10">
+          <h1 className="text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">
+            Images
+          </h1>
+        </div>
+
+        <div className="container mx-auto py-8">
+          {photos.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {photos.map((photo) => (
+                <div key={photo.id} className="p-2">
+                  <Image
+                    src={photo.src.medium}
+                    alt=""
+                    height={1000}
+                    width={1000}
+                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-700 mt-10">
+              No photos found for the &quot;{query}&quot;
+            </p>
+          )}
+          <div className="text-center mt-8">
+            <button
+              className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+              onClick={handleGoBack}
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 

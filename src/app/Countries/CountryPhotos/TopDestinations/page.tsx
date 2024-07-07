@@ -1,9 +1,9 @@
-"use client"
-import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
+'use client';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; // Assuming this is the correct import path
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
-import Navbar from '@/Navbar/Navbar';
+
 import { Run } from '@/components/APIs/Gemini/Recommendations';
 
 interface Photo {
@@ -17,7 +17,6 @@ interface Photo {
 
 const TouristDestinations = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [destinations, setDestinations] = useState("");
   const [Recommendations, setRecommendations] = useState<string[] | undefined>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -45,13 +44,14 @@ const TouristDestinations = () => {
     };
 
     fetchData();
-  }, [query]);
+  },[query]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await PexelsQuery(searchQuery);
     setPhotos(data.photos);
     setRecommendations([]);
+    setSearchQuery(''); // Clear search input after submission
   };
 
   return (
@@ -93,8 +93,8 @@ const TouristDestinations = () => {
               </div>
 
               <div className="text-gray-700 flex flex-wrap justify-center">
-                {Recommendations.map((place) => (
-                  <div key={place} className="p-3 text-left">
+                {Recommendations.map((place, index) => (
+                  <div key={index} className="p-3 text-left">
                     {place}
                   </div>
                 ))}
