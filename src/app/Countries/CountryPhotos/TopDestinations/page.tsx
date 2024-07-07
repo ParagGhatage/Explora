@@ -18,7 +18,7 @@ interface Photo {
   photographer: string;
 }
 
-const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
+const TouristDestinations = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
   const [Recommendations, setRecommendations] = useState();
