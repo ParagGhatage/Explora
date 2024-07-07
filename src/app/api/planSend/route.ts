@@ -4,7 +4,7 @@ import { NextRequest,NextResponse } from 'next/server';
 import PlanEmailTemplate from '@/components/Resend/plan-email-template';
 import { act } from 'react';
 
-const resend = new Resend("re_iEe14MHZ_9i5yP1ycxfuzXYta1TbwUy2s");
+const resend = new Resend(process.env.RESEND_EMAIL);
 
 export async function POST(req:any) {
   try {
