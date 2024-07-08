@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 interface cardprop{
   title:string
@@ -35,7 +37,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
           />
         </CardItem>
         <div className="flex justify-between items-center mt-20 text-center">
-            <a href="/Countries">
+            <Link href="/Countries">
           <CardItem
             translateZ={20}
             translateX={-40}
@@ -44,9 +46,9 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
           >
             Try now &rarr;
           </CardItem>
-          </a>
+          </Link>
 
-          <a href="/SignIn">
+          <Link href="/api/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2FHome">
           <CardItem
             translateZ={20}
             translateX={40}
@@ -55,7 +57,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
           >
             Sign In &rarr;
           </CardItem>
-          </a>
+          </Link>
 
         </div>
       </CardBody>

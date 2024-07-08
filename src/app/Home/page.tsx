@@ -1,15 +1,10 @@
 'use client'
 import React from 'react'
-import Navbar from '@/Navbar/Navbar'
-
 import { InfiniteMovingCardsDemo } from '@/components/Testimonials/Testimonials'
 import Footer from '@/components/Footer/Footer'
 import { ThreeDCardDemo } from '@/components/Categories/Categories'
 import Link from 'next/link' 
-import axios from 'axios'
-import Router from 'next/router'
-import { useRouter } from 'next/router'
-import Image from 'next/image'
+
 
 const  Page = () => {
 
@@ -27,16 +22,20 @@ const  Page = () => {
       className=' w-100%'/>
      </div>
      <div className=' text-center w-100% text-5xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
-     <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
+     
     <div className=' grid grid-cols-3'>
-    
-       <ThreeDCardDemo title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
-       
-       <ThreeDCardDemo title="Historical" sourc='https://images.pexels.com/photos/3185488/pexels-photo-3185488.jpeg?auto=compress&cs=tinysrgb&w=600'></ThreeDCardDemo>
-       <ThreeDCardDemo title="Nature" sourc='https://images.pexels.com/photos/2918152/pexels-photo-2918152.jpeg?auto=compress&cs=tinysrgb&w=600'></ThreeDCardDemo>
+    <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
+       <ThreeDCardDemo title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+       </Link>
+       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
+       <ThreeDCardDemo title="Historical" sourc='https://images.pexels.com/photos/3185488/pexels-photo-3185488.jpeg?auto=compress&cs=tinysrgb&w=600'/> 
+       </Link>
+       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
+       <ThreeDCardDemo title="Nature" sourc='https://images.pexels.com/photos/2918152/pexels-photo-2918152.jpeg?auto=compress&cs=tinysrgb&w=600'/> 
+       </Link>
        
       </div> 
-      </Link>
+      
     
 <div className='p-5 w-100%'>
      <div>
