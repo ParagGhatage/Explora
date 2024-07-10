@@ -9,9 +9,11 @@ import { useSession} from 'next-auth/react';
 import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
 import { signIn } from "next-auth/react";
 import  { useRouter } from "next/navigation";
+import { useToast } from "@chakra-ui/react";
 
 
 export default function SignUp() {
+  const toast= useToast()
   const [regiSuccess, setRegiSuccess] = useState(false);
   const { data: session } = useSession();
   
@@ -52,11 +54,28 @@ const onEmail = async (event: React.FormEvent) => {
         console.log("something went wrong", result.error);
       }
     }
+    if(!(result?.url)){
+      toast({
+        title: `Some Error occured during Sign up!  Please try again.`,
+        status: "error",
+        isClosable: true,
+      })
+    }
 
     if (result?.url) {
+      toast({
+        title: `User registered successfully!`,
+        status: "success",
+        isClosable: true,
+      })
       router.replace('/Home'); // Redirecting to Home
     }}
   }catch (error: any) {
+    toast({
+      title: `please enter a valid email address!`,
+      status: "error",
+      isClosable: true,
+    })
     console.log("Unable to register user", error.message);
   }
 };
@@ -66,7 +85,7 @@ const onEmail = async (event: React.FormEvent) => {
   
   {(session || regiSuccess === true )? (
         <div>
-         <RegiSuccess/>
+         <RegiSuccess page="registrered successufully"/>
           
         </div>
       ) : (

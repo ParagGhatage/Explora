@@ -6,7 +6,7 @@ import {
   } from '@chakra-ui/react'
 
 
-export default function RegiSuccess(){
+export default function RegiSuccess({page="Registered"}){
     return(
         <div>
             <Alert
@@ -20,7 +20,7 @@ export default function RegiSuccess(){
 >
   <AlertIcon boxSize='40px' mr={0} />
   <AlertTitle mt={4} mb={1} fontSize='lg'>
-    User Registered!
+    User {page}!
   </AlertTitle>
   <AlertDescription maxWidth='sm'>
     Enjoy your virtual travel experience.

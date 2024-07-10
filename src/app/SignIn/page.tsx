@@ -7,14 +7,21 @@ import Link from "next/link";
 import Navbar from "@/Navbar/Navbar";
 import { useRouter } from 'next/navigation';
 import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
+import ToastError from "@/components/UIElements/AlertError/RegiError";
+import { useToast } from "@chakra-ui/react";
 
 export default function SignIn() {
   const router = useRouter();
-
+  const toast = useToast()
+  const { data: session } = useSession();
   const [user, setUser] = useState({
     email: "",
     password: ""
   });
+  
+       
 
   const handleGoogleSignin = async () => {
     await signIn('google', { callbackUrl: '/' });
@@ -28,6 +35,13 @@ export default function SignIn() {
       email: user.email,
       password: user.password,
     });
+    if(!(result?.url)){
+      toast({
+        title: `Some Error occured during Sign in!  Please try again.`,
+        status: "error",
+        isClosable: true,
+      })
+    }
 
     console.log(result);
 
@@ -40,6 +54,11 @@ export default function SignIn() {
     }
 
     if (result?.url) {
+      toast({
+        title: `User login successfull!`,
+        status: "success",
+        isClosable: true,
+      })
       router.replace('/Home'); // Redirecting to Home
     }
   };
@@ -47,18 +66,18 @@ export default function SignIn() {
   return (
     <div className="bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
      
-      <div>
-        <button onClick={handleGoogleSignin}>
-          Sign In with Google
-        </button>
-      </div>
-      <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-14 placeholder:text-black w-full">
+      {session?(
+        <div>
+          <RegiSuccess page="Loged in successufully"/>
+        </div>
+      ):(
+        <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-14 placeholder:text-black w-full">
         <div className="font-bold text-3xl text-black pt-3 text-center">
           SignIn
         </div>
         <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
           <div className="pt-2">
-            Don &apos; t have an account?
+            Don&apos;t have an account?
           </div>
           <Link href={"/SignUp"}>
             <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md">
@@ -105,6 +124,9 @@ export default function SignIn() {
           <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
         </form>
       </div>
+      )
+      }
+      
     </div>
   );
 }
