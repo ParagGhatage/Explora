@@ -43,7 +43,10 @@ const Navbar = () => {
       ) : (
         <>
           <p>Not signed in</p>
-          <button onClick={() => signIn()}>Sign in</button>
+          <Link
+          href={"/SignIn"}>
+          <button>Sign in</button>
+          </Link>
         </>
       )}
             </li>
