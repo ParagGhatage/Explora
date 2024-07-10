@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className='py-3'>
             <Link href="/Home">
               <Avatar>
-                <AvatarFallback className='p-3'>VoyageVista</AvatarFallback>
+                <AvatarFallback className='p-3'>Travo</AvatarFallback>
               </Avatar>
             </Link>
           </div>
@@ -36,18 +36,18 @@ const Navbar = () => {
             <li className='sm:py-4 p-2 lg:py-5 px-5'> <Link href={'/ContactUs'}>Contact us</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'> 
             {session ? (
-        <>
+        <div>
          
           <button onClick={() => signOut()}>Sign out</button>
-        </>
+        </div>
       ) : (
-        <>
+        <div>
           <p>Not signed in</p>
           <Link
           href={"/SignIn"}>
           <button>Sign in</button>
           </Link>
-        </>
+        </div>
       )}
             </li>
           </div>

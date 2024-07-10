@@ -3,7 +3,7 @@ import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; // Assuming this is the correct import path
 import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
-
+import Link from 'next/link';
 import { Run } from '@/components/APIs/Gemini/Recommendations';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
 
@@ -77,13 +77,13 @@ const TouristDestinations = () => {
           </div>
         </form>
         <div className='text-center m-5 w-100% '>
-          <a href="/PlanRoutes">
+          <Link href="/PlanRoutes">
             <button
               className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
             >
               Plan Your Trip &rarr;
             </button>
-          </a>
+          </Link>
         </div>
 
         <div className="py-5">

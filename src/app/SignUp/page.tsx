@@ -1,13 +1,20 @@
 "use client";
-import React from "react";
+import React,{useState} from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 import axios from "axios"
 import Link from "next/link";
+import { useSession} from 'next-auth/react';
+import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
+import { signIn } from "next-auth/react";
+import  { useRouter } from "next/navigation";
 
 
 export default function SignUp() {
+  const [regiSuccess, setRegiSuccess] = useState(false);
+  const { data: session } = useSession();
+  
   
 
   const [user, setUser] = React.useState({
@@ -15,6 +22,7 @@ export default function SignUp() {
     password: "",
     name:"",
 })
+ let router = useRouter()
  
 
 const onEmail = async (event: React.FormEvent) => {
@@ -26,87 +34,115 @@ const onEmail = async (event: React.FormEvent) => {
       email: user.email,
       password: user.password,
     });
+    setRegiSuccess(response.data.success)
     console.log(response.data);
-  } catch (error: any) {
-    console.log("Unable to send email", error.message);
+    if(response.data.success === true)
+    {const result = await signIn('credentials', {
+      redirect: false,
+      email: user.email,
+      password: user.password,
+    });
+
+    console.log(result);
+
+    if (result?.error) {
+      if (result.error === 'CredentialsSignin') {
+        console.log("Incorrect email or password", result.error);
+      } else {
+        console.log("something went wrong", result.error);
+      }
+    }
+
+    if (result?.url) {
+      router.replace('/Home'); // Redirecting to Home
+    }}
+  }catch (error: any) {
+    console.log("Unable to register user", error.message);
   }
 };
 
   return (
   <div className=" bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
   
-    
-    <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8  bg-white mt-14 placeholder:text-black w-full">
-      <div className="font-bold text-3xl text-black pt-3  text-center">
-        Sign Up
-      </div>
-      <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
-        <div className="pt-2">
-        Have an account? 
-        </div>
-        
-        <Link href={"/SignIn"}>
-        <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md">
-            SignIn
-        </div>
-        </Link>
-        
-      </div>
-
-      <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="Email id" type="email"
-          value={user.email} 
-          onChange={(e) => setUser({...user, email: e.target.value})}
-          className="placeholder:text-black bg-indigo-100"/>
-        </LabelInputContainer>
-
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="text">Name</Label>
-          <Input id="name" placeholder="Full Name" type="text"
-          value={user.name} 
-          onChange={(e) => setUser({...user, name: e.target.value})}
-          className="placeholder:text-black bg-indigo-100"/>
-        </LabelInputContainer>
-
-        <LabelInputContainer className="">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" placeholder="Password" type="password"
-            value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
-           className=" placeholder:text-black md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words "
-          />
-          </LabelInputContainer>
-
-        <div className="text-center">
-        <button
-          className="text-center border mt-4 text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
-          type="submit"
+  {(session || regiSuccess === true )? (
+        <div>
+         <RegiSuccess/>
           
-        >
-          Sign Up &rarr;
-          <BottomGradient />
-        </button>
         </div>
-        
-
-        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent  h-[1px] w-full" />
-        
-        
-      </form>
-    </div>
-  </div>
+      ) : (
+        <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8  bg-white mt-14 placeholder:text-black w-full">
+        <div className="font-bold text-3xl text-black pt-3  text-center">
+          Sign Up
+        </div>
+        <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
+          <div className="pt-2">
+          Have an account? 
+          </div>
+          
+          <Link href={"/SignIn"}>
+          <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md">
+              SignIn
+          </div>
+          </Link>
+          
+        </div>
+  
+        <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="email">Email Address</Label>
+            <Input id="email" placeholder="Email id" type="email"
+            value={user.email} 
+            onChange={(e) => setUser({...user, email: e.target.value})}
+            className="placeholder:text-black bg-indigo-100"/>
+          </LabelInputContainer>
+  
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="text">Name</Label>
+            <Input id="name" placeholder="Full Name" type="text"
+            value={user.name} 
+            onChange={(e) => setUser({...user, name: e.target.value})}
+            className="placeholder:text-black bg-indigo-100"/>
+          </LabelInputContainer>
+  
+          <LabelInputContainer className="">
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" placeholder="Password" type="password"
+              value={user.password}
+              onChange={(e) => setUser({...user, password: e.target.value})}
+             className=" placeholder:text-black md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words "
+            />
+            </LabelInputContainer>
+  
+          <div className="text-center">
+          <button
+            className="text-center border mt-4 text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+            type="submit"
+            
+          >
+            Sign Up &rarr;
+            <BottomGradient />
+          </button>
+          </div>
+          
+  
+          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent  h-[1px] w-full" />
+          
+          
+        </form>
+      </div>
+      )}
+     </div>
     
-  );
-}
 
+      )}
+   
+  
 const BottomGradient = () => {
   return (
-    <>
+    <div>
       <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
       <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
+    </div>
   );
 };
 

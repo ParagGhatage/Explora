@@ -6,6 +6,8 @@ import { SessionProvider } from "next-auth/react";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Navbar from "@/Navbar/Navbar";
 import { metadata } from "./metadata"; // Import metadata
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +25,14 @@ export default function RootLayout({
         <title>{metadata.title as string}</title>
         <meta name="description" content={metadata.description as string} />
       </head>
+      <ChakraProvider>
       <body className={inter.className}>
         <SessionProvider>
           {!noNavbarRoutes.includes(pathname) && <Navbar />} {/* Conditionally render Navbar */}
           <div>{children}</div>
         </SessionProvider>
       </body>
+      </ChakraProvider>
     </html>
   );
 }

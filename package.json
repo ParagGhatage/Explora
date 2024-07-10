@@ -1,5 +1,5 @@
 {
-  "name": "voyage-vista",
+  "name": "travo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.4.1",
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@google/generative-ai": "^0.14.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -30,7 +34,7 @@
     "components": "^0.1.0",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
-    "framer-motion": "^11.2.12",
+    "framer-motion": "^11.2.14",
     "lucide-react": "^0.397.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.4.4",
