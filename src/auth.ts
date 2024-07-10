@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt,{ hashSync} from "bcryptjs";
+import bcrypt from "bcryptjs";
 import dbConnect from "./lib/dbConnect";
 import UserModel from "./models/user.model";
 
@@ -8,8 +8,9 @@ import UserModel from "./models/user.model";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
+      name:"credentials",
       credentials: {
-        email: { label: 'Email', type: 'text' },
+        email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials: any): Promise<any> {

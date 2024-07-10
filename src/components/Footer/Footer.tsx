@@ -11,6 +11,7 @@ import {
     IconPhoneCall,
     IconLocation
   } from "@tabler/icons-react";
+  import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -22,16 +23,16 @@ const Footer = () => {
             <h5 className="font-bold text-lg mb-2">Quick Links</h5>
             <ul className="list-none">
               <li className="mb-1">
-                <a href="Home" className="hover:text-gray-300">Home</a>
+                <Link href="Home" className="hover:text-gray-300">Home</Link>
               </li>
               <li className="mb-1">
-                <a href="Countries" className="hover:text-gray-300">Countries</a>
+                <Link href="Countries" className="hover:text-gray-300">Countries</Link>
               </li>
               <li className="mb-1">
-                <a href="About" className="hover:text-gray-300">About</a>
+                <Link href="About" className="hover:text-gray-300">About</Link>
               </li>
               <li className="mb-1">
-                <a href="/ContactUs" className="hover:text-gray-300">Contact Us</a>
+                <Link href="/ContactUs" className="hover:text-gray-300">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -45,18 +46,18 @@ const Footer = () => {
 
             {/* Social icons */}
             <div className="flex space-x-4 mt-4">
-              <a href="https://github.com/ParagGhatage" className="text-slate-300 hover:text-white">
+              <Link href="https://github.com/ParagGhatage" className="text-slate-300 hover:text-white">
                 <IconBrandGithub/>
-              </a>
-              <a href="https://www.linkedin.com/in/parag-ghatage-7601b825a/" className="text-slate-300 hover:text-white">
+              </Link>
+              <Link href="https://www.linkedin.com/in/parag-ghatage-7601b825a/" className="text-slate-300 hover:text-white">
                 <IconBrandLinkedin/>
-              </a>
-              <a href="https://x.com/PARAG_GHATAGE" className="text-slate-300 hover:text-white">
+              </Link>
+              <Link href="https://x.com/PARAG_GHATAGE" className="text-slate-300 hover:text-white">
                 <IconBrandX/>
-              </a>
-              <a href="https://www.instagram.com/reels/C70qsGESUf3/" className="text-slate-300 hover:text-white">
+              </Link>
+              <Link href="https://www.instagram.com/reels/C70qsGESUf3/" className="text-slate-300 hover:text-white">
                 <IconBrandInstagram/>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
