@@ -11,11 +11,11 @@ const AboutUsPage = () => {
     <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
       <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
-            Travo</h1>
+        VagrantVoyage</h1>
         
         <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            Welcome to Travo We are passionate about exploring the world and bringing you detailed information about all the amazing travel destinations and countries to visit.
+            Welcome to VagrantVoyage We are passionate about exploring the world and bringing you detailed information about all the amazing travel destinations and countries to visit.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
             Our mission is to inspire and empower travelers like you to discover new places, cultures, and experiences. Whether you &apos;re planning your next vacation or seeking travel inspiration, we are here to guide you every step of the way.

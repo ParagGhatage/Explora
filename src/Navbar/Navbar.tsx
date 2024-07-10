@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className='py-3'>
             <Link href="/Home">
               <Avatar>
-                <AvatarFallback className='p-3'>Travo</AvatarFallback>
+                <AvatarFallback className='p-3'>VagrantVoyage</AvatarFallback>
               </Avatar>
             </Link>
           </div>
