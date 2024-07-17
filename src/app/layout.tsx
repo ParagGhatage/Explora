@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Navbar from "@/Navbar/Navbar";
 import { metadata } from "./metadata"; // Import metadata
+import { Analytics } from "@vercel/analytics/react"
 import { ChakraProvider } from '@chakra-ui/react'
 
 
