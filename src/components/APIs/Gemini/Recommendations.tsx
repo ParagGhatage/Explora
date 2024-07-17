@@ -4,12 +4,12 @@ import { config } from 'dotenv';
 config();
 
 export async function Run(Country: string) {
-  const apiKey = process.env.NEXT_PUBLIC_GEMINI;
-  if (!apiKey) {
-    throw new Error("GEMINI_API_KEY is not defined");
+  const Key = process.env.NEXT_PUBLIC_GEMINI;
+  if (!Key) {
+    throw new Error("NEXT_PUBLIC_GEMINI is not defined");
   }
 
-  const genAI = new GoogleGenerativeAI(apiKey);
+  const genAI = new GoogleGenerativeAI(Key);
   
   // Choose a model that's appropriate for your use case.
   const model = genAI.getGenerativeModel({
