@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className='py-3'>
             <Link href="/Home">
               <Avatar>
-                <AvatarFallback className='p-3'>VagrantVoyage</AvatarFallback>
+                <AvatarFallback className='p-3'>Explora</AvatarFallback>
               </Avatar>
             </Link>
           </div>
@@ -30,7 +30,7 @@ const Navbar = () => {
           </div>
           <div className={`sm:flex-initialw-40 lg:flex bg-white rounded-lg w-full flex-1 justify-end text-slate-900 text-opacity-90   ${isOpen ? 'block' : 'hidden'} lg:block`}>
             <li className='sm:py-4 p-2  lg:py-5 px-5 '> <Link href={'/Home'}>Home</Link></li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5 '><Link href={'/Countries'}>Countries</Link></li>
+            <li className='sm:py-4 p-2 lg:py-5 px-5 '><Link href={'/Countries'}>Explore</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'><Link href={'/PlanRoutes'}>Plan Trip</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'><Link href={'/About'}>About</Link></li>
             <li className='sm:py-4 p-2 lg:py-5 px-5'> <Link href={'/ContactUs'}>Contact us</Link></li>
