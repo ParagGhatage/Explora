@@ -10,7 +10,7 @@ import { CountryQuery } from "@/components/APIs/AllCountries/Countries";
 interface Photo {
   id: number;
   src: {
-    medium: string;
+    original: string;
   };
   photographer: string;
 }
@@ -164,7 +164,7 @@ const Country = () => {
               {photos.map((photo) => (
                 <div key={photo.id} className="p-2">
                   <Image
-                    src={photo.src.medium}
+                    src={photo.src.original}
                     alt=""
                     height={1000}
                     width={1000}
