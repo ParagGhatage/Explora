@@ -9,6 +9,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
+import { useSession } from "next-auth/react";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined

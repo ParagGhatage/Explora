@@ -3,12 +3,14 @@ import React from 'react'
 import { InfiniteMovingCardsDemo } from '@/components/Testimonials/Testimonials'
 import Footer from '@/components/Footer/Footer'
 import { ThreeDCardDemo } from '@/components/Categories/Categories'
-import Link from 'next/link' 
+import Link from 'next/link'
+import { useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 
 const  Page = () => {
 
- 
+  
     
   return (
     <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-100% mt-0 pt-0'>
@@ -23,15 +25,18 @@ const  Page = () => {
      </div>
      <div className=' text-center w-100% text-5xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
      
-    <div className=' grid grid-cols-3'>
-    <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
-       <ThreeDCardDemo title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
+    <div className='grid-cols-1 grid md:grid-cols-1 md:grid lg:grid lg:grid-cols-3  '>
+    <Link href={"/Countries/CountryPhotos/TopDestinations?query=Religious places"}>
+       <ThreeDCardDemo 
+       title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
        </Link>
-       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
-       <ThreeDCardDemo title="Historical" sourc='https://images.pexels.com/photos/3185488/pexels-photo-3185488.jpeg?auto=compress&cs=tinysrgb&w=600'/> 
+       <Link href={"/Countries/CountryPhotos/TopDestinations?query=Historical places"}>
+       <ThreeDCardDemo
+        title="Historical" sourc='https://images.pexels.com/photos/532263/pexels-photo-532263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'/> 
        </Link>
-       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
-       <ThreeDCardDemo title="Nature" sourc='https://images.pexels.com/photos/2918152/pexels-photo-2918152.jpeg?auto=compress&cs=tinysrgb&w=600'/> 
+       <Link href={"/Countries/CountryPhotos/TopDestinations?query=Natural wonders"}>
+       <ThreeDCardDemo 
+       title="Nature" sourc='https://images.pexels.com/photos/2918152/pexels-photo-2918152.jpeg?auto=compress&cs=tinysrgb&w=600'/> 
        </Link>
        
       </div> 

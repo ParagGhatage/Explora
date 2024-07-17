@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 interface cardprop{
@@ -12,8 +14,11 @@ interface cardprop{
 }
 
 const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
   return (
-    <CardContainer className="inter-var h-92  px-5 text-center justify-center w-full">
+    <CardContainer className=" h-86  px-5 text-center justify-center w-80%">
       <CardBody className="bg-gray-50 text-center justify-center relative   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  sm:w-[30rem]  rounded-xl p-6 border  ">
         <CardItem
           translateZ="50"
@@ -32,7 +37,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
             src={sourc}
             height="1000"
             width="1000"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            className="h-60 w-screen object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
           />
         </CardItem>
@@ -42,22 +47,27 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
             translateZ={20}
             translateX={-40}
             as="button"
-            className=" text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+            className=" text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg  hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
           >
             Try now &rarr;
           </CardItem>
           </Link>
 
-          <Link href="/api/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2FHome">
-          <CardItem
-            translateZ={20}
-            translateX={40}
-            as="button"
-            className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
-          >
-            Sign In &rarr;
-          </CardItem>
-          </Link>
+          <div>
+            {session?(
+              null
+            ):(<Link href="/SignIn">
+              <CardItem
+                translateZ={20}
+                translateX={40}
+                as="button"
+                className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+              >
+                Sign In &rarr;
+              </CardItem>
+              </Link>)}
+          </div>
+          
 
         </div>
       </CardBody>
