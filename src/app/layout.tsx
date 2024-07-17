@@ -31,6 +31,7 @@ export default function RootLayout({
         <SessionProvider>
           {!noNavbarRoutes.includes(pathname) && <Navbar />} {/* Conditionally render Navbar */}
           <div>{children}</div>
+          <Analytics />
         </SessionProvider>
       </body>
       </ChakraProvider>
