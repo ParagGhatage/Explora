@@ -6,11 +6,12 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
   return (
-    <div className="h-[40rem] rounded-md flex flex-col antialiased bg-pink-50 dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+    <div className="h-[40rem] rounded-md flex flex-col antialiased bg-orange-200 dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
       <InfiniteMovingCards
         items={Categories}
         direction="right"
         speed="slow"
+        className="bg-white"
       />
     </div>
   );

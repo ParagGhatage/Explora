@@ -13,7 +13,7 @@ const  Page = () => {
   
     
   return (
-    <div className='bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 w-full mt-0 pt-0'>
+    <div className='bg-orange-100  w-full mt-0 pt-0'>
   <div className='w-full'>
     <img
       src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -21,7 +21,7 @@ const  Page = () => {
       className='w-full object-cover'
     />
   </div>
-  <div className='text-center w-full text-5xl font-bold font-sans opacity-70 mt-5'>
+  <div className='text-center w-full text-5xl font-bold font-sans  mt-5'>
     <h1>Categories</h1>
   </div>
   
@@ -50,7 +50,7 @@ const  Page = () => {
     <div className='text-center w-full text-3xl font-semibold font-sans  p-2 m-7'>
       
       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
-        <button className=" rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black  text-white text-2xl font-bold">
+        <button className=" rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold">
           Explore Popular Destinations &rarr;
         </button>
       </Link>

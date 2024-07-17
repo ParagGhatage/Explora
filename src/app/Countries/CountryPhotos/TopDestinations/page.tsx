@@ -56,10 +56,10 @@ const TouristDestinations = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
+    <div className="min-h-screen bg-orange-100 pt-20 mt-20 ">
       <div className="max-w-7xl mx-auto mt-8 p-4">
-        <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
-        <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-6">
+        <h1 className="text-4xl font-bold text-center text-gray-900 pb-4 m-5">Explore Travel Destinations</h1>
+        <form onSubmit={handleSearchSubmit} className="bg-orange-200 rounded-lg shadow-lg p-6">
           <div className="flex items-center space-x-4">
             <input
               type="text"

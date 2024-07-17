@@ -81,11 +81,11 @@ const onEmail = async (event: React.FormEvent) => {
 };
 
   return (
-  <div className=" bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
+  <div className=" bg-orange-100 pt-40">
   
   {(session || regiSuccess === true )? (
         <div>
-         <RegiSuccess page="registrered successufully"/>
+         <RegiSuccess page="registered successufully"/>
           
         </div>
       ) : (

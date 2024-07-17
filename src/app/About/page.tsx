@@ -1,17 +1,17 @@
 import Footer from '@/components/Footer/Footer';
-import Navbar from '@/Navbar/Navbar';
+
 import React from 'react';
 
 const AboutUsPage = () => {
   return (
     <>
-   <div className='bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200'>
+   <div className='bg-orange-100 pt-40  '>
    
    </div>
-    <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
-      <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
-        Explora</h1>
+    <div className="bg-orange-100 min-h-screen">
+      <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12 bg-orange-200">
+        <div className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
+        Explora</div>
         
         <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
           <p className="text-gray-700 text-lg leading-relaxed mb-6">

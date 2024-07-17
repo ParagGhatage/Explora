@@ -4,7 +4,7 @@ import React, { useEffect, useState,Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "@/components/APIs/Pexels/Query";
-import Navbar from "@/Navbar/Navbar";
+
 import { CountryQuery } from "@/components/APIs/AllCountries/Countries";
 
 interface Photo {
@@ -88,7 +88,7 @@ const Country = () => {
   };
 
   return (
-    <main className="bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200 min-h-screen">
+    <main className="bg-orange-100 pt-40  min-h-screen">
       <div className="text-blue-900 text-5xl font-bold font-serif text-center py-6">
         {name}
       </div>

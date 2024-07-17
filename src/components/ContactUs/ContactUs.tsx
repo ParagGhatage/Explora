@@ -41,13 +41,13 @@ const onEmail = async () => {
 
   return (
   <div className="flex-auto justify-center lg:flex">
-    <div className="max-w-md mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  bg-white mt-14 placeholder:text-black w-full">
-      <h2 className="font-bold text-xl text-black pt-3 ">
+    <div className="max-w-md mx-auto bg-white rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  mt-20 placeholder:text-black w-full">
+      <div className="font-bold text-3xl text-black pt-3 ">
         Nice to meet you
-      </h2>
-      <p className="text-slate-600 text-sm max-w-sm mt-2">
+      </div>
+      <div className="text-slate-600 text-sm max-w-sm mt-2">
         Send me an email right from here
-      </p>
+      </div>
 
       <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
@@ -94,7 +94,7 @@ const onEmail = async () => {
         
       </form>
     </div>
-    <div className="m-20">
+    <div className="mt-20 mr-20 bg-white p-6 rounded-lg">
         <div className="text-3xl font-semibold text-slate-600">
         Info
         </div>

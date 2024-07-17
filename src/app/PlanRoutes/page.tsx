@@ -116,10 +116,10 @@ const Route: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
+    <div className="min-h-screen bg-orange-100 pt-40 ">
       
-      <div className="max-w-screen mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
-        <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</h1>
+      <div className="max-w-screen mx-auto mt-16 p-6 bg-orange-200 rounded-lg shadow-lg">
+        <div className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</div>
         <form onSubmit={handleSearchSubmit} className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <input
@@ -162,7 +162,7 @@ const Route: React.FC = () => {
 
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {plan ? (
-          <div className="bg-white rounded-lg shadow-lg p-6 space-y-8">
+          <div className="bg-orange-200 rounded-lg shadow-lg p-6 space-y-8">
             <div className='text-center text-3xl font-semibold mb-6'>
               Your plan &darr;
             </div>
@@ -207,7 +207,7 @@ const Route: React.FC = () => {
             </div>
 
             {/* Rendering the plan details */}
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Accommodation</h2>
               {accommodation ? (
                 <>
