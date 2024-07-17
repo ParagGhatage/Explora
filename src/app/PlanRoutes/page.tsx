@@ -120,7 +120,7 @@ const Route: React.FC = () => {
       
       <div className="max-w-screen mx-auto mt-16 p-6 bg-orange-200 rounded-lg shadow-lg">
         <div className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</div>
-        <form onSubmit={handleSearchSubmit} className="space-y-6">
+        <form onSubmit={handleSearchSubmit} className="space-y-6 text-center">
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <input
               type="text"
@@ -153,7 +153,7 @@ const Route: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
+            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center  text-white text-2xl font-bold"
           >
             Generate
           </button>
@@ -166,11 +166,11 @@ const Route: React.FC = () => {
             <div className='text-center text-3xl font-semibold mb-6'>
               Your plan &darr;
             </div>
-            <div>
+            <div className='text-center'>
               <button
                 type="button"
                 onClick={onPlanSendClick}
-                className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
+                className="rounded-xl p-5 text-center hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
               >
                Get Plan On your Email  
                <div>
@@ -197,7 +197,7 @@ const Route: React.FC = () => {
                     <button
                       type="button"
                       onClick={onSendEmail}
-                      className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
+                      className="w-full rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
                     >
                       Send &rarr;
                     </button>

@@ -113,7 +113,7 @@ export default function SignIn() {
 
           <div className="text-center">
             <button
-              className="text-center border mt-4 text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+              className="sm:py-2 p-3 lg:py-3 px-3 mt-8 rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white"
               type="submit"
             >
               Sign In &rarr;

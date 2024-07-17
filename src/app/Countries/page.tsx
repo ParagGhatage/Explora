@@ -34,9 +34,9 @@ function Page() {
                     <form onSubmit={handleSearchSubmit} className="flex flex-col items-center justify-center">
                         <button
                             type="submit"
-                            className="text-center mt-0 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+                            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
                         >
-                            Search
+                            Search &rarr;
                         </button>
                     </form>
                 </div>

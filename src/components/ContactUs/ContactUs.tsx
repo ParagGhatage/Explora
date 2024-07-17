@@ -51,12 +51,12 @@ const onEmail = async () => {
 
       <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer className=" text-black ">
+          <LabelInputContainer className=" text-black  ">
             <Label htmlFor="name" className="text-black placeholder:text-black ">Your Name</Label>
             <Input id="name" placeholder="Your Name" type="text"
             value={user.name} 
             onChange={(e) => setUser({...user, name: e.target.value})}
-            className=" text-black placeholder:text-black bg-indigo-100"/>
+            className=" text-black  placeholder:text-black bg-indigo-100"/>
           </LabelInputContainer>
           
         </div>
@@ -79,7 +79,7 @@ const onEmail = async () => {
 
         <div className="text-center">
         <button
-          className="text-center border text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+          className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
           type="submit"
           
         >
@@ -99,8 +99,8 @@ const onEmail = async () => {
         Info
         </div>
 
-        <div className="bg-slate-100 rounded-lg shadow-orange-100">
-        <a href="https://paragghatage.com">
+        <div className="bg-slate-100 rounded-lg  border border-black shadow-orange-100">
+        <Link href="https://paragghatage.com">
             <div className="m-3 text-slate-600 font-normal flex">
                 <Icon3dCubeSphere className="text-slate-600"/>
                 
@@ -109,14 +109,14 @@ const onEmail = async () => {
                 </div>
                 
             </div>
-            </a>
+            </Link>
         </div>
 
         
         
 
         <div>
-            <div className="m-3 text-slate-600 font-normal flex">
+            <div className="m-3 text-slate-600  font-normal flex">
                 <IconLocation className="text-slate-600"/>
                 <div className="ml-3">
                 India
@@ -132,32 +132,32 @@ const onEmail = async () => {
         <div className="flex flex-col space-y-4 mt-5">
         <Link href={"https://mail.google.com/mail/u/1/#inbox?compose=DmwnWrRtsnWMdWLblVbzKmbktPSRRGRTPvPMCVZfFwtCQBkHfMzjdtRdMglGlGBlKjbqnGxffthv"}>
 <div
-  className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+  className="  border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
 
   <IconBrandGmail className="h-4  text-black" /> 
-  <div className="text-black  text-sm text-center">
+  <div className="text-black  text-sm text-center ">
     Email
   </div>
   <BottomGradient />
 </div>
 </Link>
 
-<a href="https://github.com/ParagGhatage">
+<Link href="https://github.com/ParagGhatage">
 <div
-  className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+  className=" border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
   <IconBrandGithub className="h-4  text-black" /> 
-  <span className="text-black text-sm text-center">
+  <div className="text-black text-sm text-center">
     GitHub
-  </span>
+  </div>
   <BottomGradient />
 </div>
-</a>
+</Link>
 
-<a href="https://x.com/PARAG_GHATAGE">
+<Link href="https://x.com/PARAG_GHATAGE">
 <div
-  className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+  className=" border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
   <IconBrandX className="h-4  text-black" /> 
   <span className="text-black text-sm text-center">
@@ -165,11 +165,10 @@ const onEmail = async () => {
   </span>
   <BottomGradient />
 </div>
-</a>
-
-<a href="https://www.instagram.com/parag_ghatage_35/">
+</Link>
+<Link href="https://www.instagram.com/parag_ghatage_35/">
 <div
-  className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+  className=" border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
   <IconBrandInstagram className="h-4  text-black" /> 
   <span className="text-black text-sm text-center">
@@ -177,11 +176,11 @@ const onEmail = async () => {
   </span>
   <BottomGradient />
 </div>
-</a>
+</Link>
 
-<a href="https://www.linkedin.com/in/parag-ghatage-09685a314/">
+<Link href="https://www.linkedin.com/in/parag-ghatage-09685a314/">
 <div
-  className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+  className=" border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
   <IconBrandLinkedin className="h-4  text-black" /> 
   <span className="text-black text-sm text-center">
@@ -189,7 +188,7 @@ const onEmail = async () => {
   </span>
   <BottomGradient />
 </div>
-</a>
+</Link>
 
 
 </div>

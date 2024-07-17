@@ -146,7 +146,7 @@ const Country = () => {
         <div className="text-center mb-8">
           <button
             onClick={handleTopDestinationsInCountry}
-            className="text-center border w-full text-white font-extrabold bg-violet-600 px-6 py-3 rounded-full border-stone-950 hover:bg-fuchsia-500 transition duration-300"
+            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
           >
             Explore Destinations in {name} &rarr;
           </button>
