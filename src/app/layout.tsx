@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"; // Import usePathname
 import Navbar from "@/Navbar/Navbar";
 import { metadata } from "./metadata"; // Import metadata
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ChakraProvider } from '@chakra-ui/react'
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           {!noNavbarRoutes.includes(pathname) && <Navbar />} {/* Conditionally render Navbar */}
           <div>{children}</div>
           <Analytics />
+          <SpeedInsights />
         </SessionProvider>
       </body>
       </ChakraProvider>
