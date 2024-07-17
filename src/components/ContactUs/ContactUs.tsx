@@ -15,6 +15,7 @@ import {
   IconLocation
 } from "@tabler/icons-react";
 import axios from "axios"
+import Link from "next/link";
 
 export function ContactUs() {
   
@@ -129,16 +130,18 @@ const onEmail = async () => {
         Socials
         </div>
         <div className="flex flex-col space-y-4 mt-5">
-
+        <Link href={"https://mail.google.com/mail/u/1/#inbox?compose=DmwnWrRtsnWMdWLblVbzKmbktPSRRGRTPvPMCVZfFwtCQBkHfMzjdtRdMglGlGBlKjbqnGxffthv"}>
 <div
   className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
+
   <IconBrandGmail className="h-4  text-black" /> 
-  <span className="text-black  text-sm text-center">
-    Email : phghatage1@gmail.com
-  </span>
+  <div className="text-black  text-sm text-center">
+    Email
+  </div>
   <BottomGradient />
 </div>
+</Link>
 
 <a href="https://github.com/ParagGhatage">
 <div

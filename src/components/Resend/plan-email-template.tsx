@@ -53,7 +53,7 @@ const PlanEmailTemplate: React.FC<Props> = ({ name, email, accommodation, transp
     <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <div style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
         <h1 style={{ color: '#333', marginBottom: '20px' }}>Hello {name},</h1>
-        <p>This message is from VagrantVoyage:</p>
+        <p>This email is from Explora:</p>
         
         <h2 style={{ color: '#007bff', marginTop: '30px' }}>Your Trip Details</h2>
 
@@ -128,7 +128,7 @@ const PlanEmailTemplate: React.FC<Props> = ({ name, email, accommodation, transp
         </div>
 
         <p style={{ marginTop: '30px' }}>Best regards,</p>
-        <p>The VoyageVista Team</p>
+        <p>The Explora Team</p>
       </div>
     </div>
   );
