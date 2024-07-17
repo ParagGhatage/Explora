@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 interface cardprop{
   title:string
   sourc:string
@@ -12,6 +13,7 @@ interface cardprop{
 }
 
 const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
+  const { data: session } = useSession();
   return (
       
     <CardContainer className="inter-var w-96 h-96  px-5 ">
@@ -54,16 +56,21 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
             Try now &rarr;
           </CardItem>
           </Link>
-          <Link href={"/SignIn"}>
-          <CardItem
-            translateZ={0}
-            translateX={0}
-            as="button"
-            className="px-4 py-2 rounded-xl bg-black  text-white text-xl font-bold"
-          >
-           Sign in
-          </CardItem>
-          </Link>
+          <div>
+            {session?(null):(
+              <Link href={"/SignIn"}>
+              <CardItem
+                translateZ={0}
+                translateX={0}
+                as="button"
+                className="px-4 py-2 rounded-xl bg-black  text-white text-xl font-bold"
+              >
+               Sign in
+              </CardItem>
+              </Link>
+            )}
+          </div>
+          
         </div>
       </CardBody>
     </CardContainer>

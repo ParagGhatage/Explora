@@ -46,14 +46,16 @@ const  Page = () => {
     </Link>
   </div>
 
-  <div className='p-5 w-full mt-10'>
-    <div className='text-center w-full text-3xl font-semibold font-sans opacity-70 p-2 m-7'>
-      <h1 className='text-center text-black font-extrabold hover:text-black'>Popular Destinations</h1>
+  <div className='p-5 w-100% mt-10'>
+    <div className='text-center w-full text-3xl font-semibold font-sans  p-2 m-7'>
+      
       <Link href={"/Countries/CountryPhotos/TopDestinations?query=world"}>
-        <button className="text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500 hover:text-black m-5">
+        <button className=" rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black  text-white text-2xl font-bold">
           Explore Popular Destinations &rarr;
         </button>
       </Link>
+
+      <div className='text-center text-4xl text-black font-extrabold hover:text-black mt-7'>Popular Destinations</div>
     </div>
 
     <InfiniteMovingCardsDemo />

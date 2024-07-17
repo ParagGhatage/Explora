@@ -13,18 +13,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className='bg-transparent w-full fixed top-0 z-50'>
+    <div className='bg-transparent w-screen fixed top-0 z-50'>
       <nav className='container mx-auto'>
-        <ul className='flex flex-col lg:flex-row w-full py-5 text-lg font-bold justify-between'>
+        <ul className='flex flex-col lg:flex-row w-full py-5 text-lg font-bold justify-between '>
           <div className='py-3'>
-            <Avatar className='bg-white p-4 justify-between'>
+            <Avatar className='bg-white p-4 justify-between '>
               <Link href="/Home" onClick={handleLinkClick}>
                 <AvatarFallback className='p-3'>Explora</AvatarFallback>
               </Link>
-              <div className='lg:hidden flex justify-end items-end bg-white p-3'>
+              <div className='lg:hidden  justify-center items-center  text-center bg-white p-3'>
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className='text-7xl focus:outline-none '
+                  className=' '
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
@@ -43,23 +43,23 @@ const Navbar = () => {
             </Avatar>
           </div>
           
-          <div className={`sm:flex-initialw-40 lg:flex bg-white rounded-lg w-full flex-1 justify-end text-slate-900 text-opacity-90 ${isOpen ? 'block' : 'hidden'} lg:block`}>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+          <div className={`lg:flex bg-white rounded-lg w-screen flex-1 text-center  justify-center text-black text-2xl border-2  ${isOpen ? 'block' : 'hidden'} lg:block`}>
+            <li className='sm:py-4 p-4 lg:py-5 px-5'>
               <Link href="/Home" onClick={handleLinkClick}>Home</Link>
             </li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+            <li className='sm:py-4 p-4 lg:py-5 px-5'>
               <Link href="/Countries" onClick={handleLinkClick}>Explore</Link>
             </li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+            <li className='sm:py-4 p-4 lg:py-5 px-5'>
               <Link href="/PlanRoutes" onClick={handleLinkClick}>Plan Trip</Link>
             </li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+            <li className='sm:py-4 p-4 lg:py-5 px-5'>
               <Link href="/About" onClick={handleLinkClick}>About</Link>
             </li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+            <li className='sm:py-4 p-4 lg:py-5 px-5'>
               <Link href="/ContactUs" onClick={handleLinkClick}>Contact us</Link>
             </li>
-            <li className='sm:py-4 p-2 lg:py-5 px-5'>
+            <li className='sm:py-4  p-4 lg:py-5 px-5'>
               {session ? (
                 <div>
                   <button onClick={() => signOut()}>Sign out</button>
