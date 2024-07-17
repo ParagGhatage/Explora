@@ -41,15 +41,14 @@ const Footer = () => {
           <div>
             <h5 className="font-bold text-lg mb-2">Contact Information</h5>
             <p className="mb-2">India</p>
-            <p className="mb-2">Email: phghatage1@gmail.com</p>
-            <p className="mb-2">Phone: +91 9552417320</p>
+            
 
             {/* Social icons */}
             <div className="flex space-x-4 mt-4">
               <Link href="https://github.com/ParagGhatage" className="text-slate-300 hover:text-white">
                 <IconBrandGithub/>
               </Link>
-              <Link href="https://www.linkedin.com/in/parag-ghatage-7601b825a/" className="text-slate-300 hover:text-white">
+              <Link href="https://www.linkedin.com/in/parag-ghatage-09685a314/" className="text-slate-300 hover:text-white">
                 <IconBrandLinkedin/>
               </Link>
               <Link href="https://x.com/PARAG_GHATAGE" className="text-slate-300 hover:text-white">

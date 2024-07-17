@@ -82,7 +82,7 @@ const onEmail = async () => {
           type="submit"
           
         >
-          Send Email &rarr;
+          Send &rarr;
           <BottomGradient />
         </button>
         </div>
@@ -104,23 +104,14 @@ const onEmail = async () => {
                 <Icon3dCubeSphere className="text-slate-600"/>
                 
                 <div className="ml-3">
-                https://portfolio-parag-ivory.vercel.app/
+                https://paragghatage.com
                 </div>
                 
             </div>
             </a>
         </div>
 
-        <div>
-            <div className="m-3 text-slate-600 font-normal flex">
-                <IconPhoneCall className="text-slate-600"/>
-                <div className="ml-3">
-                +91 9552417320
-                </div>
-                
-            </div>
-        </div>
-
+        
         <div>
             <div className="m-3 text-slate-600 font-normal flex">
                 <IconBrandGmail className="text-slate-600"/>
@@ -193,7 +184,7 @@ const onEmail = async () => {
 </div>
 </a>
 
-<a href="https://www.linkedin.com/in/parag-ghatage-7601b825a/">
+<a href="https://www.linkedin.com/in/parag-ghatage-09685a314/">
 <div
   className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
