@@ -13,7 +13,7 @@ export async function Plan(Start: string, End: string, Date: string, Days: numbe
 
   // Choose a model that's appropriate for your use case.
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash",
     generationConfig: { responseMimeType: "application/json" }
   });
 
