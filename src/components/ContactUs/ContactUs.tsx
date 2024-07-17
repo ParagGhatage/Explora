@@ -99,12 +99,12 @@ const onEmail = async () => {
         </div>
 
         <div className="bg-slate-100 rounded-lg shadow-orange-100">
-        <a href="https://portfolio-parag-ivory.vercel.app/">
+        <a href="https://paragghatage.com">
             <div className="m-3 text-slate-600 font-normal flex">
                 <Icon3dCubeSphere className="text-slate-600"/>
                 
                 <div className="ml-3">
-                https://paragghatage.com
+                paragghatage.com
                 </div>
                 
             </div>
@@ -112,15 +112,7 @@ const onEmail = async () => {
         </div>
 
         
-        <div>
-            <div className="m-3 text-slate-600 font-normal flex">
-                <IconBrandGmail className="text-slate-600"/>
-                <div className="ml-3">
-                phghatage1@gmail.com
-                </div>
-                
-            </div>
-        </div>
+        
 
         <div>
             <div className="m-3 text-slate-600 font-normal flex">
