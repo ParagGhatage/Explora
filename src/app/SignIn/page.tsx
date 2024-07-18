@@ -25,7 +25,8 @@ export default function SignIn() {
        
 
   const handleGoogleSignin = async () => {
-    await signIn('google');
+   const data= await signIn('google');
+   console.log(data)
   }
 
   const onformSubmit = async (event:React.FormEvent<HTMLFormElement>) => {

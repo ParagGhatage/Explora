@@ -11,8 +11,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   
   providers: [
     GoogleProvider({
-      clientId:process.env.GOOGLE_CLIENT_ID,
-      clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+      clientId:process.env.AUTH_GOOGLE_ID,
+      clientSecret:process.env.AUTH_GOOGLE_SECRET,
       authorization: {
         params: {
           redirect_uri: 'https://voyagevista-beige.vercel.app/api/auth/callback/google'
