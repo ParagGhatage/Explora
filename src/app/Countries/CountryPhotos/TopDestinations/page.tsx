@@ -93,7 +93,7 @@ const TouristDestinations = () => {
                 Suggestions
               </div>
 
-              <div className="text-gray-700 flex  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
+              <div className="text-gray-700 flex-wrap  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
                 {Recommendations.map((place, index) => (
                   <div key={index} className="p-3 text-left">
                     {place}
