@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
 import ToastError from "@/components/UIElements/AlertError/RegiError";
 import { useToast } from "@chakra-ui/react";
+import { IconBrandGoogle } from "@tabler/icons-react";
 
 export default function SignIn() {
   const router = useRouter();
@@ -64,33 +65,55 @@ export default function SignIn() {
   };
 
   return (
-    <div className="bg-orange-100 pt-40 ">
+    <div className="bg-orange-100 text-center pt-40 ">
      
       {session?(
         <div>
           <RegiSuccess page="Loged in successufully"/>
         </div>
       ):(
-        <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-14 placeholder:text-black w-full">
-        <div className="font-bold text-3xl text-black pt-3 text-center">
+        <div className="   shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-5 placeholder:text-black  text-center  items-center">
+        <div>
+        <div className="font-bold text-5xl text-black pt-3 ">
           SignIn
-          <button 
-          onClick={handleGoogleSignin}>
-            Google
-          </button>
+          
         </div>
-        <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
+        <div className="justify-center flex text-2xl p-4 ">
           <div className="pt-2">
             Don&apos;t have an account?
           </div>
-          <Link href={"/SignUp"}>
-            <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md">
+          <Link href={"/SignUp"}
+          className="text-center items-center w-35">
+            <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md text-center">
               Sign Up
             </div>
           </Link>
         </div>
-
-        <form className="my-8 placeholder:text-black" onSubmit={onformSubmit}>
+        </div>
+        
+        <div className="flex justify-center bg-orange-100 w-60% rounded-lg">
+        <div className="grid grid-cols-1  m-5 p-4 mt-5 w-100% rounded-lg mr-10 text-center text-2xl font-extrabold bg-white">
+          <div className="text-center">
+            Sign in with
+          </div>
+          <button
+          className="sm:py-2 p-5 lg:py-3  h-12 flex justify-between text rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white align-middle"
+          onClick={handleGoogleSignin}>
+            
+            <IconBrandGoogle/>
+            <div className=" pb-6 ml-10 align-middle mb-3">Google</div>
+          </button>
+        </div>
+        
+        <div className=" p-4 pb-6 mt-32 mr-7 h-6 justify-center text-center text-2xl font-extrabold">
+          or
+        </div>
+        
+        <div className="mt-8  m-5 text-2xl bg-white  rounded-lg font-extrabold p-5 text-left">
+          <div>
+            Sign in with credentials
+          </div>
+        <form className="my-8 placeholder:text-black w-100%" onSubmit={onformSubmit}>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="Email">Email Address</Label>
             <Input
@@ -127,6 +150,9 @@ export default function SignIn() {
 
           <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
         </form>
+        </div>
+        
+        </div>
       </div>
       )
       }
