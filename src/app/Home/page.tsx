@@ -26,10 +26,40 @@ const  Page = () => {
   </div>
   
   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 w-full'>
+  <Link href={"/Countries/CountryPhotos/TopDestinations?query=Cities"}>
+      <ThreeDCardDemo
+        title="Cities"
+        sourc='https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=600'
+      />
+    </Link>
+  <Link href={"/Countries/CountryPhotos/TopDestinations?query=Adventure places"}>
+      <ThreeDCardDemo
+        title="Adventure"
+        sourc='https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=600'
+      />
+    </Link>
+    <Link href={"/Countries/CountryPhotos/TopDestinations?query=Space related"}>
+      <ThreeDCardDemo
+        title="Space"
+        sourc='https://images.pexels.com/photos/3862606/pexels-photo-3862606.jpeg?auto=compress&cs=tinysrgb&w=600'
+      />
+    </Link>
+    <Link href={"/Countries/CountryPhotos/TopDestinations?query=ancient civilizations"}>
+      <ThreeDCardDemo
+        title="Ancient Civilizations"
+        sourc='https://images.pexels.com/photos/5862696/pexels-photo-5862696.jpeg?auto=compress&cs=tinysrgb&w=600'
+      />
+    </Link>
     <Link href={"/Countries/CountryPhotos/TopDestinations?query=Religious places"}>
       <ThreeDCardDemo
         title="Religious"
         sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      />
+    </Link>
+    <Link href={"/Countries/CountryPhotos/TopDestinations?query=Museums"}>
+      <ThreeDCardDemo
+        title="Museums"
+        sourc='https://images.pexels.com/photos/1604991/pexels-photo-1604991.jpeg?auto=compress&cs=tinysrgb&w=600'
       />
     </Link>
     <Link href={"/Countries/CountryPhotos/TopDestinations?query=Historical places"}>
