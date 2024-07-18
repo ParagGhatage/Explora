@@ -3,12 +3,19 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import dbConnect from "./lib/dbConnect";
 import UserModel from "./models/user.model";
+import GoogleProvider from 'next-auth/providers/google'
 
 
 // Use the defined interface in your NextAuth configuration
 export const { handlers, signIn, signOut, auth } = NextAuth({
   
   providers: [
+    GoogleProvider({
+      clientId:process.env.GOOGLE_CLIENT_ID,
+      clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+      
+  
+  }),
     Credentials({
       name:"credentials",
       credentials: {
@@ -52,5 +59,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   pages:{
     signIn:"/SignIn",
+
   }
 });
