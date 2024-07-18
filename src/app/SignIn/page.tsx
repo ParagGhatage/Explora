@@ -26,7 +26,7 @@ export default function SignIn() {
 
   const handleGoogleSignin = async () => {
    const data= await signIn('google');
-   console.log(data)
+   
   }
 
   const onformSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
@@ -92,21 +92,21 @@ export default function SignIn() {
         </div>
         </div>
         
-        <div className="flex justify-center bg-orange-100 w-60% rounded-lg">
-        <div className="grid grid-cols-1  m-5 p-4 mt-5 w-100% rounded-lg mr-10 text-center text-2xl font-extrabold bg-white">
+        <div className="   justify-center sm:flex p-3 bg-orange-100  rounded-lg">
+        <div className="grid grid-cols-1 p-6  sm:m-5 sm:p-4 lg:mt-5 sm:mt-5 w-100% rounded-lg sm:mr-10 text-center text-2xl font-extrabold bg-white">
           <div className="text-center">
             Sign in with
           </div>
           <button
-          className="sm:py-2 p-5 lg:py-3  h-12 flex justify-between text rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white align-middle"
+          className="sm:py-2 p-5 lg:py-3 sm:mt-10 pt-3 h-12 flex justify-between text rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white align-middle"
           onClick={handleGoogleSignin}>
             
-            <IconBrandGoogle/>
-            <div className=" pb-6 ml-10 align-middle mb-3">Google</div>
+            <IconBrandGoogle className="mb-4 md:mb-4"/>
+            <div className="pb-5 md:pb-6 ml-10 align-middle mb-6">Google</div>
           </button>
         </div>
         
-        <div className=" p-4 pb-6 mt-32 mr-7 h-6 justify-center text-center text-2xl font-extrabold">
+        <div className=" p-4 pb-6 md:mt-32 mt-5 mr-7 h-6 justify-center text-center text-2xl font-extrabold">
           or
         </div>
         
