@@ -5,6 +5,7 @@ import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Run } from '@/components/APIs/Gemini/Recommendations';
+import { IconSearch } from '@tabler/icons-react';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
 
 interface Photo {
@@ -45,20 +46,20 @@ const TouristDestinations = () => {
     };
 
     fetchData();
-  },[searchQuery]);
+  },[query]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await PexelsQuery(searchQuery);
     setPhotos(data.photos);
-    setRecommendations([]);
     setSearchQuery(''); // Clear search input after submission
   };
-  const handleRecSubmit = async () => {
-    const data = await PexelsQuery(searchQuery);
+  const handleRecSubmit = async (place:string) => {
+    setSearchQuery(place)
+    const data = await PexelsQuery(place);
     setPhotos(data.photos);
-    setRecommendations([]);
-    setSearchQuery(''); // Clear search input after submission
+    
+   
   };
 
   return (
@@ -99,14 +100,16 @@ const TouristDestinations = () => {
                 Suggestions
               </div>
 
-              <div className="text-gray-700 flex-wrap  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
+              <div className="text-gray-700 flex-wrap lg:grid lg:grid-cols-3  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
                 {Recommendations.map((place, index) => (
                   <button key={index} 
-                  onClick={()=>{setSearchQuery(place)
+                  onClick={()=>{
+                    handleRecSubmit(place)
                   }
 
                   }
-                  className="p-3 text-left">
+                  className="p-1 text-left border m-2 rounded-md border-black">
+                    <IconSearch className='text-sm'/>
                     {place}
                   </button>
                 ))}
