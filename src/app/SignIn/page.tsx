@@ -24,7 +24,7 @@ export default function SignIn() {
        
 
   const handleGoogleSignin = async () => {
-    await signIn('google', { callbackUrl: '/' });
+    await signIn('google');
   }
 
   const onformSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
@@ -74,6 +74,10 @@ export default function SignIn() {
         <div className="max-w-md mx-auto shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-14 placeholder:text-black w-full">
         <div className="font-bold text-3xl text-black pt-3 text-center">
           SignIn
+          <button 
+          onClick={handleGoogleSignin}>
+            Google
+          </button>
         </div>
         <div className="text-slate-600 text-sm max-w-sm mt-2 flex text-center justify-center">
           <div className="pt-2">
