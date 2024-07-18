@@ -16,10 +16,11 @@ import {
 } from "@tabler/icons-react";
 import axios from "axios"
 import Link from "next/link";
+import { useToast } from "@chakra-ui/react";
 
 export function ContactUs() {
   
-
+  const toast = useToast()
   const [user, setUser] = React.useState({
     email: "",
     message: "",
@@ -32,7 +33,21 @@ const onEmail = async () => {
 
           const response = await axios.post("/api/send", user);
           console.log( response.data);
-          
+
+          if(!(response.data)){
+            toast({
+              title: `Some Error occured while sending an email!\n  Please try again.`,
+              status: "error",
+              isClosable: true,
+            })
+          }
+          if((response.data)){
+            toast({
+              title: `Email sent succeesfully!`,
+              status: "success",
+              isClosable: true,
+            })
+          }
       } catch (error:any) {
           console.log("Enable to send email", error.message);
           

@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from 'react';
 import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
 import axios from 'axios';
+import { useToast } from '@chakra-ui/react';
 
 interface Accommodation {
   CheckInDate: string;
@@ -73,6 +74,7 @@ const Route: React.FC = () => {
   const [transportation, setTransportation] = useState<Transportation[]>([]);
 
   const [plan, setTravelPlan] = useState<any>(null);
+  const toast = useToast()
 
   const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => setStart(e.target.value);
   const handleEndChange = (e: ChangeEvent<HTMLInputElement>) => setEnd(e.target.value);
@@ -88,6 +90,21 @@ const Route: React.FC = () => {
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
     console.log(data)
+
+    if(!(data)){
+      toast({
+        title: `Some Error occured while generating plan!\n  Please try again.`,
+        status: "error",
+        isClosable: true,
+      })
+    }
+    if((data)){
+      toast({
+        title: `Plan generated successufully!`,
+        status: "success",
+        isClosable: true,
+      })
+    }
     
     setAccommodation(data.Details.Accommodation[0]);
     setActivities(data.Details.Activities);
@@ -110,6 +127,20 @@ const Route: React.FC = () => {
         accommodation, activities, budget, packingList, transportation, email, name 
       });
       console.log(response.data);
+      if(!(response.data)){
+        toast({
+          title: `Some Error occured while sending email!  Please try again.`,
+          status: "error",
+          isClosable: true,
+        })
+      }
+      if((response.data)){
+        toast({
+          title: `Email sent! \n Check your inbox.`,
+          status: "success",
+          isClosable: true,
+        })
+      }
     } catch (error: any) {
       console.log('Unable to send email', error.message);
     }

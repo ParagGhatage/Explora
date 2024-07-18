@@ -9,11 +9,11 @@ interface EmailTemplateProps {
 
 }
 
-export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
+const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   email,message,name
 }) => (
     <div className='flex-wrap p-4 m-3'>
-    <h1 >Name :{name}</h1>
+    <p >Name :{name}</p>
     <p>This message is from Contact Me Explora :</p>
     <p>
     Message : {message}
@@ -22,3 +22,5 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     
   </div>
 );
+
+export default EmailTemplate
