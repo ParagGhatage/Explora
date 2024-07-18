@@ -76,7 +76,7 @@ export default function SignIn() {
         <div className="   shadow shadow-slate-400 rounded-none md:rounded-2xl p-4 md:p-8 bg-white mt-5 placeholder:text-black  text-center  items-center">
         <div>
         <div className="font-bold text-5xl text-black pt-3 ">
-          SignIn
+          Sign in
           
         </div>
         <div className="justify-center flex text-2xl p-4 ">
@@ -86,7 +86,7 @@ export default function SignIn() {
           <Link href={"/SignUp"}
           className="text-center items-center w-35">
             <div className="ml-4 text-blue-700 hover:bg-green-200 p-2 rounded-md text-center">
-              Sign Up
+              Sign up
             </div>
           </Link>
         </div>
