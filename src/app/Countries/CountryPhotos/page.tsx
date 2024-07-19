@@ -4,8 +4,8 @@ import React, { useEffect, useState,Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "@/components/APIs/Pexels/Query";
-
 import { CountryQuery } from "@/components/APIs/AllCountries/Countries";
+import PlaceMap from "@/components/GoogleMaps/PlacesMaps";
 
 interface Photo {
   id: number;
@@ -96,19 +96,32 @@ const Country = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-wrap justify-evenly mb-8">
           <div className="bg-white p-6 rounded-lg shadow-lg flex items-center">
-            <div className="text-3xl font-mono font-bold text-black mr-4">
+            <div>
+
+            
+            <div className="sm:flex  flex-wrap">
+             
+            <PlaceMap map_params={name} />
+            </div>
+            
+            </div>
+            
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
+            Capital: {capital}
+            <div className="justify-center items-center mt-6">
+            <div className="text-3xl font-mono  m-5 font-bold text-black mr-4">
               Flag:
             </div>
+            
             <Image
               src={flag}
               alt="Flag image"
               width={200}
               height={100}
-              className="rounded-lg border border-black shadow-sm shadow-slate-400"
+              className="rounded-lg border border-black shadow-sm ml-9 shadow-slate-400"
             />
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center">
-            Capital: {capital}
+            </div>
           </div>
         </div>
 
