@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 
-const App = () => {
+const PlaceMap = ({map_type = "",map_params=""}) => {
     const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
     return (
@@ -18,4 +18,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default PlaceMap;
