@@ -30,7 +30,7 @@ export default function RootLayout({
       <ChakraProvider>
       <body className={inter.className}>
         <SessionProvider>
-          {!noNavbarRoutes.includes(pathname) && <Navbar />} {/* Conditionally render Navbar */}
+          <Navbar />
           <div>{children}</div>
           <Analytics />
           <SpeedInsights />
