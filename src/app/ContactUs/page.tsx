@@ -147,7 +147,7 @@ const onEmail = async () => {
         Socials
         </div>
         <div className="flex flex-col space-y-4 mt-5">
-        <Link href={"https://mail.google.com/mail/u/1/#inbox?compose=DmwnWrRtsnWMdWLblVbzKmbktPSRRGRTPvPMCVZfFwtCQBkHfMzjdtRdMglGlGBlKjbqnGxffthv"}>
+        <Link href={"thunderwolf.dev@gmail.com"}>
 <div
   className="  border border-black relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 > 
