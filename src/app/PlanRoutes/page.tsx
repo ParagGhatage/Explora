@@ -4,6 +4,7 @@ import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
+import Directions from '@/components/GoogleMaps/Directions';
 
 interface Accommodation {
   CheckInDate: string;
@@ -194,6 +195,9 @@ const Route: React.FC = () => {
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {plan ? (
           <div className="bg-orange-200 rounded-lg shadow-lg p-6 space-y-8">
+            <div >
+                <Directions start={start} end={end} />
+            </div>
             <div className='text-center text-3xl font-semibold mb-6'>
               Your plan &darr;
             </div>
