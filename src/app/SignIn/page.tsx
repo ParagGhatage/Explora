@@ -61,7 +61,7 @@ export default function SignIn() {
         status: "success",
         isClosable: true,
       })
-      router.replace('/Home'); // Redirecting to Home
+      router.replace('/'); // Redirecting to Home
     }
   };
 

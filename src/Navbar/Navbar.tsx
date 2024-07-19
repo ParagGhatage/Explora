@@ -18,7 +18,7 @@ const Navbar = () => {
     <ul className='flex flex-col lg:flex-row  text-lg font-bold justify-between '>
       <div className=''>
         <Avatar className='bg-white p-2 justify-between '>
-          <Link href="/Home" onClick={handleLinkClick}>
+          <Link href="/" onClick={handleLinkClick}>
             <AvatarFallback className='p-2'>Explora</AvatarFallback>
           </Link>
           <div className='lg:hidden justify-center items-center text-center bg-white p-2'>
@@ -43,7 +43,7 @@ const Navbar = () => {
       
       <div className={`lg:flex bg-white rounded-lg w-100% justify-end flex-1 p-3  text-black text-2xl border-2 ${isOpen ? 'block' : 'hidden'} lg:block`}>
         <li className='sm:py-2 p-2 lg:py-3 px-3'>
-          <Link href="/Home" onClick={handleLinkClick}>Home</Link>
+          <Link href="/" onClick={handleLinkClick}>Home</Link>
         </li>
         <li className='sm:py-2 p-3 lg:py-3 px-3'>
           <Link href="/Countries" onClick={handleLinkClick}>Explore</Link>
