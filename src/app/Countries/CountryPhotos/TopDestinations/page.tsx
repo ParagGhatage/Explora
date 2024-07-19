@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Run } from '@/components/APIs/Gemini/Recommendations';
 import { IconSearch } from '@tabler/icons-react';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
+import PlaceMap from '@/components/GoogleMaps/PlacesMaps';
 
 interface Photo {
   id: number;
@@ -93,7 +94,18 @@ const TouristDestinations = () => {
           </Link>
         </div>
 
-        <div className="py-5">
+        <div className="py-5 ">
+          {searchQuery?(
+            <div className='sm:flex justify-evenly bg-white rounded-md p-4'>
+            <div className=' border-black border-2'>
+              <PlaceMap map_params={ query } extra_address={ searchQuery +"," }/>
+            </div>
+            <div className='mt-5 sm:mt-0 border-black border-2 '>
+            <PlaceMap map_params={ query }/>
+          </div>
+          </div>
+          ):null}
+          
           {Recommendations ? (
             <div>
               <div className='text-center text-3xl p-3'>

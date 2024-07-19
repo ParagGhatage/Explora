@@ -155,6 +155,14 @@ const Country = () => {
         <div className="bg-white p-6 rounded-lg shadow-lg text-3xl font-mono font-bold text-black text-center mb-8">
           Population: {population}
         </div>
+        <div className="text-center mt-8 mb-4">
+            <button
+              className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+              onClick={handleGoBack}
+            >
+              Go Back
+            </button>
+          </div>
 
         <div className="text-center mb-8">
           <button
@@ -191,14 +199,7 @@ const Country = () => {
               No photos found for the &quot;{query}&quot;
             </p>
           )}
-          <div className="text-center mt-8">
-            <button
-              className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
-              onClick={handleGoBack}
-            >
-              Go Back
-            </button>
-          </div>
+          
         </div>
       </div>
     </main>
