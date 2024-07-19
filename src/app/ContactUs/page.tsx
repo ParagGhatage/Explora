@@ -87,7 +87,7 @@ const onEmail = async () => {
 
         <LabelInputContainer className="h-56">
             <Label htmlFor="message">Message</Label>
-            <Input id="message" placeholder="Your message..." type="text"
+            <textarea id="message" placeholder="Your message..." 
             value={user.message}
             onChange={(e) => setUser({...user, message: e.target.value})}
            className=" placeholder:text-black h-40 md:max-w-xl px-4 py-2 bg-indigo-100 whitespace-normal break-words resize-y"
