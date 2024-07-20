@@ -276,8 +276,8 @@ const Route: React.FC = () => {
             />
             {(end && autocompleteList && autosuggestionsEnd==true)?(
             <div>
-              {autocompleteList.map((place)=>(
-                <div>
+              {autocompleteList.map((place,index)=>(
+                <div key={index}>
                   <button  
                   type='button'//for preventing default form submission
                   onClick={()=>{
