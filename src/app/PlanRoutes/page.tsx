@@ -212,6 +212,7 @@ const Route: React.FC = () => {
         <div className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</div>
         <form onSubmit={handleSearchSubmit} className="space-y-6 text-center">
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+            <div>
             <input
               type="text"
               value={start}
@@ -219,7 +220,8 @@ const Route: React.FC = () => {
               placeholder="Your Location"
               className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
             />
-            {(start && autocompleteList && autosuggestionsStart==true)?(
+
+{(start && autocompleteList && autosuggestionsStart==true)?(
             <div>
               {autocompleteList.map((place)=>(
                 <div>
@@ -244,6 +246,10 @@ const Route: React.FC = () => {
             </div>
             ):null
             }
+
+            </div>
+            
+            <div>
             <input
               type="text"
               value={end}
@@ -276,19 +282,22 @@ const Route: React.FC = () => {
             </div>
             ):null
             }
+            </div>
+            
+            
             <input
               type="date"
               value={date}
               onChange={handleDateChange}
               placeholder="Date of Departure"
-              className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+              className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm h-full focus:outline-none focus:ring-2 focus:ring-teal-600"
             />
             <input
               type="number"
               value={days}
               onChange={handleDaysChange}
               placeholder="Days"
-              className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+              className="flex-1 h-full bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
             />
           </div>
           <button
