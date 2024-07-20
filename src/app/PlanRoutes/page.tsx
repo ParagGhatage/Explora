@@ -119,7 +119,7 @@ const Route: React.FC = () => {
     }
   };
 
-  const debouncedAutocomplete = useCallback(debounce(handleAutocomplete, 800), [handleAutocomplete]);
+  const debouncedAutocomplete = useCallback(debounce(handleAutocomplete, 800),[]);
 
   const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
