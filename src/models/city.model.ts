@@ -11,12 +11,12 @@ interface ICity extends Document {
 }
 
 const CitySchema: Schema = new Schema({
-  name: { type: String, required: true },
-  id: { type: Number, required: true },
-  state: { type: String, required: true },
+  name: { type: String },
+  id: { type: Number },
+  state: { type: String },
   coord: {
-    lon: { type: Number, required: true },
-    lat: { type: Number, required: true },
+    lon: { type: Number },
+    lat: { type: Number},
   },
 });
 
