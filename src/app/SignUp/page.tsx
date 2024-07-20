@@ -68,7 +68,7 @@ const onEmail = async (event: React.FormEvent) => {
         status: "success",
         isClosable: true,
       })
-      router.replace('/Home'); // Redirecting to Home
+      router.replace('/'); // Redirecting to Home
     }}
   }catch (error: any) {
     toast({

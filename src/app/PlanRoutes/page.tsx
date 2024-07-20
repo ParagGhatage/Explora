@@ -6,6 +6,10 @@ import { Plan } from '@/components/APIs/Gemini/RoutePlan';
 import { useToast } from '@chakra-ui/react';
 import Directions from '@/components/GoogleMaps/Directions';
 import { IconSearch } from '@tabler/icons-react';
+import { StretchHorizontallyIcon } from '@radix-ui/react-icons';
+import { Id } from '@/components/Weather/CreateCityId';
+
+type Location = [number, number];
 
 interface Accommodation {
   CheckInDate: string;
@@ -82,6 +86,10 @@ const Route: React.FC = () => {
   const [autocompleteList, setAutocompleteList] = useState<any[]>([]);
   const [autosuggestionsStart,setAutoSuggestionsStart] = useState(true)
   const [autosuggestionsEnd,setAutoSuggestionsEnd] = useState(true)
+
+  const [startLocationForWeather,setStartLocationForWeather] = useState<Location | undefined>(undefined)
+  const [endLocationForWeather,setEndLocationForWeather] = useState<Location | undefined>(undefined)
+
   const key = process.env.NEXT_PUBLIC_OLA_MAPS_API_KEY;
 
   const autocompleteCache: { [query: string]: any[] } = {};
@@ -147,6 +155,13 @@ const Route: React.FC = () => {
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(startLocationForWeather && endLocationForWeather ){
+      const StartCityId = await  Id(startLocationForWeather[0],startLocationForWeather[1])
+      const EndCityId = await  Id(endLocationForWeather[0],endLocationForWeather[1])
+      console.log(StartCityId)
+      console.log(EndCityId)
+  }
+
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
     console.log(data);
@@ -231,6 +246,8 @@ const Route: React.FC = () => {
                     setStart(place.description)
                     setAutoSuggestionsStart(false)
                     setAutocompleteList([])
+                    
+                    setStartLocationForWeather([place?.geometry?.location?.lat,place?.geometry?.location?.lng])
                   }
 
                   }
@@ -267,6 +284,8 @@ const Route: React.FC = () => {
                     setEnd(place.description)
                     setAutoSuggestionsEnd(false)
                     setAutocompleteList([])
+
+                    setEndLocationForWeather([place.geometry.location.lat,place.geometry.location.lng])
                   }
 
                   }
