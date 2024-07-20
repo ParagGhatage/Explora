@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, ChangeEvent, useCallback } from 'react';
+import React, { useState, ChangeEvent, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
@@ -8,6 +8,8 @@ import Directions from '@/components/GoogleMaps/Directions';
 import { IconSearch } from '@tabler/icons-react';
 import { StretchHorizontallyIcon } from '@radix-ui/react-icons';
 import { Id } from '@/components/Weather/CreateCityId';
+import { WeatherWidget } from '@/components/Weather/WeatherWidget';
+import { WeatherWidget1 } from '@/components/Weather/NewWeatherWidget';
 
 type Location = [number, number];
 
@@ -90,6 +92,9 @@ const Route: React.FC = () => {
   const [startLocationForWeather,setStartLocationForWeather] = useState<Location | undefined>(undefined)
   const [endLocationForWeather,setEndLocationForWeather] = useState<Location | undefined>(undefined)
 
+  const [startId,setStartId] = useState()
+  const [endId,setEndId]= useState()
+
   const key = process.env.NEXT_PUBLIC_OLA_MAPS_API_KEY;
 
   const autocompleteCache: { [query: string]: any[] } = {};
@@ -158,8 +163,11 @@ const Route: React.FC = () => {
     if(startLocationForWeather && endLocationForWeather ){
       const StartCityId = await  Id(startLocationForWeather[0],startLocationForWeather[1])
       const EndCityId = await  Id(endLocationForWeather[0],endLocationForWeather[1])
-      console.log(StartCityId)
-      console.log(EndCityId)
+      
+      if(StartCityId && EndCityId){
+      setStartId(StartCityId)
+      setEndId(EndCityId)
+    }
   }
 
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
@@ -329,6 +337,29 @@ const Route: React.FC = () => {
       </div>
 
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className=''>
+
+          <div>
+          {startId?(
+          <div>
+            
+            <WeatherWidget  cityid={startId} />
+            
+          </div>
+        ):null}
+          </div>
+
+          <div >
+          {endId?(
+          
+          <div>
+            <WeatherWidget1 cityid={endId}/>
+          </div>
+        ):null}
+          </div>
+        </div>
+        
+        
         {plan ? (
           
           <div className="bg-orange-200 rounded-lg shadow-lg p-6 space-y-8">
