@@ -10,6 +10,8 @@ import { StretchHorizontallyIcon } from '@radix-ui/react-icons';
 import { Id } from '@/components/Weather/CreateCityId';
 import { WeatherWidget } from '@/components/Weather/WeatherWidget';
 import { WeatherWidget1 } from '@/components/Weather/NewWeatherWidget';
+import { MobileViewStart } from '@/components/Weather/MobileViewStart';
+import { MobileViewEnd } from '@/components/Weather/MobileViewEnd';
 
 type Location = [number, number];
 
@@ -338,8 +340,25 @@ const Route: React.FC = () => {
 
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className=''>
-
+        <div className='ml-10'>
+          {startId?(
           <div>
+            
+            <MobileViewStart  cityid={startId} />
+            
+          </div>
+        ):null}
+          </div>
+        <div className='ml-10 mt-10'>
+          {endId?(
+          <div>
+            
+            <MobileViewEnd  cityid={endId} />
+            
+          </div>
+        ):null}
+          </div>
+          <div className='ml-40  mt-12'>
           {startId?(
           <div>
             
@@ -349,7 +368,7 @@ const Route: React.FC = () => {
         ):null}
           </div>
 
-          <div >
+          <div  className='ml-40 mb-12 mt-12'>
           {endId?(
           
           <div>
@@ -357,6 +376,16 @@ const Route: React.FC = () => {
           </div>
         ):null}
           </div>
+        </div>
+        <div>
+        {(startLocationForWeather && endLocationForWeather)?(
+          <div>
+            <div>
+              <Directions start={start} end={end} />
+            </div>
+          </div>
+        ):null
+        }
         </div>
         
         
@@ -393,9 +422,7 @@ const Route: React.FC = () => {
           </form>
         </div>
 
-            <div>
-              <Directions start={start} end={end} />
-            </div>
+            
             <div className="bg-white rounded-lg shadow p-6 space-y-6">
               <h2 className="text-3xl font-extrabold text-gray-900">Accommodation</h2>
               <p><strong>Name:</strong> {accommodation?.Name}</p>
