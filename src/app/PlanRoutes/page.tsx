@@ -1,10 +1,11 @@
 'use client'
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useCallback } from 'react';
+import axios from 'axios';
 import Navbar from '@/Navbar/Navbar';
 import { Plan } from '@/components/APIs/Gemini/RoutePlan';
-import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
 import Directions from '@/components/GoogleMaps/Directions';
+import { IconSearch } from '@tabler/icons-react';
 
 interface Accommodation {
   CheckInDate: string;
@@ -51,12 +52,13 @@ interface Transportation {
 }
 
 interface PlanDetails {
-  Details:{
-  Accommodation: Accommodation[];
-  Activities: Activity[];
-  Budget: Budget;
-  PackingList: string[];
-  Transportation: Transportation[];}
+  Details: {
+    Accommodation: Accommodation[];
+    Activities: Activity[];
+    Budget: Budget;
+    PackingList: string[];
+    Transportation: Transportation[];
+  }
 }
 
 const Route: React.FC = () => {
@@ -77,8 +79,65 @@ const Route: React.FC = () => {
   const [plan, setTravelPlan] = useState<any>(null);
   const toast = useToast()
 
-  const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => setStart(e.target.value);
-  const handleEndChange = (e: ChangeEvent<HTMLInputElement>) => setEnd(e.target.value);
+  const [autocompleteList, setAutocompleteList] = useState<any[]>([]);
+  const [autosuggestionsStart,setAutoSuggestionsStart] = useState(true)
+  const [autosuggestionsEnd,setAutoSuggestionsEnd] = useState(true)
+  const key = process.env.NEXT_PUBLIC_OLA_MAPS_API_KEY;
+
+  const autocompleteCache: { [query: string]: any[] } = {};
+
+  function debounce(func: (...args: any[]) => void, timeout = 800) {
+    let timer: any;
+    return (...args: any[]) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func(...args); }, timeout, timeout);
+    };
+  }
+
+  const handleAutocomplete = async (query: string, key: string) => {
+    if (autocompleteCache[query]) {
+      setAutocompleteList(autocompleteCache[query]);
+      return;
+    }
+
+    try {
+      const response = await axios.get(`https://api.olamaps.io/places/v1/autocomplete?input=${query}&api_key=${key}`);
+      const results = response.data.predictions;
+      autocompleteCache[query] = results;
+      setAutocompleteList(results);
+      console.log(response)
+    } catch (error) {
+      console.error('Error fetching autocomplete data:', error);
+    }
+  };
+
+  const debouncedAutocomplete = useCallback(debounce(handleAutocomplete, 800), []);
+
+  const handleStartChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setStart(query);
+    if (query.trim()) {
+      debouncedAutocomplete(query, key);
+    } else {
+      setAutocompleteList([]);
+    }
+    if(!query){
+      setAutoSuggestionsStart(true)
+    }
+  };
+
+  const handleEndChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setEnd(query);
+    if (query.trim()) {
+      debouncedAutocomplete(query, key);
+    } else {
+      setAutocompleteList([]);
+    }
+    if(!query){
+      setAutoSuggestionsEnd(true)
+    }
+  }
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => setDate(e.target.value);
   const handleDaysChange = (e: ChangeEvent<HTMLInputElement>) => setDays(e.target.value);
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
@@ -90,66 +149,65 @@ const Route: React.FC = () => {
     e.preventDefault();
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
-    console.log(data)
+    console.log(data);
 
-    if(!(data)){
+    if (!data) {
       toast({
-        title: `Some Error occured while generating plan!\n  Please try again.`,
+        title: `Some Error occurred while generating plan! Please try again.`,
         status: "error",
         isClosable: true,
-      })
-    }
-    if((data)){
+      });
+    } else {
       toast({
-        title: `Plan generated successufully!`,
+        title: `Plan generated successfully!`,
         status: "success",
         isClosable: true,
-      })
+      });
     }
-    
+
     setAccommodation(data.Details.Accommodation[0]);
     setActivities(data.Details.Activities);
     setBudget(data.Details.Budget);
     setPackingList(data.Details.PackingList);
     setTransportation(data.Details.Transportation);
 
-    setTravelPlan({ 
-      accommodation: data.Details.Accommodation[0], 
-      activities: data.Details.Activities, 
-      budget: data.Details.Budget, 
-      packingList: data.Details.PackingList, 
-      transportation: data.Details.Transportation 
+    setTravelPlan({
+      accommodation: data.Details.Accommodation[0],
+      activities: data.Details.Activities,
+      budget: data.Details.Budget,
+      packingList: data.Details.PackingList,
+      transportation: data.Details.Transportation
     });
   };
 
   const onSendEmail = async () => {
     try {
-      const response = await axios.post('/api/planSend', { 
-        accommodation, activities, budget, packingList, transportation, email, name 
+      const response = await axios.post('/api/planSend', {
+        accommodation, activities, budget, packingList, transportation, email, name
       });
       console.log(response.data);
-      if(!(response.data)){
+      if (!response.data) {
         toast({
-          title: `Some Error occured while sending email!  Please try again.`,
+          title: `Some Error occurred while sending email! Please try again.`,
           status: "error",
           isClosable: true,
-        })
-      }
-      if((response.data)){
+        });
+      } else {
         toast({
-          title: `Email sent! \n Check your inbox.`,
+          title: `Email sent! Check your inbox.`,
           status: "success",
           isClosable: true,
-        })
+        });
       }
     } catch (error: any) {
       console.log('Unable to send email', error.message);
     }
   };
 
+  
+
   return (
-    <div className="min-h-screen bg-orange-100 pt-40 ">
-      
+    <div className="min-h-screen bg-orange-100 pt-40">
       <div className="max-w-screen mx-auto mt-16 p-6 bg-orange-200 rounded-lg shadow-lg">
         <div className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</div>
         <form onSubmit={handleSearchSubmit} className="space-y-6 text-center">
@@ -161,6 +219,31 @@ const Route: React.FC = () => {
               placeholder="Your Location"
               className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
             />
+            {(start && autocompleteList && autosuggestionsStart==true)?(
+            <div>
+              {autocompleteList.map((place)=>(
+                <div>
+                  <button  
+                  type='button'//for preventing default form submission
+                  onClick={()=>{
+                    setStart(place.description)
+                    setAutoSuggestionsStart(false)
+                    setAutocompleteList([])
+                  }
+
+                  }
+                  className="p-1 text-left border m-2 rounded-md border-black">
+                    <IconSearch className='text-sm'/>
+                    {place.description}
+                  </button>
+                </div>
+              )
+                      
+            )
+              }
+            </div>
+            ):null
+            }
             <input
               type="text"
               value={end}
@@ -168,6 +251,31 @@ const Route: React.FC = () => {
               placeholder="Your Destination"
               className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
             />
+            {(end && autocompleteList && autosuggestionsEnd==true)?(
+            <div>
+              {autocompleteList.map((place)=>(
+                <div>
+                  <button  
+                  type='button'//for preventing default form submission
+                  onClick={()=>{
+                    setEnd(place.description)
+                    setAutoSuggestionsEnd(false)
+                    setAutocompleteList([])
+                  }
+
+                  }
+                  className="p-1 text-left border m-2 rounded-md border-black">
+                    <IconSearch className='text-sm'/>
+                    {place.description}
+                  </button>
+                </div>
+              )
+                      
+            )
+              }
+            </div>
+            ):null
+            }
             <input
               type="date"
               value={date}
@@ -185,7 +293,7 @@ const Route: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center  text-white text-2xl font-bold"
+            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold"
           >
             Generate
           </button>
@@ -194,125 +302,104 @@ const Route: React.FC = () => {
 
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {plan ? (
+          
           <div className="bg-orange-200 rounded-lg shadow-lg p-6 space-y-8">
-            <div >
-                <Directions start={start} end={end} />
+            
+
+            <div className="max-w-screen mx-auto mt-16 p-6 bg-orange-200 rounded-lg shadow-lg">
+          <form className="space-y-6 text-center">
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+              <input
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                placeholder="Your Name"
+                className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+              />
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="Your Email"
+                className="flex-1 bg-teal-50 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+              />
             </div>
-            <div className='text-center text-3xl font-semibold mb-6'>
-              Your plan &darr;
+            <button
+              type="button"
+              onClick={onSendEmail}
+              className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold"
+            >
+              Send Plan to Email
+            </button>
+          </form>
+        </div>
+
+            <div>
+              <Directions start={start} end={end} />
             </div>
-            <div className='text-center'>
-              <button
-                type="button"
-                onClick={onPlanSendClick}
-                className="rounded-xl p-5 text-center hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
-              >
-               Get Plan On your Email  
-               <div>
-               Lets Go &rarr;
-                </div>
-              </button>
-              <div>
-                {wantToSend ? (
-                  <div className='m-4 justify-center text-center'>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={handleNameChange}
-                      placeholder="Your Name"
-                      className=" bg-teal-50 m-3 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={handleEmailChange}
-                      placeholder="Your Email address"
-                      className=" bg-teal-50 m-3 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    />
-                    <button
-                      type="button"
-                      onClick={onSendEmail}
-                      className="w-full rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold  text-white text-2xl font-bold"
-                    >
-                      Send &rarr;
-                    </button>
-                  </div>
-                ) : null}
-              </div>
+            <div className="bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900">Accommodation</h2>
+              <p><strong>Name:</strong> {accommodation?.Name}</p>
+              <p><strong>Address:</strong> {accommodation?.Address}</p>
+              <p><strong>Check-in:</strong> {accommodation?.CheckInDate}</p>
+              <p><strong>Check-out:</strong> {accommodation?.CheckOutDate}</p>
+              <p><strong>Cost per Night:</strong> {accommodation?.CostPerNight}{" "+budget?.Currency}</p>
+              <p><strong>Total Cost:</strong> {accommodation?.TotalCost}{ " "+budget?.Currency}</p>
+              <p><strong>Contact Info:</strong> {accommodation?.ContactInfo}</p>
+              <p><strong>Additional Info:</strong> {accommodation?.AdditionalInfo}</p>
             </div>
-
-            {/* Rendering the plan details */}
-            <div className="mt-8 text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Accommodation</h2>
-              {accommodation ? (
-                <>
-                  <p>Check In Date: {accommodation.CheckInDate}</p>
-                  <p>Check Out Date: {accommodation.CheckOutDate}</p>
-                  <p>Info: {accommodation.AdditionalInfo}</p>
-                  <p>Name of place: {accommodation.Name}</p>
-                  <p>Address: {accommodation.Address}</p>
-                  <p>Type: {accommodation.Type}</p>
-                  <p>Contact info: {accommodation.ContactInfo}</p>
-                  <p>Cost Per Night: {accommodation.CostPerNight}</p>
-                  <p>Total Stay Cost: {accommodation.TotalCost}</p>
-                </>
-              ) : null}
-
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Transportation</h2>
-              {transportation.map((trans, index) => (
-                <div key={index} className="mb-4">
-                  <h3 className="text-xl font-semibold">{trans.Mode}</h3>
-                  <p>Info: {trans.Details.AdditionalInfo}</p>
-                  <p>Departure Location: {trans.Details.DepartureLocation}</p>
-                  <p>Departure Time: {trans.Details.DepartureTime}</p>
-                  <p>Duration: {trans.Details.Duration}</p>
-                  <p>Booking: {trans.Details.Booking}</p>
-                  <p>Arrival Location: {trans.Details.ArrivalLocation}</p>
-                  <p>Arrival Time: {trans.Details.ArrivalTime}</p>
-                  <p>Cost: {trans.Details.Cost} {budget?.Currency}</p>
-                </div>
-              ))}
-
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Budget</h2>
-              {budget ? (
-                <>
-                  <p>Currency: {budget.Currency}</p>
-                  <p>Total trip Cost: {budget.TotalCost}</p>
-                  <p>Flight Cost: {budget.FlightCost}</p>
-                  <p>Accommodation Cost: {budget.AccommodationCost}</p>
-                  <p>Food Cost: {budget.FoodCost}</p>
-                  <p>Activities Cost: {budget.ActivitiesCost}</p>
-                </>
-              ) : null}
-
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Activities</h2>
+            <div className="bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900">Activities</h2>
               {activities.map((activity, index) => (
-                <div key={index} className="mb-4">
-                  <h3 className="text-xl font-semibold">{activity.Name}</h3>
-                  <p>Info: {activity.AdditionalInfo}</p>
-                  <p>Booking: {activity.Booking}</p>
-                  <p>Cost: {activity.Cost} {budget?.Currency}</p>
-                  <p>Start Time: {activity.Time}</p>
-                  <p>Location: {activity.Location}</p>
+                <div key={index} className="bg-gray-100 rounded-lg p-4 space-y-2">
+                  <p><strong>Name:</strong> {activity.Name}</p>
+                  <p><strong>Location:</strong> {activity.Location}</p>
+                  <p><strong>Cost:</strong> {activity.Cost}{" "+budget?.Currency}</p>
+                  <p><strong>Time:</strong> {activity.Time}</p>
+                  <p><strong>Booking:</strong> {activity.Booking}</p>
+                  <p><strong>Additional Info:</strong> {activity.AdditionalInfo}</p>
                 </div>
               ))}
-
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Packing List</h2>
-              <ul className="list-disc pl-5">
+            </div>
+            <div className="bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900">Budget</h2>
+              <p><strong>Currency:</strong> {budget?.Currency}</p>
+              <p><strong>Total Cost:</strong> {budget?.TotalCost}</p>
+              <p><strong>Flight Cost:</strong> {budget?.FlightCost}</p>
+              <p><strong>Accommodation Cost:</strong> {budget?.AccommodationCost}</p>
+              <p><strong>Food Cost:</strong> {budget?.FoodCost}</p>
+              <p><strong>Activities Cost:</strong> {budget?.ActivitiesCost}</p>
+            </div>
+            <div className="bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900">Packing List</h2>
+              <ul className="list-disc pl-5 space-y-2">
                 {packingList.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
             </div>
+            <div className="bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900">Transportation</h2>
+              {transportation.map((transport, index) => (
+                <div key={index} className="bg-gray-100 rounded-lg p-4 space-y-2">
+                  <p><strong>Mode:</strong> {transport.Mode}</p>
+                  <p><strong>Departure Location:</strong> {transport.Details.DepartureLocation}</p>
+                  <p><strong>Departure Time:</strong> {transport.Details.DepartureTime}</p>
+                  <p><strong>Arrival Location:</strong> {transport.Details.ArrivalLocation}</p>
+                  <p><strong>Arrival Time:</strong> {transport.Details.ArrivalTime}</p>
+                  <p><strong>Duration:</strong> {transport.Details.Duration}</p>
+                  <p><strong>Cost:</strong> ${transport.Details.Cost}{" "+budget?.Currency}</p>
+                  <p><strong>Booking:</strong> {transport.Details.Booking}</p>
+                  <p><strong>Additional Info:</strong> {transport.Details.AdditionalInfo}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div className="text-black-700 text-center text-xl font-semibold">
-            Creating your trip plan...
-          </div>
-        )}
+        ) : null}
+        
       </div>
     </div>
   );
-}
+};
 
 export default Route;
