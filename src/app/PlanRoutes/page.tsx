@@ -418,7 +418,7 @@ const Route: React.FC = () => {
           </div>
         </div>
         <div>
-        {(startLocationForWeather && endLocationForWeather)?(
+        {(start && end)?(
           <div>
             <div>
               <Directions start={start} end={end} />
