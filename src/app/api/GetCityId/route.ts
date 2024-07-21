@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const {name} = requestbody
     
     // Replace this with your actual query logic
-    const result = await cityModel.find({
+    const result = await cityModel.findOne({
       name:name
     }).lean();
     console.log(result)
