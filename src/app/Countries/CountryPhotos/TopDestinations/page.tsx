@@ -5,7 +5,7 @@ import { PexelsQuery } from '@/components/APIs/Pexels/Query';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Run } from '@/components/APIs/Gemini/Recommendations';
-import { IconSearch } from '@tabler/icons-react';
+import { IconActivity, IconAdFilled, IconList, IconPoint, IconSearch } from '@tabler/icons-react';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
 import PlaceMap from '@/components/GoogleMaps/PlacesMaps';
 import { Info } from '@/components/APIs/Gemini/Info';
@@ -133,6 +133,30 @@ const TouristDestinations = () => {
         </div>
 
         <div className="py-5 ">
+
+        {(Recommendations && (showRecommendations==true)) ? (
+            <div>
+              <div className='text-center text-3xl p-3'>
+                Suggestions
+              </div>
+
+              <div className="text-gray-700 flex-wrap lg:grid lg:grid-cols-3  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
+                {Recommendations.map((place, index) => (
+                  <button key={index} 
+                  onClick={()=>{
+                    handleRecSubmit(place)
+                  }
+
+                  }
+                  className="p-1 text-left border m-2 rounded-md border-black">
+                    <IconSearch className='text-sm'/>
+                    {place}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
           {searchQuery?(
             <div className='sm:flex justify-evenly bg-white rounded-md p-4'>
               <div>
@@ -155,32 +179,46 @@ const TouristDestinations = () => {
           </div>
           ):null}
           
-          {(Recommendations && (showRecommendations==true)) ? (
-            <div>
-              <div className='text-center text-3xl p-3'>
-                Suggestions
-              </div>
-
-              <div className="text-gray-700 flex-wrap lg:grid lg:grid-cols-3  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
-                {Recommendations.map((place, index) => (
-                  <button key={index} 
-                  onClick={()=>{
-                    handleRecSubmit(place)
-                  }
-
-                  }
-                  className="p-1 text-left border m-2 rounded-md border-black">
-                    <IconSearch className='text-sm'/>
-                    {place}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ) : null}
+          
           {infoName?(
             <div>
+            <div className='text-center bg-white mt-8 rounded-md pb-5'>
+              <div className='text-4xl p-6 font-bold'>
               {infoName}
+              </div>
+              <div className='text-xl font-serif'>     
               {infoDescription}
+              </div>
+              
+            </div>
+
+            <div className='bg-white mt-6 rounded-md  text-xl p-2'>
+            <div className='font-bold text-2xl text-center p-4'>
+                Highlights
+              </div>
+                {highlights?.map((highlight,index)=>(
+                    <div key={index} className='flex m-3'>
+                    <IconList className='w-10 ml-3 mr-3'/>
+                    <div className='font-serif'>
+                    {highlight}
+                      </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className='bg-white mt-6 rounded-md  text-xl p-2'>
+              <div className='font-bold text-2xl text-center p-4'>
+                Tips
+              </div>
+                {tips?.map((tip,index)=>(
+                    <div key={index} className='flex m-3'>
+                    <IconPoint className='w-10 ml-3 mr-3'/>
+                    <div className='font-serif'>
+                    {tip}
+                      </div>
+                    </div>
+                ))}
+            </div>
             </div>
           ):null}
         </div>
@@ -201,7 +239,29 @@ const TouristDestinations = () => {
               ))}
             </div>
           ) : (
-            <p className="text-center text-gray-700 mt-10">No photos found for the query.</p>
+            <div>
+            {
+              (!searchQuery)?(
+                null
+              ):(
+                <div>
+                  {
+                    (photos.length>0)?(
+                      null
+                    ):(
+                      <div className="text-center text-gray-700 mt-10">
+                      No photos found for the query.
+  
+                    </div>
+                    )
+                  }
+                  
+                </div>
+              )
+            }
+            </div>
+            
+            
           )}
         </div>
       </div>
