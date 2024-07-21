@@ -10,13 +10,17 @@ import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
 import ToastError from "@/components/UIElements/AlertError/RegiError";
-import { useToast } from "@chakra-ui/react";
+import { Spinner, useToast } from "@chakra-ui/react";
 import { IconBrandGoogle } from "@tabler/icons-react";
+import { on } from "events";
 
 export default function SignIn() {
   const router = useRouter();
   const toast = useToast()
   const { data: session } = useSession();
+
+  const[signInLoading,setSignInLoading] = useState(false)
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -45,7 +49,10 @@ export default function SignIn() {
       })
     }
 
-    console.log(result);
+    
+    if(result){
+      setSignInLoading(false)
+    }
 
     if (result?.error) {
       if (result.error === 'CredentialsSignin') {
@@ -56,12 +63,13 @@ export default function SignIn() {
     }
 
     if (result?.url) {
+      
       toast({
         title: `User login successfull!`,
         status: "success",
         isClosable: true,
       })
-      router.replace('/'); // Redirecting to Home
+      router.replace('/'); 
     }
   };
 
@@ -114,7 +122,8 @@ export default function SignIn() {
           <div>
             Sign in with credentials
           </div>
-        <form className="my-8 placeholder:text-black w-100%" onSubmit={onformSubmit}>
+        <form className="my-8 placeholder:text-black w-100%" onSubmit={onformSubmit}
+        >
           <LabelInputContainer className="mb-4">
             <Label htmlFor="Email">Email Address</Label>
             <Input
@@ -141,11 +150,26 @@ export default function SignIn() {
 
           <div className="text-center">
             <button
-              className="sm:py-2 p-3 lg:py-3 px-3 mt-8 rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white"
+              
               type="submit"
+             onClick={()=>{setSignInLoading(true)}}
             >
-              Sign In &rarr;
-              <BottomGradient />
+              {
+               ( signInLoading==true)?(
+                <div className="p-3 mt-6 m-3">
+                  <Spinner/>
+                </div>
+               ):(
+                <div className="sm:py-2 p-3 lg:py-3 px-3 mt-8 rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white">
+                Sign In &rarr;
+                <BottomGradient />
+                </div>
+               )
+              }
+
+              
+              
+              
             </button>
           </div>
 

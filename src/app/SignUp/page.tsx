@@ -10,6 +10,7 @@ import RegiSuccess from "@/components/UIElements/AlertSuccess/Alert";
 import { signIn } from "next-auth/react";
 import  { useRouter } from "next/navigation";
 import { useToast } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 
 export default function SignUp() {
@@ -17,7 +18,7 @@ export default function SignUp() {
   const [regiSuccess, setRegiSuccess] = useState(false);
   const { data: session } = useSession();
   
-  
+  const [signUpLoading,setSignUpLoading] = useState(false)
 
   const [user, setUser] = React.useState({
     email: "",
@@ -45,7 +46,9 @@ const onEmail = async (event: React.FormEvent) => {
       password: user.password,
     });
 
-    console.log(result);
+    if(result){
+      setSignUpLoading(false)
+    }
 
     if (result?.error) {
       if (result.error === 'CredentialsSignin') {
@@ -71,8 +74,9 @@ const onEmail = async (event: React.FormEvent) => {
       router.replace('/'); // Redirecting to Home
     }}
   }catch (error: any) {
+    setSignUpLoading(false)
     toast({
-      title: `please enter a valid email address!`,
+      title: `Please enter valid email address for sign up \b or sign in`,
       status: "error",
       isClosable: true,
     })
@@ -134,12 +138,24 @@ const onEmail = async (event: React.FormEvent) => {
   
           <div className="text-center">
           <button
-            className="sm:py-2 p-3 lg:py-3 px-3 mt-8  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white"
+           
             type="submit"
+            onClick={()=>{setSignUpLoading(true)}}
             
           >
-            Sign Up &rarr;
-            <BottomGradient />
+            {
+             ( signUpLoading==true)?(
+              <div className="mt-4 m-5">
+                <Spinner/>
+              </div>
+             ):(
+              <div  className="sm:py-2 p-3 lg:py-3 px-3 mt-8  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white">
+              Sign Up &rarr;
+              <BottomGradient />
+              </div>
+             )
+            }
+           
           </button>
           </div>
           
