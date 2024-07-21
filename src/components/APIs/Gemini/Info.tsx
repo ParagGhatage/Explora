@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
-export async function Info(place="pune",country="india") {
+export async function Info(place="",country="") {
   
   console.log(place)
   console.log(country)

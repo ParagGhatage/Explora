@@ -35,8 +35,10 @@ const TouristDestinations = () => {
   const [tips,setTips] = useState([])
   const [highlights,setHighlights] = useState([])
 
-  const query: string = searchParams.get('query') || '';
+  const [dontShowCountryMap,setDontShowCountryMap] = useState(false)
 
+  let query: string = searchParams.get('query') || '';
+  
   
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +50,17 @@ const TouristDestinations = () => {
       if (query) {
         try {
           const Recommendation: any = await Run(query);
+          if(query == "Cities" 
+            || query == "Museums" 
+            ||query == "Adventure places" 
+            ||query == "Space related" 
+            ||query == "ancient civilizations" 
+            ||query == "Religious places" 
+            || query == "Historical places"
+            || query == "Natural wonders"){
+              query=""
+              setDontShowCountryMap(true)
+            }
           
           const arr = Recommendation.places;
           setRecommendations(arr);
@@ -56,6 +69,7 @@ const TouristDestinations = () => {
         }
       }
     };
+
     if(!searchQuery){
       setShowRecommendations(true)
       setShowInfo(false)
@@ -163,23 +177,26 @@ const TouristDestinations = () => {
               <div className=' border-black border-2'>
               <PlaceMap map_params={ query } extra_address={ searchQuery +"," }/>
             </div>
-            <div>
+            <div className='text-center font-semibold p-3'>
               {searchQuery}
             </div>
               </div>
-            
-            <div>
-            <div className='mt-5 sm:mt-0 border-black border-2 '>
-            <PlaceMap map_params={ query }/>
-          </div>
-          <div>
-            {query}
-          </div>
-            </div>
+              <div>
+              {(dontShowCountryMap==false)?(
+
+                  <div>
+                  <div className='mt-5 sm:mt-0 border-black border-2 '>
+                  <PlaceMap map_params={ query }/>
+                  </div>
+                  <div className='text-center font-semibold m-3'>
+                  {query}
+                  </div>
+                  </div>
+
+                  ):null}
+              </div> 
           </div>
           ):null}
-          
-          
           {infoName?(
             <div>
             <div className='text-center bg-white mt-8 rounded-md pb-5'>
