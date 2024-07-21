@@ -3,7 +3,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function Info(place="pune",country="india") {
   
-  
+  console.log(place)
+  console.log(country)
   const apiKey = process.env.NEXT_PUBLIC_GEMINI;
   if (!apiKey) {
     throw new Error("GEMINI is not defined");
@@ -24,26 +25,26 @@ export async function Info(place="pune",country="india") {
   "properties": {
     "name": {
       "type": "string",
-      "description": "The name of the ${place},${country}."
+      "description": "The name of the place."
     },
     "description": {
       "type": "string",
-      "description": "A short description of the${place},${country}."
+      "description": "A detailed description of the place."
     },
     "highlights": {
       "type": "array",
-      "description": "An array of highlights of the ${place},${country}.",
+      "description": "An array of highlights of the place.",
       "items": {
         "type": "string",
-        "description": "A highlight of the ${place},${country}."
+        "description": "A highlight of the place."
       }
     },
     "tips": {
       "type": "array",
-      "description": "An array of additional tips for the particular ${place},${country}.",
+      "description": "An array of additional tips for the particular place.",
       "items": {
         "type": "string",
-        "description": "A tip for visiting the ${place},${country}."
+        "description": "A tip for visiting the place."
       }
     }
   },

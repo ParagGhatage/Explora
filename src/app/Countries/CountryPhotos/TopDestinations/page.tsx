@@ -8,6 +8,7 @@ import { Run } from '@/components/APIs/Gemini/Recommendations';
 import { IconSearch } from '@tabler/icons-react';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
 import PlaceMap from '@/components/GoogleMaps/PlacesMaps';
+import { Info } from '@/components/APIs/Gemini/Info';
 
 interface Photo {
   id: number;
@@ -21,12 +22,22 @@ interface Photo {
 const TouristDestinations = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [Recommendations, setRecommendations] = useState<string[] | undefined>([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const [showRecommendations,setShowRecommendations] = useState(true)
+
+  const [ShowInfo,setShowInfo] = useState(false)
+
+  const [infoName,setInfoName] = useState("")
+  const [infoDescription,setInfoDescription] = useState("")
+  const [tips,setTips] = useState([])
+  const [highlights,setHighlights] = useState([])
+
   const query: string = searchParams.get('query') || '';
 
-  console.log(query);
+  
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -37,7 +48,7 @@ const TouristDestinations = () => {
       if (query) {
         try {
           const Recommendation: any = await Run(query);
-          console.log(Recommendation);
+          
           const arr = Recommendation.places;
           setRecommendations(arr);
         } catch (error) {
@@ -45,22 +56,49 @@ const TouristDestinations = () => {
         }
       }
     };
+    if(!searchQuery){
+      setShowRecommendations(true)
+      setShowInfo(false)
+      setInfoName("")
+      setInfoDescription("")
+      setHighlights([])
+      setTips([])
+    }
 
     fetchData();
-  },[query]);
+  },[query,searchQuery]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await PexelsQuery(searchQuery);
     setPhotos(data.photos);
-    setSearchQuery(''); // Clear search input after submission
+    setShowRecommendations(false)
+    const info1 = await Info(searchQuery,query)
+    console.log(info1)
+    if(info1){
+      setInfoName(info1?.name)
+      setInfoDescription(info1?.description)
+      setHighlights(info1?.highlights)
+      setTips(info1.tips)
+    setShowInfo(true)
+    }
   };
   const handleRecSubmit = async (place:string) => {
     setSearchQuery(place)
     const data = await PexelsQuery(place);
     setPhotos(data.photos);
+    setShowRecommendations(false)
+    console.log(place)
+    const info1 = await Info(place,query)
+    console.log(info1)
+    if(info1){
+      setInfoName(info1?.name)
+      setInfoDescription(info1?.description)
+      setHighlights(info1?.highlights)
+      setTips(info1.tips)
+    setShowInfo(true)
+    }
     
-   
   };
 
   return (
@@ -97,16 +135,27 @@ const TouristDestinations = () => {
         <div className="py-5 ">
           {searchQuery?(
             <div className='sm:flex justify-evenly bg-white rounded-md p-4'>
-            <div className=' border-black border-2'>
+              <div>
+              <div className=' border-black border-2'>
               <PlaceMap map_params={ query } extra_address={ searchQuery +"," }/>
             </div>
+            <div>
+              {searchQuery}
+            </div>
+              </div>
+            
+            <div>
             <div className='mt-5 sm:mt-0 border-black border-2 '>
             <PlaceMap map_params={ query }/>
           </div>
+          <div>
+            {query}
+          </div>
+            </div>
           </div>
           ):null}
           
-          {Recommendations ? (
+          {(Recommendations && (showRecommendations==true)) ? (
             <div>
               <div className='text-center text-3xl p-3'>
                 Suggestions
@@ -127,9 +176,13 @@ const TouristDestinations = () => {
                 ))}
               </div>
             </div>
-          ) : (
-            <div className="text-gray-700 text-center">Loading recommendations...</div>
-          )}
+          ) : null}
+          {infoName?(
+            <div>
+              {infoName}
+              {infoDescription}
+            </div>
+          ):null}
         </div>
 
         <div className="container mx-auto py-8">
