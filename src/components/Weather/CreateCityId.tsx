@@ -14,6 +14,6 @@ export const Id = async(Lat:number =0,Lon:number=0) => {
     return data?.data?.id
 }
 else{
-    return null
+    return "Please Enter valid city name"
 }
 }
