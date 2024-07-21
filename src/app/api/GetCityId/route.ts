@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
     // Replace this with your actual query logic
     const result = await cityModel.findOne({
       name:name
-    }).lean();
-    console.log(result)
+    })
+    
     return NextResponse.json(result);
   } catch (error) {
     console.error('Error fetching city ID:', error);

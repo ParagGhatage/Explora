@@ -9,8 +9,8 @@ export const Id = async(Lat:number =0,Lon:number=0) => {
     const Cityname = CityData.data[0].name
     if(CityData){
     const data = await axios.post("/api/GetCityId",{name:Cityname})
-    console.log(data.data[0].id)
-    return data.data[0].id
+    
+    return data.data.id
 }
 else{
     return null

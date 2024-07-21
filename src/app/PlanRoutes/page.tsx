@@ -165,9 +165,14 @@ const Route: React.FC = () => {
     if(startLocationForWeather && endLocationForWeather ){
       const StartCityId = await  Id(startLocationForWeather[0],startLocationForWeather[1])
       const EndCityId = await  Id(endLocationForWeather[0],endLocationForWeather[1])
-      
-      if(StartCityId && EndCityId){
+      console.log(StartCityId)
+      console.log(EndCityId)
+      if(StartCityId){
       setStartId(StartCityId)
+      
+    }
+    if(EndCityId){
+      
       setEndId(EndCityId)
     }
   }
