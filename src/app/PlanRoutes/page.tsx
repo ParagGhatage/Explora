@@ -13,6 +13,9 @@ import { WeatherWidget1 } from '@/components/Weather/NewWeatherWidget';
 import { MobileViewStart } from '@/components/Weather/MobileViewStart';
 import { MobileViewEnd } from '@/components/Weather/MobileViewEnd';
 
+import { Spinner } from '@chakra-ui/react';
+
+
 type Location = [number, number];
 
 interface Accommodation {
@@ -97,6 +100,18 @@ const Route: React.FC = () => {
   const [startId,setStartId] = useState()
   const [endId,setEndId]= useState()
 
+  const [generateLoading,setGenerateLoading] = useState(false)
+  const [emailLoading,setEmailLoading] = useState(false)
+  
+
+
+  useEffect(() => {
+    if (plan) {
+      setGenerateLoading(false);
+    }
+  }, [plan]); // Dependency array includes 'plan'
+
+  
   const key = process.env.NEXT_PUBLIC_OLA_MAPS_API_KEY;
 
   const autocompleteCache: { [query: string]: any[] } = {};
@@ -162,6 +177,7 @@ const Route: React.FC = () => {
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setGenerateLoading(true)
     if(startLocationForWeather && endLocationForWeather ){
       const StartCityId = await  Id(startLocationForWeather[0],startLocationForWeather[1])
       const EndCityId = await  Id(endLocationForWeather[0],endLocationForWeather[1])
@@ -189,7 +205,7 @@ const Route: React.FC = () => {
       });
     } else {
       toast({
-        title: `Plan generated successfully!`,
+        title: `Plan generated successfully! Scroll down to see entire plan`,
         status: "success",
         isClosable: true,
       });
@@ -217,14 +233,16 @@ const Route: React.FC = () => {
       });
       console.log(response.data);
       if (!response.data) {
+        setEmailLoading(false)
         toast({
           title: `Some Error occurred while sending email! Please try again.`,
           status: "error",
           isClosable: true,
         });
       } else {
+        setEmailLoading(false)
         toast({
-          title: `Email sent! Check your inbox.`,
+          title: `Email sent! Please Check your inbox.`,
           status: "success",
           isClosable: true,
         });
@@ -336,9 +354,26 @@ const Route: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold"
+            
           >
-            Generate
+            <div>
+            {(generateLoading==true)?(
+                <div >
+                  <Spinner className='rounded-xl p-5  hover:border-2     text-center text-black text-2xl '/>
+                  <div className='p-3 text-sm etxt-black'>
+                      Please wait till we generate your entire plan!
+                  </div>
+                </div>
+            ):(
+              <div
+              className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold">
+                Generate
+              </div>
+            )
+
+          }
+            </div>
+            
           </button>
         </form>
       </div>
@@ -419,10 +454,24 @@ const Route: React.FC = () => {
             </div>
             <button
               type="button"
-              onClick={onSendEmail}
-              className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold"
+              onClick={()=>{
+                onSendEmail()
+                setEmailLoading(true)
+              }}
+              
             >
-              Send Plan to Email
+              {(emailLoading==true)?(
+                <div>
+                  <Spinner/>
+                </div>
+              ):(
+                <div className="rounded-xl p-5 hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black hover:font-bold text-center text-white text-2xl font-bold">
+                Send Plan to Email
+                </div>
+              )
+
+              }
+              
             </button>
           </form>
         </div>
