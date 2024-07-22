@@ -20,6 +20,9 @@ const  Page = () => {
       alt=""
       className='w-full object-cover'
     />
+    <div>
+      <img src="/logo-color" alt="Explora logo" />
+    </div>
   </div>
   <div className='text-center w-full text-5xl font-bold font-sans  mt-5'>
     <h1>Categories</h1>
