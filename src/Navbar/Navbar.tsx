@@ -16,9 +16,10 @@ const Navbar = () => {
     <div className='bg-transparent fixed w-full top-0 z-50 pt-3'>
   <nav className='container w-100% mx-auto '>
     <ul className='flex flex-col lg:flex-row  text-lg font-bold justify-between '>
-      <div className=''>
+      <div className=' sm:mt-7'>
         <Avatar className='bg-white p-2 justify-between '>
-          <Link href="/" onClick={handleLinkClick}>
+          <Link href="/Home" onClick={handleLinkClick} className='flex h-7 '>
+          <img src="/logo-color.svg" alt="logo" />
             <AvatarFallback className='p-2'>Explora</AvatarFallback>
           </Link>
           <div className='lg:hidden justify-center items-center text-center bg-white p-2'>
@@ -43,7 +44,7 @@ const Navbar = () => {
       
       <div className={`lg:flex bg-white rounded-lg w-100% justify-end flex-1 p-3  text-black text-2xl border-2 ${isOpen ? 'block' : 'hidden'} lg:block`}>
         <li className='sm:py-2 p-2 lg:py-3 px-3'>
-          <Link href="/" onClick={handleLinkClick}>Home</Link>
+          <Link href="/Home" onClick={handleLinkClick}>Home</Link>
         </li>
         <li className='sm:py-2 p-3 lg:py-3 px-3'>
           <Link href="/Countries" onClick={handleLinkClick}>Explore</Link>
