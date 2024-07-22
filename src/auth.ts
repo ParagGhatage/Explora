@@ -15,7 +15,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret:process.env.AUTH_GOOGLE_SECRET,
       authorization: {
         params: {
-          redirect_uri: 'https://www.explora.cyou/api/auth/callback/google'
+          redirect_uri:'https://www.explora.cyou/api/auth/callback/google'
         }
       }
       
