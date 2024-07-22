@@ -71,7 +71,7 @@ const onEmail = async (event: React.FormEvent) => {
         status: "success",
         isClosable: true,
       })
-      router.replace('/'); // Redirecting to Home
+      router.replace('/Home'); // Redirecting to Home
     }}
   }catch (error: any) {
     setSignUpLoading(false)

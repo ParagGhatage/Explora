@@ -69,7 +69,7 @@ export default function SignIn() {
         status: "success",
         isClosable: true,
       })
-      router.replace('/'); 
+      router.replace('/Home'); 
     }
   };
 
