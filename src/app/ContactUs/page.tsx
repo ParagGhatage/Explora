@@ -29,7 +29,8 @@ export default function Home() {
 })
 const toast = useToast()
 
-const onEmail = async () => {
+const onEmail = async (e:any) => {
+  e.preventDefault()
       try {
 
           const response = await axios.post("/api/send", user);
@@ -37,21 +38,28 @@ const onEmail = async () => {
 
           if(!(response.data)){
             toast({
-              title: `Some Error occured while sending an email!\n  Please try again.`,
+              title: `Enable to send an email!`,
+              description:" Please try again.",
               status: "error",
               isClosable: true,
             })
           }
           if((response.data)){
             toast({
-              title: `Email sent succeesfully!`,
+              title: `Email sent!`,
+              description:"We have sent email to Explora team.",
               status: "success",
               isClosable: true,
             })
           }
       } catch (error:any) {
           console.log("Enable to send email", error.message);
-          
+          toast({
+            title: `Enable to send email!`,
+            description:`${error.message}`,
+            status: "error",
+            isClosable: true,
+          })
       }
     }
   return (
@@ -60,11 +68,9 @@ const onEmail = async () => {
       <div className="flex-auto justify-center lg:flex">
     <div className="max-w-md mx-auto bg-white rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  mt-20 placeholder:text-black w-full">
       <div className="font-bold text-3xl text-black pt-3 ">
-        Nice to meet you
+        Get in touch
       </div>
-      <div className="text-slate-600 text-sm max-w-sm mt-2">
-        Send me an email right from here
-      </div>
+      
 
       <form className="my-8 placeholder:text-black" onSubmit={onEmail}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
