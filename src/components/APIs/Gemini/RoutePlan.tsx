@@ -224,10 +224,18 @@ export async function Plan(Start: string, End: string, Date: string, Days: numbe
     }
   `;
 
-  const result = await model.generateContent(prompt);
-  const response = result.response;
-  const text =  response.text(); // Await the text() method since it returns a promise
-  const data = JSON.parse(text);
+  const result = await model.generateContentStream(prompt);
   
-  return data;
+  let total = ""
+  for await (const chunk of result.stream) {
+    const chunkText = chunk.text();
+    
+    total=total+chunkText
+  }
+  const final = JSON.parse(total)
+  console.log(JSON.parse(total))
+   // Await the text() method since it returns a promise
+  
+  
+  return final;
 }
