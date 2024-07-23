@@ -14,15 +14,14 @@ const  Page = () => {
     
   return (
     <div className='bg-orange-100  w-full mt-0 pt-0'>
+    
   <div className='w-full'>
     <img
       src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       alt=""
       className='w-full object-cover'
     />
-    <div>
-      <img src="/logo-color" alt="Explora logo" />
-    </div>
+    
   </div>
   <div className='text-center w-full text-5xl font-bold font-sans  mt-5'>
     <h1>Categories</h1>
