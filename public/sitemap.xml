@@ -4,112 +4,112 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
   <loc>https://www.explora.cyou/</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Home</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/PlanRoutes</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=world</loc>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/About</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/ContactUs</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/SignIn</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Cities</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Adventure%20places</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Space%20related</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=ancient%20civilizations</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Religious%20places</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Museums</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Historical%20places</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=Natural%20wonders</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.explora.cyou/Countries/CountryPhotos/TopDestinations?query=world</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos?query=Japan</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos?query=India</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos?query=Iceland</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/Countries/CountryPhotos?query=Nepal</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.explora.cyou/SignUp</loc>
-  <lastmod>2024-07-23T19:43:16+00:00</lastmod>
+  <lastmod>2024-07-24T19:29:36+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
