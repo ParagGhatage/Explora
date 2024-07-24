@@ -49,8 +49,12 @@ const Navbar = () => {
         <li className='sm:py-2 p-3 lg:py-3 px-3'>
           <Link href="/Countries" onClick={handleLinkClick}>Explore</Link>
         </li>
+        
         <li className='sm:py-2 p-3 lg:py-3 px-3'>
           <Link href="/PlanRoutes" onClick={handleLinkClick}>Plan Trip</Link>
+        </li>
+        <li className='sm:py-2 p-3 lg:py-3 px-3'>
+          <Link href="/Countries/CountryPhotos/TopDestinations?query=world" onClick={handleLinkClick}>Destinations</Link>
         </li>
         <li className='sm:py-2 p-3 lg:py-3 px-3'>
           <Link href="/About" onClick={handleLinkClick}>About</Link>
