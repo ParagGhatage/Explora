@@ -26,7 +26,7 @@ export default function RootLayout({
       <head>
         <title>{metadata.title as string}</title>
         <meta name="description" content={metadata.description as string} />
-        
+        <meta name="norton-safeweb-site-verification" content="ZARL500DA-YRHO3ZO305VTY0SGCXC1O922JCI55IFI-9BC4L31TV0KVJ2QSO6QXQQZOVKFKKI6AWMB2ARVYN7U71ZXX5RNWRMNSMZM840-MUK-H8VATCNKQ1--P83X8N" />
       </head>
       <ChakraProvider>
       <body className={inter.className}>
