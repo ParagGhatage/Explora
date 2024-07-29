@@ -80,7 +80,7 @@ const Country = () => {
 
   const router = useRouter();
   const handleGoBack = () => {
-    router.back(); // This function navigates back to the previous page
+    router.push("/Countries"); // This function navigates back to the previous page
   };
 
   const handleTopDestinationsInCountry = () => {
