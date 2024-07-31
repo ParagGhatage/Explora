@@ -4,7 +4,7 @@ dotenv.config();
 
 export async function TopDesti(Country: string) {
     try {
-        const response = await axios.get(`https://api.pexels.com/v1/search?query=${encodeURIComponent('top destinations in the world')}`, {
+        const response = await axios.get(`https://api.pexels.com/v1/search?query=${encodeURIComponent('top destinations in the world')}&per_page=5`, {
             headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_PEXELS_API_KEY}`
             }
